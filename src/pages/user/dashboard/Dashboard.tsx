@@ -13,51 +13,132 @@ const authHeaders = () => ({
 
 /* ── Icons ── */
 const IcoEye = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="17"
+    height="17"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
 );
 const IcoEyeOff = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="17"
+    height="17"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
     <line x1="1" y1="1" x2="23" y2="23" />
   </svg>
 );
 const IcoCopy = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="9" y="9" width="13" height="13" rx="2" />
     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
   </svg>
 );
 const IcoCheck = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 const IcoArrowDown = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 5v14M19 12l-7 7-7-7" />
   </svg>
 );
 const IcoArrowUp = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 19V5M5 12l7-7 7 7" />
   </svg>
 );
 const IcoChevRight = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="9 18 15 12 9 6" />
   </svg>
 );
 const IcoTrendUp = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
     <polyline points="17 6 23 6 23 12" />
   </svg>
 );
 const IcoList = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="8" y1="6" x2="21" y2="6" />
     <line x1="8" y1="12" x2="21" y2="12" />
     <line x1="8" y1="18" x2="21" y2="18" />
@@ -67,7 +148,16 @@ const IcoList = () => (
   </svg>
 );
 const IcoBell = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
   </svg>
@@ -92,8 +182,8 @@ interface Tx {
 
 const STATUS_MAP = {
   confirmed: { label: "Confirmed", cls: "badge-success" },
-  pending:   { label: "Pending",   cls: "badge-warning"  },
-  failed:    { label: "Failed",    cls: "badge-danger"   },
+  pending: { label: "Pending", cls: "badge-warning" },
+  failed: { label: "Failed", cls: "badge-danger" },
 };
 
 /* ── TradingView Widget ── */
@@ -102,7 +192,8 @@ const TradingViewWidget = memo(() => {
   useEffect(() => {
     if (!container.current) return;
     const script = document.createElement("script");
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.type = "text/javascript";
     script.async = true;
     script.innerHTML = `{
@@ -124,10 +215,21 @@ const TradingViewWidget = memo(() => {
     container.current.appendChild(script);
   }, []);
   return (
-    <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>
-      <div className="tradingview-widget-container__widget" style={{ height: "calc(100% - 32px)", width: "100%" }}></div>
+    <div
+      className="tradingview-widget-container"
+      ref={container}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <div
+        className="tradingview-widget-container__widget"
+        style={{ height: "calc(100% - 32px)", width: "100%" }}
+      ></div>
       <div className="tradingview-widget-copyright">
-        <a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener nofollow" target="_blank">
+        <a
+          href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
+          rel="noopener nofollow"
+          target="_blank"
+        >
           <span className="blue-text">AAPL stock chart</span>
         </a>
         <span className="trademark"> by TradingView</span>
@@ -137,7 +239,11 @@ const TradingViewWidget = memo(() => {
 });
 
 /* ── Portfolio Pie Chart ── */
-const PortfolioPie: React.FC<{ deposited: number; pending: number; txCount: number }> = ({ deposited, pending, txCount }) => {
+const PortfolioPie: React.FC<{
+  deposited: number;
+  pending: number;
+  txCount: number;
+}> = ({ deposited, pending, txCount }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // const total = deposited + pending + txCount;
 
@@ -156,8 +262,8 @@ const PortfolioPie: React.FC<{ deposited: number; pending: number; txCount: numb
 
     const slices = [
       { label: "Deposited", value: deposited || 1, color: "#14c784" },
-      { label: "Pending",   value: pending   || 0, color: "#f5a524" },
-      { label: "Txns",      value: txCount   || 0, color: "#a78bfa" },
+      { label: "Pending", value: pending || 0, color: "#f5a524" },
+      { label: "Txns", value: txCount || 0, color: "#3179c1" },
     ];
 
     const sum = slices.reduce((s, sl) => s + sl.value, 0);
@@ -194,24 +300,37 @@ const PortfolioPie: React.FC<{ deposited: number; pending: number; txCount: numb
 
   return (
     <div className="dash-pie-wrap">
-      <canvas ref={canvasRef} width={160} height={160} className="dash-pie-canvas" />
+      <canvas
+        ref={canvasRef}
+        width={160}
+        height={160}
+        className="dash-pie-canvas"
+      />
       <div className="dash-pie-legend">
         <div className="dash-pie-legend-item">
           <span className="dash-pie-dot" style={{ background: "#14c784" }} />
           <span className="dash-pie-legend-label">Deposited</span>
           <span className="dash-pie-legend-val">
-            ${deposited.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            $
+            {deposited.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </span>
         </div>
         <div className="dash-pie-legend-item">
           <span className="dash-pie-dot" style={{ background: "#f5a524" }} />
           <span className="dash-pie-legend-label">Pending</span>
           <span className="dash-pie-legend-val">
-            ${pending.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            $
+            {pending.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </span>
         </div>
         <div className="dash-pie-legend-item">
-          <span className="dash-pie-dot" style={{ background: "#a78bfa" }} />
+          <span className="dash-pie-dot" style={{ background: "#3179c1" }} />
           <span className="dash-pie-legend-label">Transactions</span>
           <span className="dash-pie-legend-val">{txCount}</span>
         </div>
@@ -243,32 +362,57 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const profileRes = await fetch(`${API}/api/user/profile`, { headers: authHeaders() });
-        if (profileRes.status === 401) { navigate("/login"); return; }
+        const profileRes = await fetch(`${API}/api/user/profile`, {
+          headers: authHeaders(),
+        });
+        if (profileRes.status === 401) {
+          navigate("/login");
+          return;
+        }
         const profileData = await profileRes.json();
         setUser(profileData);
         localStorage.setItem("cb_user", JSON.stringify(profileData));
 
-        const txRes = await fetch(`${API}/api/user/transactions`, { headers: authHeaders() });
+        const txRes = await fetch(`${API}/api/user/transactions`, {
+          headers: authHeaders(),
+        });
         const txData = await txRes.json();
         const allTxs: Tx[] = txData.data ?? txData ?? [];
         setTxs(allTxs.slice(0, 5));
         setTxCount(txData.total ?? allTxs.length);
 
-        const depRes = await fetch(`${API}/api/user/deposits`, { headers: authHeaders() });
+        const depRes = await fetch(`${API}/api/user/deposits`, {
+          headers: authHeaders(),
+        });
         const depData = await depRes.json();
         const depList = depData.data ?? depData ?? [];
         const confirmedDep = depList
-          .filter((d: { status: string; amount: string | number }) => d.status === "confirmed")
-          .reduce((s: number, d: { amount: string | number }) => s + parseFloat(String(d.amount || 0)), 0);
+          .filter(
+            (d: { status: string; amount: string | number }) =>
+              d.status === "confirmed",
+          )
+          .reduce(
+            (s: number, d: { amount: string | number }) =>
+              s + parseFloat(String(d.amount || 0)),
+            0,
+          );
         setDeposits(confirmedDep);
 
-        const wdRes = await fetch(`${API}/api/user/withdrawals`, { headers: authHeaders() });
+        const wdRes = await fetch(`${API}/api/user/withdrawals`, {
+          headers: authHeaders(),
+        });
         const wdData = await wdRes.json();
         const wdList = wdData.data ?? wdData ?? [];
         const pendingWd = wdList
-          .filter((w: { status: string; amount: string | number }) => w.status === "pending")
-          .reduce((s: number, w: { amount: string | number }) => s + parseFloat(String(w.amount || 0)), 0);
+          .filter(
+            (w: { status: string; amount: string | number }) =>
+              w.status === "pending",
+          )
+          .reduce(
+            (s: number, w: { amount: string | number }) =>
+              s + parseFloat(String(w.amount || 0)),
+            0,
+          );
         setPending(pendingWd);
       } catch (err) {
         console.error("Dashboard fetch error:", err);
@@ -289,7 +433,11 @@ const Dashboard: React.FC = () => {
   const walletAddr = user?.wallet_address ?? "";
   const balance = user?.balance ?? 0;
   const firstName = (user?.name ?? "User").split(" ")[0];
-  const initials = (user?.name ?? "U").split(" ").map((w: string) => w[0]).join("").toUpperCase();
+  const initials = (user?.name ?? "U")
+    .split(" ")
+    .map((w: string) => w[0])
+    .join("")
+    .toUpperCase();
 
   return (
     <div className="dash page-enter">
@@ -298,7 +446,7 @@ const Dashboard: React.FC = () => {
         <div className="dash-greeting">
           <p className="dash-greeting-sub"></p>
           <p className="dash-greeting-name">
-            Hiii, <span style={{ color: "#a78bfa" }}>{firstName}</span>👋
+            Hiii, <span style={{ color: "#3179c1" }}>{firstName}</span>👋
           </p>
         </div>
         <div className="dash-topbar-right">
@@ -306,7 +454,11 @@ const Dashboard: React.FC = () => {
             <IcoBell />
             <span className="dash-notif-dot" />
           </button>
-          <Link to="/user/settings" className="dash-avatar" aria-label="Go to settings">
+          <Link
+            to="/user/settings"
+            className="dash-avatar"
+            aria-label="Go to settings"
+          >
             <span>{initials}</span>
           </Link>
         </div>
@@ -319,24 +471,44 @@ const Dashboard: React.FC = () => {
             <span className="dash-hero-masked">••••••</span>
           ) : visible ? (
             <span>
-              ${balance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              $
+              {balance.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </span>
           ) : (
             <span className="dash-hero-masked">••••••</span>
           )}
-          <button className="dash-vis-btn" onClick={() => setVisible((v) => !v)} aria-label="Toggle visibility">
+          <button
+            className="dash-vis-btn"
+            onClick={() => setVisible((v) => !v)}
+            aria-label="Toggle visibility"
+          >
             {visible ? <IcoEyeOff /> : <IcoEye />}
           </button>
         </div>
         <div className="dash-hero-meta">
-          <span className="dash-hero-change"><IcoTrendUp /> Total Balance</span>
+          <span className="dash-hero-change">
+            <IcoTrendUp /> Total Balance
+          </span>
         </div>
       </div>
 
       {/* ── Action buttons ── */}
       <div className="dash-actions">
-        <Link to="/user/deposit"  className="dash-action-btn dash-action-btn--primary"><IcoArrowDown /> Add Funds</Link>
-        <Link to="/user/withdraw" className="dash-action-btn dash-action-btn--secondary"><IcoArrowUp /> Withdraw</Link>
+        <Link
+          to="/user/deposit"
+          className="dash-action-btn dash-action-btn--primary"
+        >
+          <IcoArrowDown /> Add Funds
+        </Link>
+        <Link
+          to="/user/withdraw"
+          className="dash-action-btn dash-action-btn--secondary"
+        >
+          <IcoArrowUp /> Withdraw
+        </Link>
       </div>
 
       {/* ── Wallet address strip ── */}
@@ -344,7 +516,9 @@ const Dashboard: React.FC = () => {
         <div className="dash-address-strip">
           <span className="dash-address-label">Deposit address</span>
           <button className="dash-address-copy" onClick={copy}>
-            <span className="dash-address-text">{walletAddr.slice(0, 14)}...{walletAddr.slice(-6)}</span>
+            <span className="dash-address-text">
+              {walletAddr.slice(0, 14)}...{walletAddr.slice(-6)}
+            </span>
             <span className="dash-address-copy-icon">
               {copied ? <IcoCheck /> : <IcoCopy />}
               {copied ? "Copied" : "Copy"}
@@ -356,25 +530,39 @@ const Dashboard: React.FC = () => {
       {/* ── Stat cards ── */}
       <div className="dash-stats">
         <div className="dash-stat-card">
-          <div className="dash-stat-icon dash-stat-icon--green"><IcoArrowDown /></div>
+          <div className="dash-stat-icon dash-stat-icon--green">
+            <IcoArrowDown />
+          </div>
           <div className="dash-stat-body">
             <span className="dash-stat-label">Total Deposited</span>
             <span className="dash-stat-value">
-              ${deposits.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              $
+              {deposits.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </span>
           </div>
         </div>
         <div className="dash-stat-card">
-          <div className="dash-stat-icon dash-stat-icon--yellow"><IcoArrowUp /></div>
+          <div className="dash-stat-icon dash-stat-icon--yellow">
+            <IcoArrowUp />
+          </div>
           <div className="dash-stat-body">
             <span className="dash-stat-label">Pending</span>
             <span className="dash-stat-value">
-              ${pending.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              $
+              {pending.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </span>
           </div>
         </div>
         <div className="dash-stat-card">
-          <div className="dash-stat-icon dash-stat-icon--purple"><IcoList /></div>
+          <div className="dash-stat-icon dash-stat-icon--purple">
+            <IcoList />
+          </div>
           <div className="dash-stat-body">
             <span className="dash-stat-label">Transactions</span>
             <span className="dash-stat-value">{txCount}</span>
@@ -399,12 +587,21 @@ const Dashboard: React.FC = () => {
       {/* ── Recent transactions ── */}
       <div className="section-hd" style={{ marginTop: 28 }}>
         <h2>Recent Activity</h2>
-        <Link to="/user/transactions" className="section-link">View all <IcoChevRight /></Link>
+        <Link to="/user/transactions" className="section-link">
+          View all <IcoChevRight />
+        </Link>
       </div>
 
       <div className="dash-tx-list">
         {txs.length === 0 && !loadingUser && (
-          <p style={{ color: "var(--text-muted, #8b8b9a)", fontSize: 14, textAlign: "center", padding: "24px 0" }}>
+          <p
+            style={{
+              color: "var(--text-muted, #8b8b9a)",
+              fontSize: 14,
+              textAlign: "center",
+              padding: "24px 0",
+            }}
+          >
             No transactions yet.
           </p>
         )}
@@ -412,17 +609,28 @@ const Dashboard: React.FC = () => {
           const dep = tx.type === "deposit";
           const cfg = STATUS_MAP[tx.status] ?? STATUS_MAP.pending;
           return (
-            <div key={tx.id} className="dash-tx-row" style={{ "--i": i } as React.CSSProperties}>
-              <div className={`dash-tx-icon ${dep ? "dash-tx-icon--dep" : "dash-tx-icon--wit"}`}>
+            <div
+              key={tx.id}
+              className="dash-tx-row"
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <div
+                className={`dash-tx-icon ${dep ? "dash-tx-icon--dep" : "dash-tx-icon--wit"}`}
+              >
                 {dep ? <IcoArrowDown /> : <IcoArrowUp />}
               </div>
               <div className="dash-tx-info">
-                <span className="dash-tx-type">{dep ? "Deposit" : "Withdrawal"}</span>
+                <span className="dash-tx-type">
+                  {dep ? "Deposit" : "Withdrawal"}
+                </span>
                 {tx.hash && <span className="dash-tx-hash">{tx.hash}</span>}
               </div>
               <div className="dash-tx-right">
-                <span className={`dash-tx-amount ${dep ? "dash-tx-amount--pos" : "dash-tx-amount--neg"}`}>
-                  {dep ? "+" : "−"}{tx.amount} {tx.currency}
+                <span
+                  className={`dash-tx-amount ${dep ? "dash-tx-amount--pos" : "dash-tx-amount--neg"}`}
+                >
+                  {dep ? "+" : "−"}
+                  {tx.amount} {tx.currency}
                 </span>
                 <span className={`badge ${cfg.cls}`}>{cfg.label}</span>
               </div>

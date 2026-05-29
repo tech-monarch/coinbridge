@@ -1356,7 +1356,7 @@ POST   /api/admin/settings/maintenance-mode/toggle
 **CSS Variables:**
 
 ```css
---brand-purple: #9b7fff --brand-success: #14c784 --brand-danger: #ff5370
+--brand-purple: #3b9eff --brand-success: #14c784 --brand-danger: #ff5370
   --brand-warning: #f5a524 --text-primary: #e8e8ee --text-secondary: #a8a8b8
   --text-tertiary: #888896 --bg-base: #0f0f1e --bg-surface: #191928
   --bg-elevated: #252536 --bg-overlay: #2e2e42 --border-default: #3e3e52

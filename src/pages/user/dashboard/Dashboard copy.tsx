@@ -246,7 +246,7 @@ const Dashboard: React.FC = () => {
           <p className="dash-greeting-sub"></p>
           <p className="dash-greeting-name">
             Hiii,{" "}
-            <span style={{ color: "#a78bfa" }}>{userName.split(" ")[0]}</span>👋
+            <span style={{ color: "#3179c1" }}>{userName.split(" ")[0]}</span>👋
           </p>
         </div>
         <div className="dash-topbar-right">

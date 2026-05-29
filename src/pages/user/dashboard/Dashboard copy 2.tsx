@@ -298,7 +298,7 @@ const Dashboard: React.FC = () => {
         <div className="dash-greeting">
           <p className="dash-greeting-sub"></p>
           <p className="dash-greeting-name">
-            Hiii, <span style={{ color: "#a78bfa" }}>{firstName}</span>👋
+            Hiii, <span style={{ color: "#3179c1" }}>{firstName}</span>👋
           </p>
         </div>
         <div className="dash-topbar-right">
@@ -421,7 +421,6 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-      
 
       {/* ── Recent transactions ── */}
       <div className="section-hd" style={{ marginTop: 28 }}>

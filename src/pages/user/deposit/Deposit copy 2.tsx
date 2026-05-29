@@ -190,7 +190,7 @@ const pickColor = (name: string) => {
   for (const [k, v] of Object.entries(COLORS)) {
     if (key.includes(k)) return v;
   }
-  return "#a78bfa";
+  return "#3179c1";
 };
 
 /* ── Component ── */
@@ -199,50 +199,50 @@ const Deposit: React.FC = () => {
   const [netId, setNetId] = useState<string | number>("");
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-//   const [qr, setQr] = useState(false);
+  //   const [qr, setQr] = useState(false);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  const fetchNetworks = async () => {
-    try {
-      const res = await fetch(`${API}/api/networks`, {
-        headers: authHeaders(),
-      });
-      const data = await res.json();
+  useEffect(() => {
+    const fetchNetworks = async () => {
+      try {
+        const res = await fetch(`${API}/api/networks`, {
+          headers: authHeaders(),
+        });
+        const data = await res.json();
 
-      const rawList = Array.isArray(data) ? data : [];
+        const rawList = Array.isArray(data) ? data : [];
 
-      interface RawNetwork {
-        id: number;
-        name: string;
-        symbol: string;
-        confirmations: number;
-        min_deposit: number;
-        deposit_address: string;
-        color?: string;
+        interface RawNetwork {
+          id: number;
+          name: string;
+          symbol: string;
+          confirmations: number;
+          min_deposit: number;
+          deposit_address: string;
+          color?: string;
+        }
+
+        const list: Network[] = rawList.map((n: RawNetwork) => ({
+          id: n.id,
+          name: n.name,
+          symbol: n.symbol,
+          confirmations: n.confirmations,
+          min_deposit: n.min_deposit,
+          address: n.deposit_address,
+          color: n.color ?? pickColor(n.name),
+        }));
+
+        setNetworks(list);
+        if (list.length > 0) setNetId(list[0].id);
+      } catch (err) {
+        console.error("Failed to load networks:", err);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const list: Network[] = rawList.map((n: RawNetwork) => ({
-        id: n.id,
-        name: n.name,
-        symbol: n.symbol,
-        confirmations: n.confirmations,
-        min_deposit: n.min_deposit,
-        address: n.deposit_address,
-        color: n.color ?? pickColor(n.name),
-      }));
-
-      setNetworks(list);
-      if (list.length > 0) setNetId(list[0].id);
-    } catch (err) {
-      console.error("Failed to load networks:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchNetworks();
-}, []);
+    fetchNetworks();
+  }, []);
 
   const net = networks.find((n) => String(n.id) === String(netId));
 
@@ -300,7 +300,7 @@ useEffect(() => {
               >
                 <span
                   className="dp-dot"
-                  style={{ background: net?.color ?? "#a78bfa" }}
+                  style={{ background: net?.color ?? "#3179c1" }}
                 />
                 <span className="dp-select-name">
                   {net?.name ?? "Select network"}
@@ -341,27 +341,27 @@ useEffect(() => {
           {net && (
             <>
               <div className="dp-section">
-  <span className="dp-label">Deposit Address</span>
-  <div className="dp-addr-box">
-    <p className="dp-addr-text">{net.address}</p>
-    <div className="dp-addr-actions">
-      <button
-        className={`dp-btn-copy ${copied ? "dp-btn-copy--done" : ""}`}
-        onClick={copy}
-      >
-        {copied ? (
-          <>
-            <IcoCheck /> Copied
-          </>
-        ) : (
-          <>
-            <IcoCopy /> Copy address
-          </>
-        )}
-      </button>
-    </div>
-  </div>
-</div>
+                <span className="dp-label">Deposit Address</span>
+                <div className="dp-addr-box">
+                  <p className="dp-addr-text">{net.address}</p>
+                  <div className="dp-addr-actions">
+                    <button
+                      className={`dp-btn-copy ${copied ? "dp-btn-copy--done" : ""}`}
+                      onClick={copy}
+                    >
+                      {copied ? (
+                        <>
+                          <IcoCheck /> Copied
+                        </>
+                      ) : (
+                        <>
+                          <IcoCopy /> Copy address
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
 
               <div className="dp-details">
                 {[

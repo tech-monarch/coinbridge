@@ -119,7 +119,7 @@ const Register: React.FC = () => {
       <div className="auth-card">
         {/* Brand */}
         <div className="auth-brand">
-          <div className="auth-brand-icon">₿</div>
+          {/* <div className="auth-brand-icon">₿</div> */}
           <span className="auth-brand-name">CoinBridge</span>
         </div>
 

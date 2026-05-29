@@ -12,52 +12,133 @@ const authHeaders = () => ({
 
 /* ── Icons ── */
 const IcoUp = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="17"
+    height="17"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 19V5M5 12l7-7 7 7" />
   </svg>
 );
 const IcoChevDown = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="6 9 12 15 18 9" />
   </svg>
 );
 const IcoCheck = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 const IcoCheckLg = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 const IcoAlert = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="8" x2="12" y2="12" />
     <line x1="12" y1="16" x2="12.01" y2="16" />
   </svg>
 );
 const IcoClock = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="10" />
     <polyline points="12 6 12 12 16 14" />
   </svg>
 );
 const IcoShield = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     <polyline points="9 12 11 14 15 10" />
   </svg>
 );
 const IcoShieldLg = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     <polyline points="9 12 11 14 15 10" />
   </svg>
 );
 const IcoBack = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M19 12H5M12 5l-7 7 7 7" />
   </svg>
 );
@@ -83,35 +164,39 @@ interface SubmitResult {
 }
 
 const COLORS: Record<string, string> = {
-  btc:   "#F7931A",
-  eth:   "#627EEA",
+  btc: "#F7931A",
+  eth: "#627EEA",
   bep20: "#F3BA2F",
   trc20: "#FF4D4D",
   erc20: "#627EEA",
-  usdt:  "#26A17B",
+  usdt: "#26A17B",
 };
 const pickColor = (name: string) => {
   const key = name.toLowerCase();
   for (const [k, v] of Object.entries(COLORS)) {
     if (key.includes(k)) return v;
   }
-  return "#a78bfa";
+  return "#3179c1";
 };
 
 type Step = "form" | "confirm" | "done";
 
 const Withdraw: React.FC = () => {
   const navigate = useNavigate();
-  const [step, setStep]               = useState<Step>("form");
-  const [networks, setNetworks]       = useState<Network[]>([]);
-  const [netId, setNetId]             = useState<string | number>("");
-  const [ddOpen, setDdOpen]           = useState(false);
-  const [address, setAddress]         = useState("");
-  const [amount, setAmount]           = useState("");
-  const [errors, setErrors]           = useState<{ address?: string; amount?: string; api?: string }>({});
-  const [loading, setLoading]         = useState(false);
+  const [step, setStep] = useState<Step>("form");
+  const [networks, setNetworks] = useState<Network[]>([]);
+  const [netId, setNetId] = useState<string | number>("");
+  const [ddOpen, setDdOpen] = useState(false);
+  const [address, setAddress] = useState("");
+  const [amount, setAmount] = useState("");
+  const [errors, setErrors] = useState<{
+    address?: string;
+    amount?: string;
+    api?: string;
+  }>({});
+  const [loading, setLoading] = useState(false);
   const [loadingNets, setLoadingNets] = useState(true);
-  const [balance, setBalance]         = useState<number>(0);
+  const [balance, setBalance] = useState<number>(0);
   const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
 
   // null = no KYC wall; "none" | "pending" | "rejected" = show wall
@@ -158,19 +243,16 @@ const Withdraw: React.FC = () => {
     fetchData();
   }, [navigate]);
 
-  const net        = networks.find((n) => String(n.id) === String(netId));
-  const usdAmount  = parseFloat(amount) || 0;
+  const net = networks.find((n) => String(n.id) === String(netId));
+  const usdAmount = parseFloat(amount) || 0;
 
   const validate = () => {
     const e: typeof errors = {};
     if (!address.trim() || address.trim().length < 10)
       e.address = "Enter a valid wallet address.";
-    if (!amount || usdAmount <= 0)
-      e.amount = "Enter a valid amount.";
-    else if (usdAmount < 1)
-      e.amount = "Minimum withdrawal is $1.00.";
-    else if (usdAmount > balance)
-      e.amount = "Insufficient balance.";
+    if (!amount || usdAmount <= 0) e.amount = "Enter a valid amount.";
+    else if (usdAmount < 1) e.amount = "Minimum withdrawal is $1.00.";
+    else if (usdAmount > balance) e.amount = "Insufficient balance.";
     setErrors(e);
     return !Object.keys(e).length;
   };
@@ -179,13 +261,13 @@ const Withdraw: React.FC = () => {
     setLoading(true);
     setErrors({});
     try {
-      const res  = await fetch(`${API}/api/user/withdrawals/submit`, {
+      const res = await fetch(`${API}/api/user/withdrawals/submit`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({
-          network_id:         netId,
-          usd_amount:         usdAmount,
-          recipient_address:  address,
+          network_id: netId,
+          usd_amount: usdAmount,
+          recipient_address: address,
         }),
       });
       const data = await res.json();
@@ -241,8 +323,8 @@ const Withdraw: React.FC = () => {
               {kycStatus === "pending"
                 ? "Your KYC submission is currently under review. Withdrawals will be enabled once it's approved — this usually takes 24–48 hours."
                 : kycStatus === "rejected"
-                ? "Your previous KYC submission was rejected. Please re-submit with valid documents to enable withdrawals."
-                : "You need to complete identity verification before you can make a withdrawal. It only takes a few minutes."}
+                  ? "Your previous KYC submission was rejected. Please re-submit with valid documents to enable withdrawals."
+                  : "You need to complete identity verification before you can make a withdrawal. It only takes a few minutes."}
             </p>
 
             <div className="wd-success-rows">
@@ -253,16 +335,22 @@ const Withdraw: React.FC = () => {
                     kycStatus === "pending"
                       ? "badge-warning"
                       : kycStatus === "rejected"
-                      ? "badge-danger"
-                      : "badge-muted"
+                        ? "badge-danger"
+                        : "badge-muted"
                   }`}
                 >
                   {kycStatus === "pending" ? (
-                    <><IcoClock /> Under Review</>
+                    <>
+                      <IcoClock /> Under Review
+                    </>
                   ) : kycStatus === "rejected" ? (
-                    <><IcoAlert /> Rejected</>
+                    <>
+                      <IcoAlert /> Rejected
+                    </>
                   ) : (
-                    <><IcoShield /> Not Started</>
+                    <>
+                      <IcoShield /> Not Started
+                    </>
                   )}
                 </span>
               </div>
@@ -385,7 +473,7 @@ const Withdraw: React.FC = () => {
             <span
               className="dp-dot"
               style={{
-                background: net?.color ?? "#a78bfa",
+                background: net?.color ?? "#3179c1",
                 width: 10,
                 height: 10,
               }}
@@ -399,7 +487,10 @@ const Withdraw: React.FC = () => {
               Crypto amount calculated at live rate on submission.{" "}
               {net?.fee != null && (
                 <>
-                  Network fee: <strong>{net.fee} {net.symbol}</strong>
+                  Network fee:{" "}
+                  <strong>
+                    {net.fee} {net.symbol}
+                  </strong>
                 </>
               )}
             </p>
@@ -411,7 +502,9 @@ const Withdraw: React.FC = () => {
             </div>
             <div className="wd-confirm-row">
               <span>Network</span>
-              <span>{net?.name} ({net?.symbol})</span>
+              <span>
+                {net?.name} ({net?.symbol})
+              </span>
             </div>
             <div className="wd-confirm-row">
               <span>Processing time</span>
@@ -479,13 +572,18 @@ const Withdraw: React.FC = () => {
                 >
                   <span
                     className="dp-dot"
-                    style={{ background: net?.color ?? "#a78bfa" }}
+                    style={{ background: net?.color ?? "#3179c1" }}
                   />
                   <span className="dp-select-name">
                     {net?.name ?? "Select network"}
                   </span>
                   <span className="dp-select-sym">
-                    Balance: ${balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
+                    Balance: $
+                    {balance.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
+                    USD
                   </span>
                   <span className="dp-chevron">
                     <IcoChevDown />
@@ -570,7 +668,12 @@ const Withdraw: React.FC = () => {
               <span>
                 Balance:{" "}
                 <strong>
-                  ${balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
+                  $
+                  {balance.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}{" "}
+                  USD
                 </strong>
               </span>
               {net?.fee != null && (
@@ -593,7 +696,9 @@ const Withdraw: React.FC = () => {
               </div>
               <div className="wd-sum-row">
                 <span>Network</span>
-                <span>{net?.name} ({net?.symbol})</span>
+                <span>
+                  {net?.name} ({net?.symbol})
+                </span>
               </div>
               <div className="wd-sum-divider" />
               <div className="wd-sum-row wd-sum-row--total">

@@ -26,15 +26,17 @@
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   outline: none;
 }
 .captcha-check-wrap:focus-visible {
   box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.35);
 }
 .captcha-check-wrap.checked {
-  border-color: #7c3aed;
-  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  border-color: #1c5287;
+  background: linear-gradient(135deg, #3179c1, #1c5287);
 }
 
 .captcha-label {
@@ -54,12 +56,14 @@
   width: 20px;
   height: 20px;
   border: 2px solid rgba(255, 255, 255, 0.08);
-  border-top-color: #a78bfa;
+  border-top-color: #3179c1;
   border-radius: 50%;
   animation: captcha-spin 0.75s linear infinite;
 }
 @keyframes captcha-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .captcha-status {

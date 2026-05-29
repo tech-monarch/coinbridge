@@ -79,7 +79,7 @@ const Login: React.FC = () => {
     <div className="auth-page page-enter">
       <div className="auth-card">
         <div className="auth-brand">
-          <div className="auth-brand-icon">₿</div>
+          {/* <div className="auth-brand-icon">₿</div> */}
           <span className="auth-brand-name">CoinBridge</span>
         </div>
 

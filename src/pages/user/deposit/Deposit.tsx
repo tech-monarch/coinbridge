@@ -11,42 +11,105 @@ const authHeaders = () => ({
 
 /* ── Icons ── */
 const IcoCopy = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="9" y="9" width="13" height="13" rx="2" />
     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
   </svg>
 );
 const IcoCheck = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 const IcoChevDown = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="6 9 12 15 18 9" />
   </svg>
 );
 const IcoWarn = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
     <line x1="12" y1="9" x2="12" y2="13" />
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>
 );
 const IcoArrowLeft = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="19" y1="12" x2="5" y2="12" />
     <polyline points="12 19 5 12 12 5" />
   </svg>
 );
 const IcoClock = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="10" />
     <polyline points="12 6 12 12 16 14" />
   </svg>
 );
 const IcoRefresh = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="23 4 23 10 17 10" />
     <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
   </svg>
@@ -69,15 +132,19 @@ type Step = "form" | "confirm" | "pending";
 
 /* ── Colors ── */
 const COLORS: Record<string, string> = {
-  btc: "#F7931A", eth: "#627EEA", bep20: "#F3BA2F",
-  trc20: "#FF4D4D", erc20: "#627EEA", usdt: "#26A17B",
+  btc: "#F7931A",
+  eth: "#627EEA",
+  bep20: "#F3BA2F",
+  trc20: "#FF4D4D",
+  erc20: "#627EEA",
+  usdt: "#26A17B",
 };
 const pickColor = (name: string) => {
   const key = name.toLowerCase();
   for (const [k, v] of Object.entries(COLORS)) {
     if (key.includes(k)) return v;
   }
-  return "#a78bfa";
+  return "#3179c1";
 };
 
 /* ── Helpers ── */
@@ -95,18 +162,18 @@ const fmtCrypto = (n: number) => {
 
 /* ── Component ── */
 const Deposit: React.FC = () => {
-  const [networks, setNetworks]     = useState<Network[]>([]);
-  const [netId, setNetId]           = useState<string | number>("");
-  const [open, setOpen]             = useState(false);
-  const [copied, setCopied]         = useState(false);
-  const [loading, setLoading]       = useState(true);
+  const [networks, setNetworks] = useState<Network[]>([]);
+  const [netId, setNetId] = useState<string | number>("");
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError]           = useState("");
+  const [error, setError] = useState("");
 
   // Multi-step
-  const [step, setStep]             = useState<Step>("form");
-  const [usdAmount, setUsdAmount]   = useState("");
-  const [txHash, setTxHash]         = useState("");
+  const [step, setStep] = useState<Step>("form");
+  const [usdAmount, setUsdAmount] = useState("");
+  const [txHash, setTxHash] = useState("");
   const [depositResult, setDepositResult] = useState<{
     id: number;
     usd_amount: string;
@@ -120,27 +187,34 @@ const Deposit: React.FC = () => {
   useEffect(() => {
     const fetchNetworks = async () => {
       try {
-        const res  = await fetch(`${API}/api/networks`, { headers: authHeaders() });
+        const res = await fetch(`${API}/api/networks`, {
+          headers: authHeaders(),
+        });
         const data = await res.json();
         const rawList = Array.isArray(data) ? data : [];
 
         interface RawNetwork {
-          id: number; name: string; symbol: string;
-          confirmations: number; min_deposit: number;
-          min_deposit_usd?: number; usd_rate?: number;
-          deposit_address: string; color?: string;
+          id: number;
+          name: string;
+          symbol: string;
+          confirmations: number;
+          min_deposit: number;
+          min_deposit_usd?: number;
+          usd_rate?: number;
+          deposit_address: string;
+          color?: string;
         }
 
         const list: Network[] = rawList.map((n: RawNetwork) => ({
-          id:              n.id,
-          name:            n.name,
-          symbol:          n.symbol,
-          confirmations:   n.confirmations,
-          min_deposit:     n.min_deposit,
+          id: n.id,
+          name: n.name,
+          symbol: n.symbol,
+          confirmations: n.confirmations,
+          min_deposit: n.min_deposit,
           min_deposit_usd: n.min_deposit_usd ?? 0,
-          usd_rate:        n.usd_rate        ?? 1,
-          address:         n.deposit_address,
-          color:           n.color ?? pickColor(n.name),
+          usd_rate: n.usd_rate ?? 1,
+          address: n.deposit_address,
+          color: n.color ?? pickColor(n.name),
         }));
 
         setNetworks(list);
@@ -157,10 +231,9 @@ const Deposit: React.FC = () => {
   const net = networks.find((n) => String(n.id) === String(netId));
 
   // Live conversion: USD → crypto
-  const usdNum      = parseFloat(usdAmount) || 0;
-  const cryptoPreview = net && usdNum > 0 && net.usd_rate > 0
-    ? usdNum / net.usd_rate
-    : 0;
+  const usdNum = parseFloat(usdAmount) || 0;
+  const cryptoPreview =
+    net && usdNum > 0 && net.usd_rate > 0 ? usdNum / net.usd_rate : 0;
 
   const copy = () => {
     if (!net?.address) return;
@@ -177,7 +250,9 @@ const Deposit: React.FC = () => {
       return;
     }
     if (net && usdNum < net.min_deposit_usd) {
-      setError(`Minimum deposit is $${fmt(net.min_deposit_usd)} (≈ ${net.min_deposit} ${net.symbol}).`);
+      setError(
+        `Minimum deposit is $${fmt(net.min_deposit_usd)} (≈ ${net.min_deposit} ${net.symbol}).`,
+      );
       return;
     }
     setStep("confirm");
@@ -190,11 +265,11 @@ const Deposit: React.FC = () => {
     setError("");
     try {
       const res = await fetch(`${API}/api/user/deposits`, {
-        method:  "POST",
+        method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({
-          network_id:       net.id,
-          usd_amount:       usdNum,
+          network_id: net.id,
+          usd_amount: usdNum,
           transaction_hash: txHash || undefined,
         }),
       });
@@ -208,13 +283,13 @@ const Deposit: React.FC = () => {
       }
 
       setDepositResult({
-        id:            data.id,
-        usd_amount:    data.usd_amount   ?? usdNum.toFixed(2),
-        crypto_amount: data.amount       ?? fmtCrypto(cryptoPreview),
-        currency:      data.currency     ?? net.symbol,
-        network_name:  data.network?.name ?? net.name,
-        usd_rate:      data.usd_rate     ?? net.usd_rate.toFixed(2),
-        created_at:    data.created_at,
+        id: data.id,
+        usd_amount: data.usd_amount ?? usdNum.toFixed(2),
+        crypto_amount: data.amount ?? fmtCrypto(cryptoPreview),
+        currency: data.currency ?? net.symbol,
+        network_name: data.network?.name ?? net.name,
+        usd_rate: data.usd_rate ?? net.usd_rate.toFixed(2),
+        created_at: data.created_at,
       });
       setStep("pending");
     } catch {
@@ -262,7 +337,8 @@ const Deposit: React.FC = () => {
             </div>
             <h2 className="dp-pending-title">Deposit Submitted</h2>
             <p className="dp-pending-sub">
-              Your deposit is pending admin review. You'll be notified once it's approved.
+              Your deposit is pending admin review. You'll be notified once it's
+              approved.
             </p>
 
             <div className="dp-pending-details">
@@ -275,29 +351,37 @@ const Deposit: React.FC = () => {
               <div className="dp-detail">
                 <span className="dp-detail-label">Crypto Equivalent</span>
                 <span className="dp-detail-value">
-                  {fmtCrypto(parseFloat(depositResult.crypto_amount))} {depositResult.currency}
+                  {fmtCrypto(parseFloat(depositResult.crypto_amount))}{" "}
+                  {depositResult.currency}
                 </span>
               </div>
               <div className="dp-detail">
                 <span className="dp-detail-label">Rate Used</span>
                 <span className="dp-detail-value">
-                  1 {depositResult.currency} = ${fmt(parseFloat(depositResult.usd_rate))}
+                  1 {depositResult.currency} = $
+                  {fmt(parseFloat(depositResult.usd_rate))}
                 </span>
               </div>
               <div className="dp-detail">
                 <span className="dp-detail-label">Network</span>
-                <span className="dp-detail-value">{depositResult.network_name}</span>
+                <span className="dp-detail-value">
+                  {depositResult.network_name}
+                </span>
               </div>
               <div className="dp-detail">
                 <span className="dp-detail-label">Reference ID</span>
-                <span className="dp-detail-value dp-detail-mono">#{depositResult.id}</span>
+                <span className="dp-detail-value dp-detail-mono">
+                  #{depositResult.id}
+                </span>
               </div>
               <div className="dp-detail">
                 <span className="dp-detail-label">Submitted</span>
                 <span className="dp-detail-value">
                   {new Date(depositResult.created_at).toLocaleString("en-US", {
-                    month: "short", day: "numeric",
-                    hour: "2-digit", minute: "2-digit",
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
                   })}
                 </span>
               </div>
@@ -342,8 +426,8 @@ const Deposit: React.FC = () => {
             <div className="dp-section">
               <p className="dp-confirm-title">Confirm Your Deposit</p>
               <p className="dp-confirm-sub">
-                Send the exact crypto amount below to the address shown, then click
-                "I've Sent the Payment".
+                Send the exact crypto amount below to the address shown, then
+                click "I've Sent the Payment".
               </p>
             </div>
 
@@ -366,7 +450,14 @@ const Deposit: React.FC = () => {
                 <IcoRefresh />
                 <span>
                   1 {net.symbol} = ${fmt(net.usd_rate)} &nbsp;·&nbsp;
-                  <span className="dp-dot" style={{ background: net.color, display: "inline-block", marginRight: 4 }} />
+                  <span
+                    className="dp-dot"
+                    style={{
+                      background: net.color,
+                      display: "inline-block",
+                      marginRight: 4,
+                    }}
+                  />
                   {net.name}
                 </span>
               </div>
@@ -382,7 +473,15 @@ const Deposit: React.FC = () => {
                     className={`dp-btn-copy ${copied ? "dp-btn-copy--done" : ""}`}
                     onClick={copy}
                   >
-                    {copied ? <><IcoCheck /> Copied</> : <><IcoCopy /> Copy address</>}
+                    {copied ? (
+                      <>
+                        <IcoCheck /> Copied
+                      </>
+                    ) : (
+                      <>
+                        <IcoCopy /> Copy address
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
@@ -406,9 +505,12 @@ const Deposit: React.FC = () => {
             <div className="dp-warn">
               <IcoWarn />
               <p>
-                <strong>Only send {net.symbol}</strong> on the {net.name} network.
-                Send exactly <strong>{fmtCrypto(cryptoPreview)} {net.symbol}</strong>.
-                A different amount may delay or complicate processing.
+                <strong>Only send {net.symbol}</strong> on the {net.name}{" "}
+                network. Send exactly{" "}
+                <strong>
+                  {fmtCrypto(cryptoPreview)} {net.symbol}
+                </strong>
+                . A different amount may delay or complicate processing.
               </p>
             </div>
 
@@ -428,8 +530,13 @@ const Deposit: React.FC = () => {
             <p className="dp-steps-title">How it works</p>
             <ol className="dp-steps">
               {STEPS_INFO.map((s, i) => (
-                <li key={i} className={`dp-step ${i === 1 ? "dp-step--active" : ""}`}>
-                  <span className="dp-step-n">{String(i + 1).padStart(2, "0")}</span>
+                <li
+                  key={i}
+                  className={`dp-step ${i === 1 ? "dp-step--active" : ""}`}
+                >
+                  <span className="dp-step-n">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span>{s}</span>
                 </li>
               ))}
@@ -450,8 +557,16 @@ const Deposit: React.FC = () => {
   if (loading)
     return (
       <div className="dp page-enter">
-        <div className="page-hd"><h1>Deposit</h1></div>
-        <p style={{ color: "var(--text-muted,#8b8b9a)", padding: "40px 0", textAlign: "center" }}>
+        <div className="page-hd">
+          <h1>Deposit</h1>
+        </div>
+        <p
+          style={{
+            color: "var(--text-muted,#8b8b9a)",
+            padding: "40px 0",
+            textAlign: "center",
+          }}
+        >
           Loading networks…
         </p>
       </div>
@@ -467,19 +582,28 @@ const Deposit: React.FC = () => {
       <div className="dp-grid">
         {/* ── Main card ── */}
         <div className="dp-card">
-
           {/* Network selector */}
           <div className="dp-section">
             <span className="dp-label">Network</span>
             <div className={`dp-select ${open ? "dp-select--open" : ""}`}>
-              <button className="dp-select-btn" onClick={() => setOpen((o) => !o)}>
-                <span className="dp-dot" style={{ background: net?.color ?? "#a78bfa" }} />
-                <span className="dp-select-name">{net?.name ?? "Select network"}</span>
+              <button
+                className="dp-select-btn"
+                onClick={() => setOpen((o) => !o)}
+              >
+                <span
+                  className="dp-dot"
+                  style={{ background: net?.color ?? "#3179c1" }}
+                />
+                <span className="dp-select-name">
+                  {net?.name ?? "Select network"}
+                </span>
                 <span className="dp-select-sym">{net?.symbol ?? ""}</span>
                 {net?.usd_rate ? (
                   <span className="dp-select-rate">${fmt(net.usd_rate)}</span>
                 ) : null}
-                <span className="dp-chevron"><IcoChevDown /></span>
+                <span className="dp-chevron">
+                  <IcoChevDown />
+                </span>
               </button>
               {open && (
                 <div className="dp-menu">
@@ -487,9 +611,17 @@ const Deposit: React.FC = () => {
                     <button
                       key={n.id}
                       className={`dp-option ${String(n.id) === String(netId) ? "dp-option--active" : ""}`}
-                      onClick={() => { setNetId(n.id); setOpen(false); setUsdAmount(""); setError(""); }}
+                      onClick={() => {
+                        setNetId(n.id);
+                        setOpen(false);
+                        setUsdAmount("");
+                        setError("");
+                      }}
                     >
-                      <span className="dp-dot" style={{ background: n.color }} />
+                      <span
+                        className="dp-dot"
+                        style={{ background: n.color }}
+                      />
                       <div className="dp-option-info">
                         <span>{n.name}</span>
                         <span className="dp-option-sym">{n.symbol}</span>
@@ -517,7 +649,10 @@ const Deposit: React.FC = () => {
                     step="0.01"
                     placeholder={`Min. $${fmt(net.min_deposit_usd)}`}
                     value={usdAmount}
-                    onChange={(e) => { setUsdAmount(e.target.value); setError(""); }}
+                    onChange={(e) => {
+                      setUsdAmount(e.target.value);
+                      setError("");
+                    }}
                   />
                 </div>
 
@@ -525,16 +660,20 @@ const Deposit: React.FC = () => {
                 {cryptoPreview > 0 ? (
                   <div className="dp-conversion-box">
                     <span className="dp-conversion-eq">≈</span>
-                    <span className="dp-conversion-crypto" style={{ color: net.color }}>
+                    <span
+                      className="dp-conversion-crypto"
+                      style={{ color: net.color }}
+                    >
                       {fmtCrypto(cryptoPreview)} {net.symbol}
                     </span>
                     <span className="dp-conversion-rate">
-                      @ ${ fmt(net.usd_rate) } / {net.symbol}
+                      @ ${fmt(net.usd_rate)} / {net.symbol}
                     </span>
                   </div>
                 ) : (
                   <p className="dp-input-hint">
-                    Minimum: ${fmt(net.min_deposit_usd)} · 1 {net.symbol} = ${fmt(net.usd_rate)}
+                    Minimum: ${fmt(net.min_deposit_usd)} · 1 {net.symbol} = $
+                    {fmt(net.usd_rate)}
                   </p>
                 )}
               </div>
@@ -549,7 +688,15 @@ const Deposit: React.FC = () => {
                       className={`dp-btn-copy ${copied ? "dp-btn-copy--done" : ""}`}
                       onClick={copy}
                     >
-                      {copied ? <><IcoCheck /> Copied</> : <><IcoCopy /> Copy address</>}
+                      {copied ? (
+                        <>
+                          <IcoCheck /> Copied
+                        </>
+                      ) : (
+                        <>
+                          <IcoCopy /> Copy address
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
@@ -558,10 +705,19 @@ const Deposit: React.FC = () => {
               {/* Details grid */}
               <div className="dp-details">
                 {[
-                  { label: "Confirmations required", value: String(net.confirmations) },
-                  { label: "Minimum deposit",        value: `$${fmt(net.min_deposit_usd)} (${net.min_deposit} ${net.symbol})` },
-                  { label: "Current rate",           value: `1 ${net.symbol} = $${fmt(net.usd_rate)}` },
-                  { label: "Expected arrival",       value: "10 – 30 min" },
+                  {
+                    label: "Confirmations required",
+                    value: String(net.confirmations),
+                  },
+                  {
+                    label: "Minimum deposit",
+                    value: `$${fmt(net.min_deposit_usd)} (${net.min_deposit} ${net.symbol})`,
+                  },
+                  {
+                    label: "Current rate",
+                    value: `1 ${net.symbol} = $${fmt(net.usd_rate)}`,
+                  },
+                  { label: "Expected arrival", value: "10 – 30 min" },
                 ].map((d) => (
                   <div key={d.label} className="dp-detail">
                     <span className="dp-detail-label">{d.label}</span>
@@ -573,8 +729,9 @@ const Deposit: React.FC = () => {
               <div className="dp-warn">
                 <IcoWarn />
                 <p>
-                  <strong>Only send {net.symbol}</strong> on the {net.name} network to
-                  this address. Sending any other asset will result in permanent loss.
+                  <strong>Only send {net.symbol}</strong> on the {net.name}{" "}
+                  network to this address. Sending any other asset will result
+                  in permanent loss.
                 </p>
               </div>
 
@@ -596,15 +753,21 @@ const Deposit: React.FC = () => {
           <p className="dp-steps-title">How it works</p>
           <ol className="dp-steps">
             {STEPS_INFO.map((s, i) => (
-              <li key={i} className={`dp-step ${i === 0 ? "dp-step--active" : ""}`}>
-                <span className="dp-step-n">{String(i + 1).padStart(2, "0")}</span>
+              <li
+                key={i}
+                className={`dp-step ${i === 0 ? "dp-step--active" : ""}`}
+              >
+                <span className="dp-step-n">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span>{s}</span>
               </li>
             ))}
           </ol>
           <div className="dp-steps-note">
             Track your deposit status in{" "}
-            <a href="/user/transactions">Transaction History</a>. Processing is fully automatic.
+            <a href="/user/transactions">Transaction History</a>. Processing is
+            fully automatic.
           </div>
         </div>
       </div>
