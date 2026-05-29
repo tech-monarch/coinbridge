@@ -2039,7 +2039,231 @@
       </div>
     </div>
     <!-- Mobile Menu End -->
+<!-- ── ACTIVITY TOAST POPUP ── -->
+<style>
+  .act-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #0e1c35;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 12px 16px;
+    min-width: 280px;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,158,255,0.1);
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .act-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .act-toast-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    font-family: "DM Sans", sans-serif;
+  }
+  .act-toast-body {
+    flex: 1;
+    font-family: "DM Sans", sans-serif;
+  }
+  .act-toast-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .act-toast-action {
+    font-size: 12px;
+    color: #8a9ab5;
+    line-height: 1.4;
+  }
+  .act-toast-action span {
+    font-weight: 600;
+  }
+  .act-toast-action span.green { color: #00c878; }
+  .act-toast-action span.blue  { color: #3b9eff; }
+  .act-toast-action span.amber { color: #ffb400; }
+  .act-toast-time {
+    font-size: 10px;
+    color: #8a9ab5;
+    margin-top: 3px;
+  }
+  .act-toast-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .act-toast-icon.green { background: rgba(0,200,120,0.12); color: #00c878; }
+  .act-toast-icon.blue  { background: rgba(59,158,255,0.12); color: #3b9eff; }
+  .act-toast-icon.amber { background: rgba(255,180,0,0.12);  color: #ffb400; }
+</style>
 
+<div class="act-toast" id="actToast">
+  <div class="act-toast-avatar" id="actAvatar"></div>
+  <div class="act-toast-body">
+    <div class="act-toast-name" id="actName"></div>
+    <div class="act-toast-action" id="actAction"></div>
+    <div class="act-toast-time" id="actTime"></div>
+  </div>
+  <div class="act-toast-icon" id="actIcon"></div>
+</div>
+
+<script>
+  const actPeople = [
+    { name: "James Carter",     initials: "JC", country: "🇺🇸", color: "#3b9eff" },
+    { name: "Emily Johnson",    initials: "EJ", country: "🇺🇸", color: "#00c878" },
+    { name: "Michael Davis",    initials: "MD", country: "🇺🇸", color: "#ff6b6b" },
+    { name: "Ashley Williams",  initials: "AW", country: "🇺🇸", color: "#ffb400" },
+    { name: "Tyler Brooks",     initials: "TB", country: "🇺🇸", color: "#3b9eff" },
+    { name: "Sophia Martinez",  initials: "SM", country: "🇲🇽", color: "#00c878" },
+    { name: "Carlos Rivera",    initials: "CR", country: "🇲🇽", color: "#ff6b6b" },
+    { name: "Isabella Gomez",   initials: "IG", country: "🇧🇷", color: "#ffb400" },
+    { name: "Lucas Oliveira",   initials: "LO", country: "🇧🇷", color: "#3b9eff" },
+    { name: "Valentina Cruz",   initials: "VC", country: "🇨🇴", color: "#00c878" },
+    { name: "Oliver Smith",     initials: "OS", country: "🇬🇧", color: "#3b9eff" },
+    { name: "Charlotte Brown",  initials: "CB", country: "🇬🇧", color: "#ff6b6b" },
+    { name: "Harry Wilson",     initials: "HW", country: "🇬🇧", color: "#00c878" },
+    { name: "Amelia Jones",     initials: "AJ", country: "🇬🇧", color: "#ffb400" },
+    { name: "Noah Mueller",     initials: "NM", country: "🇩🇪", color: "#3b9eff" },
+    { name: "Lena Schmidt",     initials: "LS", country: "🇩🇪", color: "#00c878" },
+    { name: "Leon Fischer",     initials: "LF", country: "🇩🇪", color: "#ff6b6b" },
+    { name: "Marie Dupont",     initials: "MD", country: "🇫🇷", color: "#ffb400" },
+    { name: "Pierre Laurent",   initials: "PL", country: "🇫🇷", color: "#3b9eff" },
+    { name: "Camille Bernard",  initials: "CB", country: "🇫🇷", color: "#00c878" },
+    { name: "Marco Rossi",      initials: "MR", country: "🇮🇹", color: "#ff6b6b" },
+    { name: "Giulia Ferrari",   initials: "GF", country: "🇮🇹", color: "#ffb400" },
+    { name: "Lars Eriksson",    initials: "LE", country: "🇸🇪", color: "#3b9eff" },
+    { name: "Maja Andersen",    initials: "MA", country: "🇩🇰", color: "#00c878" },
+    { name: "Dmitri Volkov",    initials: "DV", country: "🇷🇺", color: "#ff6b6b" },
+    { name: "Anastasia Ivanova",initials: "AI", country: "🇷🇺", color: "#ffb400" },
+    { name: "Wei Zhang",        initials: "WZ", country: "🇨🇳", color: "#3b9eff" },
+    { name: "Mei Lin",          initials: "ML", country: "🇨🇳", color: "#00c878" },
+    { name: "Jing Wang",        initials: "JW", country: "🇨🇳", color: "#ff6b6b" },
+    { name: "Hina Tanaka",      initials: "HT", country: "🇯🇵", color: "#ffb400" },
+    { name: "Kenji Nakamura",   initials: "KN", country: "🇯🇵", color: "#3b9eff" },
+    { name: "Yuki Yamamoto",    initials: "YY", country: "🇯🇵", color: "#00c878" },
+    { name: "Ji-ho Park",       initials: "JP", country: "🇰🇷", color: "#ff6b6b" },
+    { name: "Soo-yeon Kim",     initials: "SK", country: "🇰🇷", color: "#ffb400" },
+    { name: "Arjun Sharma",     initials: "AS", country: "🇮🇳", color: "#3b9eff" },
+    { name: "Priya Patel",      initials: "PP", country: "🇮🇳", color: "#00c878" },
+    { name: "Ravi Kumar",       initials: "RK", country: "🇮🇳", color: "#ff6b6b" },
+    { name: "Aisha Malik",      initials: "AM", country: "🇵🇰", color: "#ffb400" },
+    { name: "Zara Ahmed",       initials: "ZA", country: "🇵🇰", color: "#3b9eff" },
+    { name: "Ali Hassan",       initials: "AH", country: "🇪🇬", color: "#00c878" },
+    { name: "Fatima Nour",      initials: "FN", country: "🇪🇬", color: "#ff6b6b" },
+    { name: "Omar Khalil",      initials: "OK", country: "🇸🇦", color: "#ffb400" },
+    { name: "Layla Al-Farsi",   initials: "LA", country: "🇦🇪", color: "#3b9eff" },
+    { name: "Emeka Okafor",     initials: "EO", country: "🇳🇬", color: "#00c878" },
+    { name: "Chisom Eze",       initials: "CE", country: "🇳🇬", color: "#ff6b6b" },
+    { name: "Kwame Mensah",     initials: "KM", country: "🇬🇭", color: "#ffb400" },
+    { name: "Amara Diallo",     initials: "AD", country: "🇸🇳", color: "#3b9eff" },
+    { name: "Tariq Osman",      initials: "TO", country: "🇿🇦", color: "#00c878" },
+    { name: "Lerato Dlamini",   initials: "LD", country: "🇿🇦", color: "#ff6b6b" },
+    { name: "Nadia Benali",     initials: "NB", country: "🇲🇦", color: "#ffb400" },
+    { name: "Samuel Nkrumah",   initials: "SN", country: "🇬🇭", color: "#3b9eff" },
+    { name: "Nia Kamara",       initials: "NK", country: "🇸🇱", color: "#00c878" },
+    { name: "Diego Fernandez",  initials: "DF", country: "🇦🇷", color: "#ff6b6b" },
+    { name: "Catalina Reyes",   initials: "CR", country: "🇨🇱", color: "#ffb400" },
+    { name: "Mateus Costa",     initials: "MC", country: "🇧🇷", color: "#3b9eff" },
+    { name: "Nguyen Van An",    initials: "NV", country: "🇻🇳", color: "#00c878" },
+    { name: "Siti Rahayu",      initials: "SR", country: "🇮🇩", color: "#ff6b6b" },
+    { name: "Ahmad Fauzi",      initials: "AF", country: "🇲🇾", color: "#ffb400" },
+    { name: "Chloe Papadopoulos", initials: "CP", country: "🇬🇷", color: "#3b9eff" },
+    { name: "Ivan Petrov",      initials: "IP", country: "🇧🇬", color: "#00c878" },
+  ];
+
+  const actEvents = [
+    { type: "invest",   icon: "fa-chart-line-up",  iconClass: "green", label: "just invested",   color: "green", amounts: [500, 750, 1000, 1500, 2000, 2500, 5000, 10000] },
+    { type: "deposit",  icon: "fa-arrow-down-to-line", iconClass: "blue", label: "deposited",    color: "blue",  amounts: [200, 300, 500, 800, 1000, 2000, 3000] },
+    { type: "withdraw", icon: "fa-arrow-up-from-line", iconClass: "amber", label: "withdrew",    color: "amber", amounts: [150, 250, 400, 600, 900, 1200] },
+    { type: "trade",    icon: "fa-arrows-rotate",  iconClass: "green", label: "traded",          color: "green", amounts: [300, 600, 900, 1200, 2000, 4000] },
+    { type: "profit",   icon: "fa-sack-dollar",    iconClass: "amber", label: "made a profit of", color: "amber", amounts: [120, 340, 560, 780, 1100, 1500] },
+  ];
+
+  const actAssets = ["Bitcoin", "Ethereum", "USDT", "BNB", "Solana", "XRP", "USDC"];
+  const actTimes  = ["just now", "1 min ago", "2 mins ago", "3 mins ago", "5 mins ago"];
+
+  let actLastIndex = -1;
+
+  function actRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function actFormatAmount(n) {
+    return "$" + n.toLocaleString("en-US");
+  }
+
+  function actShowToast() {
+    const toast   = document.getElementById("actToast");
+    const avatar  = document.getElementById("actAvatar");
+    const nameEl  = document.getElementById("actName");
+    const actionEl= document.getElementById("actAction");
+    const timeEl  = document.getElementById("actTime");
+    const iconEl  = document.getElementById("actIcon");
+
+    let idx;
+    do { idx = Math.floor(Math.random() * actPeople.length); } while (idx === actLastIndex);
+    actLastIndex = idx;
+
+    const person = actPeople[idx];
+    const event  = actRandom(actEvents);
+    const amount = actRandom(event.amounts);
+    const asset  = actRandom(actAssets);
+    const time   = actRandom(actTimes);
+
+    avatar.textContent       = person.initials;
+    avatar.style.background  = person.color + "22";
+    avatar.style.color       = person.color;
+    avatar.style.border      = "1.5px solid " + person.color + "44";
+
+    nameEl.textContent = person.country + " " + person.name;
+
+    actionEl.innerHTML = `${event.label} <span class="${event.color}">${actFormatAmount(amount)}</span> in <span class="blue">${asset}</span>`;
+
+    timeEl.textContent = time;
+
+    iconEl.className   = `act-toast-icon ${event.iconClass}`;
+    iconEl.innerHTML   = `<i class="fa-light ${event.icon}"></i>`;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 4000);
+  }
+
+  function actSchedule() {
+    const delay = Math.floor(Math.random() * 5000) + 4000; // 4–9 seconds
+    setTimeout(() => {
+      actShowToast();
+      actSchedule();
+    }, delay);
+  }
+
+  // Kick off after 2s on page load
+  setTimeout(actSchedule, 2000);
+</script>
     <!-- Scripts -->
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
