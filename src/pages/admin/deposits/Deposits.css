@@ -2,7 +2,9 @@
    ADMIN DEPOSITS
    ================================================================ */
 
-.adm-deposits { max-width: 1000px; }
+.adm-deposits {
+  max-width: 1000px;
+}
 
 /* ── Stats ── */
 .adm-deposits-stats {
@@ -36,9 +38,15 @@
   margin: 0;
 }
 
-.adm-deposits-stat-success { color: var(--brand-success); }
-.adm-deposits-stat-warning { color: var(--brand-warning); }
-.adm-deposits-stat-danger { color: var(--brand-danger); }
+.adm-deposits-stat-success {
+  color: var(--brand-success);
+}
+.adm-deposits-stat-warning {
+  color: var(--brand-warning);
+}
+.adm-deposits-stat-danger {
+  color: var(--brand-danger);
+}
 
 /* ── Toolbar ── */
 .adm-deposits-toolbar {
@@ -71,7 +79,7 @@
   border: 1px solid var(--border-default);
   color: var(--text-primary);
   font-size: 0.875rem;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-deposits-search:focus {
@@ -138,7 +146,7 @@
   align-items: center;
   padding: 14px 16px;
   border-bottom: 1px solid var(--border-subtle);
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   animation: fadeIn 0.3s ease-out;
   animation-delay: calc(var(--i, 0) * 30ms);
 }
@@ -219,7 +227,7 @@
   text-decoration: none;
   display: flex;
   opacity: 0;
-  transition: opacity var(--t-fast) var(--ease-std));
+  transition: opacity var(--t-fast) var(--ease-std);
 }
 
 .adm-deposit-row:hover .adm-deposit-hash a {
@@ -261,7 +269,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-deposit-btn-approve {
@@ -328,7 +336,7 @@
   }
 
   .adm-deposit-user::after {
-    content: ' • ';
+    content: " • ";
     margin: 0 4px;
   }
 

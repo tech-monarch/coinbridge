@@ -124,7 +124,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-txp-filter-btn:hover {
@@ -195,7 +195,7 @@
   align-items: center;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-subtle);
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   animation: fadeIn 0.3s ease-out;
   animation-delay: calc(var(--i, 0) * 30ms);
 }

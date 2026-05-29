@@ -2,7 +2,9 @@
    ADMIN USERS
    ================================================================ */
 
-.adm-users { max-width: 1200px; }
+.adm-users {
+  max-width: 1200px;
+}
 
 /* ── Page Header ── */
 .adm-page-hd {
@@ -87,7 +89,7 @@
   border: 1px solid var(--border-default);
   color: var(--text-primary);
   font-size: 0.875rem;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-users-search:focus {
@@ -127,7 +129,7 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-users-filter-group select:hover {
@@ -194,7 +196,7 @@
   align-items: center;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-subtle);
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   animation: fadeIn 0.3s ease-out;
   animation-delay: calc(var(--i, 0) * 30ms);
 }
@@ -271,7 +273,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   padding: 0;
 }
 
@@ -366,7 +368,8 @@
   }
 
   .adm-users-thead span:not(:first-child):not(:nth-child(4)):not(:nth-child(7)),
-  .adm-users-row > span:not(:first-child):not(:nth-child(4)):not(:nth-child(7)) {
+  .adm-users-row
+    > span:not(:first-child):not(:nth-child(4)):not(:nth-child(7)) {
     display: none;
   }
 }

@@ -2,7 +2,9 @@
    ADMIN DASHBOARD
    ================================================================ */
 
-.adm-dash { max-width: 1000px; }
+.adm-dash {
+  max-width: 1000px;
+}
 
 /* ── Header ── */
 .adm-dash-header {
@@ -104,10 +106,18 @@
   stroke-width: 1.8;
 }
 
-.adm-stat-ico--blue { color: #3b82f6; }
-.adm-stat-ico--green { color: #10b981; }
-.adm-stat-ico--yellow { color: #f59e0b; }
-.adm-stat-ico--purple { color: #8b5cf6; }
+.adm-stat-ico--blue {
+  color: #3b82f6;
+}
+.adm-stat-ico--green {
+  color: #10b981;
+}
+.adm-stat-ico--yellow {
+  color: #f59e0b;
+}
+.adm-stat-ico--purple {
+  color: #8b5cf6;
+}
 
 .adm-stat-value {
   font-size: 1.875rem;
@@ -125,8 +135,12 @@
   font-weight: 500;
 }
 
-.adm-stat-change--up { color: var(--brand-success); }
-.adm-stat-change--neutral { color: var(--text-secondary); }
+.adm-stat-change--up {
+  color: var(--brand-success);
+}
+.adm-stat-change--neutral {
+  color: var(--text-secondary);
+}
 
 /* ── Quick Action Cards ── */
 .adm-dash-quick {
@@ -146,7 +160,7 @@
   border: 1px solid var(--border-default);
   color: var(--text-primary);
   text-decoration: none;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   font-weight: 500;
 }
 
@@ -193,7 +207,7 @@
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
 }
 
 .adm-section-link:hover {
@@ -218,7 +232,7 @@
   align-items: center;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-subtle);
-  transition: all var(--t-fast) var(--ease-std));
+  transition: all var(--t-fast) var(--ease-std);
   animation: fadeIn 0.3s ease-out;
   animation-delay: calc(var(--i, 0) * 30ms);
 }
@@ -307,8 +321,12 @@
   text-align: right;
 }
 
-.adm-tx-amount--pos { color: var(--brand-success); }
-.adm-tx-amount--neg { color: var(--brand-danger); }
+.adm-tx-amount--pos {
+  color: var(--brand-success);
+}
+.adm-tx-amount--neg {
+  color: var(--brand-danger);
+}
 
 /* ── Badges ── */
 .badge {
