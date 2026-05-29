@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
+import BotVerification from "../../../components/shared/BotVerification";
 
 const API = import.meta.env.VITE_API_DOMAIN;
 
@@ -46,11 +47,17 @@ const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [verified, setVerified] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setFieldErrors({});
+
+    if (!verified) {
+      setError("Please complete the bot verification.");
+      return;
+    }
 
     // Basic client-side validation
     const fe: Record<string, string> = {};
@@ -200,7 +207,9 @@ const Register: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className="auth-submit-btn" disabled={loading}>
+          <BotVerification onVerified={setVerified} />
+
+          <button type="submit" className="auth-submit-btn" disabled={loading || !verified}>
             {loading ? <span className="wd-spinner" /> : "Create Account"}
           </button>
         </form>

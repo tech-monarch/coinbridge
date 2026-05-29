@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import BotVerification from "../../../components/shared/BotVerification";
 
 const API = import.meta.env.VITE_API_DOMAIN;
 
@@ -24,10 +25,17 @@ const Login: React.FC = () => {
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [verified, setVerified] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    if (!verified) {
+      setError("Please complete the bot verification.");
+      return;
+    }
+
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
@@ -114,7 +122,9 @@ const Login: React.FC = () => {
             </div>
           </div>
 
-          <button type="submit" className="auth-submit-btn" disabled={loading}>
+          <BotVerification onVerified={setVerified} />
+
+          <button type="submit" className="auth-submit-btn" disabled={loading || !verified}>
             {loading ? <span className="wd-spinner" /> : "Sign In"}
           </button>
         </form>
