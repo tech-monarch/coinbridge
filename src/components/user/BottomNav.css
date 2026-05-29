@@ -11,7 +11,7 @@
   /* Padding lifts it above the browser's native bottom bar.
      env(safe-area-inset-bottom) covers the iPhone home indicator.
      The extra 12px gives breathing room above the browser nav. */
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 86px);
   padding-left: 16px;
   padding-right: 16px;
 
@@ -29,19 +29,19 @@
   max-width: 480px;
   border-radius: 28px;
 
-  /* Glass effect */
-  background: rgba(255, 255, 255, 0.12);
+  /* Purple glass effect */
+  background: rgba(109, 40, 217, 0.35);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
 
-  /* Subtle glass border */
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* Purple-tinted glass border */
+  border: 1px solid rgba(167, 139, 250, 0.35);
 
-  /* Depth shadow — floats above everything */
+  /* Purple depth shadow — floats above everything */
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.28),
-    0 2px 8px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 8px 32px rgba(109, 40, 217, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(167, 139, 250, 0.4);
 
   padding: 8px 6px;
 }
@@ -81,10 +81,10 @@
 /* Active pill highlight */
 .bottom-nav-item--active {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(167, 139, 250, 0.3);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 2px 8px rgba(0, 0, 0, 0.15);
+    inset 0 1px 0 rgba(167, 139, 250, 0.5),
+    0 2px 12px rgba(109, 40, 217, 0.4);
 }
 
 /* ─── Icon & Label ──────────────────────────────────────────────────────── */
