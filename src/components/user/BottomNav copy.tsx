@@ -32,32 +32,30 @@ const IcoSettings = () => (
 );
 
 const ITEMS = [
-  { to: '/user/dashboard',    icon: <IcoGrid />,     label: 'Home'     },
-  { to: '/user/deposit',      icon: <IcoDown />,     label: 'Deposit'  },
-  { to: '/user/withdraw',     icon: <IcoUp />,       label: 'Withdraw' },
-  { to: '/user/transactions', icon: <IcoList />,     label: 'History'  },
+  { to: '/user/dashboard',    icon: <IcoGrid />,    label: 'Home'     },
+  { to: '/user/deposit',      icon: <IcoDown />,    label: 'Deposit'  },
+  { to: '/user/withdraw',     icon: <IcoUp />,      label: 'Withdraw' },
+  { to: '/user/transactions', icon: <IcoList />,    label: 'History'  },
   { to: '/user/settings',     icon: <IcoSettings />, label: 'Settings' },
 ];
 
 const BottomNav: React.FC = () => (
-  <div className="bottom-nav-wrapper">
-    <nav className="bottom-nav">
-      <div className="bottom-nav-inner">
-        {ITEMS.map(item => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) =>
-              `bottom-nav-item${isActive ? ' bottom-nav-item--active' : ''}`
-            }
-          >
-            <span className="bottom-nav-icon">{item.icon}</span>
-            <span className="bottom-nav-label">{item.label}</span>
-          </NavLink>
-        ))}
-      </div>
-    </nav>
-  </div>
+  <nav className="bottom-nav">
+    <div className="bottom-nav-inner">
+      {ITEMS.map(item => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          className={({ isActive }) =>
+            `bottom-nav-item${isActive ? ' bottom-nav-item--active' : ''}`
+          }
+        >
+          <span className="bottom-nav-icon">{item.icon}</span>
+          <span className="bottom-nav-label">{item.label}</span>
+        </NavLink>
+      ))}
+    </div>
+  </nav>
 );
 
 export default BottomNav;

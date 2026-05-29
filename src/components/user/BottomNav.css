@@ -1,75 +1,119 @@
-/* ================================================================
-   BOTTOM NAV — Mobile only. Phantom-style icon nav.
-   ================================================================ */
+/* ─── Floating Island Glass Navbar ─────────────────────────────────────── */
 
-.bottom-nav {
-  display: none; /* hidden on desktop */
+.bottom-nav-wrapper {
+  /* Fixed to viewport, floats above browser chrome */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  /* Padding lifts it above the browser's native bottom bar.
+     env(safe-area-inset-bottom) covers the iPhone home indicator.
+     The extra 12px gives breathing room above the browser nav. */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  padding-left: 16px;
+  padding-right: 16px;
+
+  /* No background — wrapper is transparent */
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .bottom-nav {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-subtle);
-    /* Safe area for iPhone home bar */
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
+.bottom-nav {
+  pointer-events: all;
 
-  .bottom-nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 56px;
-    padding: 0 4px;
-  }
+  /* Island shape */
+  width: 100%;
+  max-width: 480px;
+  border-radius: 28px;
 
-  .bottom-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    flex: 1;
-    height: 100%;
-    color: var(--text-tertiary);
-    text-decoration: none;
-    transition: color var(--t-fast) var(--ease-std);
-    -webkit-tap-highlight-color: transparent;
-    position: relative;
-  }
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 
-  .bottom-nav-item--active {
-    color: var(--brand-purple);
-  }
+  /* Subtle glass border */
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  /* Active indicator dot above icon */
-  .bottom-nav-item--active::before {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--brand-purple);
-  }
+  /* Depth shadow — floats above everything */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
-  .bottom-nav-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 6px;
-  }
+  padding: 8px 6px;
+}
 
-  .bottom-nav-label {
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
+.bottom-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2px;
+}
+
+/* ─── Nav Items ─────────────────────────────────────────────────────────── */
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.92);
+}
+
+/* Active pill highlight */
+.bottom-nav-item--active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Icon & Label ──────────────────────────────────────────────────────── */
+
+.bottom-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.bottom-nav-item--active .bottom-nav-icon {
+  transform: translateY(-1px);
+}
+
+.bottom-nav-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  white-space: nowrap;
+  /* Use system-ui for clean iOS feel */
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+}
+
+/* ─── Dark background fallback (for light-bg apps) ─────────────────────── */
+/* If your app has a light background, swap to this variant by adding
+   class="bottom-nav bottom-nav--dark" to the <nav> element             */
+.bottom-nav--dark {
+  background: rgba(20, 20, 28, 0.72);
+  border-color: rgba(255, 255, 255, 0.1);
 }
