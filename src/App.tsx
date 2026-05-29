@@ -19,12 +19,14 @@ import AdminUsers      from "./pages/admin/users/Users";
 import Login       from "./pages/user/login/Login";
 import Register       from "./pages/user/register/Register";
 import "./styles/globals.css";
+import Landing from "./pages/Landing";
+
 
 /* ── Landing redirect ── */
-const LandingRedirect = () => {
-  window.location.href = "/landing/index.html";
-  return null;
-};
+// const LandingRedirect = () => {
+//   window.location.href = "/landing/index.html";
+//   return null;
+// };
 
 /* ── Theme ── */
 function useTheme() {
@@ -119,7 +121,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/"         element={<LandingRedirect />} />
+        {/* <Route path="/"         element={<LandingRedirect />} /> */}
+        <Route path="/" element={<Landing />} />
         <Route path="/login"    element={<Login />} />
         <Route path="/register" element={<Register />} />
 
