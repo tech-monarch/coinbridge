@@ -1,0 +1,219 @@
+/* ── Withdraw ── */
+.wd { max-width: 680px; }
+.wd-grid { display: grid; grid-template-columns: 1fr 240px; gap: 16px; align-items: start; }
+
+/* Form card */
+.wd-form-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.wd-section {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.wd-section:last-child { border-bottom: none; }
+
+/* Amount input */
+.wd-amount-wrap {
+  display: flex; align-items: stretch;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--t-fast) var(--ease-std), box-shadow var(--t-fast) var(--ease-std);
+}
+.wd-amount-wrap:focus-within {
+  border-color: var(--brand-purple);
+  box-shadow: 0 0 0 3px rgba(139,110,245,0.15);
+}
+.wd-amount-wrap--error { border-color: var(--brand-danger) !important; }
+.wd-amount-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: var(--text-primary); font-family: var(--font);
+  font-size: 1.125rem; font-weight: 600; padding: 12px 14px;
+}
+.wd-amount-input::placeholder { color: var(--text-placeholder); font-weight: 400; }
+.wd-amount-unit {
+  display: flex; align-items: center; padding: 0 12px;
+  border-left: 1px solid var(--border-default);
+  font-size: 0.8125rem; font-weight: 700; color: var(--text-secondary);
+}
+.wd-amount-max {
+  display: flex; align-items: center; padding: 0 14px;
+  border-left: 1px solid var(--border-default);
+  background: none; border-top: none; border-right: none; border-bottom: none;
+  border-left: 1px solid var(--border-default);
+  cursor: pointer; font-family: var(--font);
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--brand-purple);
+  transition: background var(--t-fast) var(--ease-std);
+}
+.wd-amount-max:hover { background: var(--brand-purple-dim); }
+.wd-amount-meta {
+  display: flex; justify-content: space-between;
+  font-size: 0.75rem; color: var(--text-tertiary);
+}
+.wd-amount-meta strong { color: var(--text-secondary); font-weight: 500; }
+
+/* Summary */
+.wd-summary {
+  padding: 14px 20px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.wd-sum-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.8125rem; color: var(--text-secondary);
+}
+.wd-sum-row span:last-child { color: var(--text-primary); font-weight: 500; }
+.wd-sum-divider { height: 1px; background: var(--border-default); margin: 2px 0; }
+.wd-sum-row--total { font-size: 0.9375rem; }
+.wd-sum-row--total span:first-child { color: var(--text-primary); font-weight: 600; }
+.wd-sum-total { color: var(--brand-purple) !important; font-weight: 700 !important; }
+
+/* Info card */
+.wd-info-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.wd-info-item { display: flex; gap: 12px; align-items: flex-start; }
+.wd-info-ico {
+  width: 30px; height: 30px;
+  background: var(--bg-elevated); border-radius: var(--radius-sm);
+  color: var(--brand-purple);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.wd-info-title { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+.wd-info-text  { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* Shared buttons */
+.wd-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 13px 22px; border-radius: var(--radius-pill);
+  background: var(--brand-purple-btn); border: none;
+  color: #fff; font-family: var(--font); font-size: 0.9375rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background var(--t-fast) var(--ease-std), transform var(--t-fast) var(--ease-std);
+}
+.wd-btn-primary:hover { background: var(--brand-purple); }
+.wd-btn-primary:active { transform: scale(0.97); }
+.wd-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.wd-btn-full  { width: 100%; }
+.wd-btn-flex  { flex: 1; }
+
+.wd-btn-ghost {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 13px 18px; border-radius: var(--radius-pill);
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  color: var(--text-secondary); font-family: var(--font); font-size: 0.9375rem; font-weight: 500;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-std);
+}
+.wd-btn-ghost:hover { background: var(--bg-overlay); color: var(--text-primary); }
+
+/* Spinner */
+.wd-spinner {
+  width: 17px; height: 17px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Confirm card */
+.wd-confirm-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  max-width: 460px;
+}
+.wd-confirm-asset {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+.wd-confirm-amount-block {
+  text-align: center; padding: 20px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+.wd-confirm-amount-label {
+  font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-tertiary);
+  display: block; margin-bottom: 8px;
+}
+.wd-confirm-amount {
+  font-size: 2.75rem; font-weight: 800; letter-spacing: -0.04em;
+  color: var(--text-primary); line-height: 1;
+}
+.wd-confirm-amount span { font-size: 1.25rem; color: var(--text-secondary); }
+.wd-confirm-net { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 6px; }
+.wd-confirm-net strong { color: var(--brand-accent); }
+.wd-confirm-rows { display: flex; flex-direction: column; gap: 13px; margin-bottom: 18px; }
+.wd-confirm-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 16px; font-size: 0.875rem;
+}
+.wd-confirm-row > span:first-child { color: var(--text-tertiary); flex-shrink: 0; }
+.wd-confirm-row > span:last-child { color: var(--text-primary); font-weight: 500; text-align: right; word-break: break-all; }
+.mono { font-family: 'Courier New', monospace; font-size: 0.75rem; }
+.wd-danger-note {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 12px 14px; margin-bottom: 20px;
+  background: rgba(255,83,112,0.07);
+  border: 1px solid rgba(255,83,112,0.18);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem; color: var(--brand-danger); line-height: 1.5;
+}
+.wd-danger-note svg { flex-shrink: 0; margin-top: 1px; }
+.wd-confirm-actions { display: flex; gap: 10px; }
+
+/* Success */
+.wd-success-wrap { display: flex; justify-content: center; }
+.wd-success-card {
+  background: var(--bg-surface); border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg); padding: 40px 28px;
+  max-width: 400px; width: 100%; text-align: center;
+}
+.wd-success-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(20,199,132,0.12); color: var(--brand-success);
+  border: 2px solid rgba(20,199,132,0.25);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.wd-success-card h2 { margin-bottom: 8px; }
+.wd-success-card > p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; }
+.wd-success-rows {
+  background: var(--bg-elevated); border-radius: var(--radius-md);
+  padding: 14px; margin-bottom: 22px;
+  display: flex; flex-direction: column; gap: 10px; text-align: left;
+}
+.wd-success-actions { display: flex; gap: 10px; justify-content: center; }
+
+@media (max-width: 768px) { .wd-grid { grid-template-columns: 1fr; } }
+
+/* Add this to your existing Withdraw.css */
+
+.wd-amount-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 4px 0 14px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  user-select: none;
+}

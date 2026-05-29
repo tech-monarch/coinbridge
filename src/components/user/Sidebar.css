@@ -1,0 +1,191 @@
+/* ================================================================
+   SIDEBAR — Desktop only. Replaced by BottomNav on mobile.
+   ================================================================ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 2px;
+}
+
+/* ── Logo ── */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 8px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+.sidebar-logo-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--brand-purple-btn);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sidebar-logo-text {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* ── Nav section label ── */
+.sidebar-nav-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-tertiary);
+  padding: 10px 10px 5px;
+  display: block;
+}
+
+/* ── Nav item ── */
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background var(--t-fast) var(--ease-std),
+              color var(--t-fast) var(--ease-std);
+  -webkit-tap-highlight-color: transparent;
+}
+.sidebar-nav-item:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.sidebar-nav-item--active {
+  background: var(--brand-purple-dim);
+  color: var(--brand-purple);
+  font-weight: 600;
+}
+.sidebar-nav-item--active .sidebar-nav-icon {
+  color: var(--brand-purple);
+}
+.sidebar-nav-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  transition: color var(--t-fast) var(--ease-std);
+}
+.sidebar-nav-item:hover .sidebar-nav-icon { color: var(--text-secondary); }
+
+/* ── Spacer ── */
+.sidebar-spacer { flex: 1; }
+
+/* ── Theme toggle ── */
+.sidebar-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background var(--t-fast) var(--ease-std),
+              color var(--t-fast) var(--ease-std);
+}
+.sidebar-theme-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.sidebar-theme-icon { color: var(--brand-purple); display: flex; }
+
+/* ── User strip ── */
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+}
+.sidebar-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--brand-purple-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sidebar-user-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.sidebar-user-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-user-role {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-xs);
+  transition: color var(--t-fast) var(--ease-std);
+  flex-shrink: 0;
+}
+.sidebar-logout:hover { color: var(--brand-danger); }
+
+/* ── Hide on mobile ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+}

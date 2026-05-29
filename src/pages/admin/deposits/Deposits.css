@@ -1,0 +1,339 @@
+/* ================================================================
+   ADMIN DEPOSITS
+   ================================================================ */
+
+.adm-deposits { max-width: 1000px; }
+
+/* ── Stats ── */
+.adm-deposits-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.adm-deposits-stat {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+}
+
+.adm-deposits-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.adm-deposits-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.adm-deposits-stat-success { color: var(--brand-success); }
+.adm-deposits-stat-warning { color: var(--brand-warning); }
+.adm-deposits-stat-danger { color: var(--brand-danger); }
+
+/* ── Toolbar ── */
+.adm-deposits-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.adm-deposits-search-wrap {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.adm-deposits-search-wrap svg {
+  position: absolute;
+  left: 12px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.adm-deposits-search {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all var(--t-fast) var(--ease-std));
+}
+
+.adm-deposits-search:focus {
+  outline: none;
+  border-color: var(--brand-purple);
+}
+
+.adm-deposits-search::placeholder {
+  color: var(--text-placeholder);
+}
+
+.adm-deposits-status-select {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.adm-deposits-status-select:focus {
+  outline: none;
+  border-color: var(--brand-purple);
+}
+
+/* ── Card ── */
+.adm-deposits-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+}
+
+.adm-deposits-empty {
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-tertiary);
+}
+
+.adm-deposits-empty svg {
+  opacity: 0.5;
+}
+
+.adm-deposits-empty p {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+/* ── List ── */
+.adm-deposits-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-deposit-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 140px 110px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all var(--t-fast) var(--ease-std));
+  animation: fadeIn 0.3s ease-out;
+  animation-delay: calc(var(--i, 0) * 30ms);
+}
+
+.adm-deposit-row:last-child {
+  border-bottom: none;
+}
+
+.adm-deposit-row:hover {
+  background: var(--bg-overlay);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.adm-deposit-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--brand-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adm-deposit-info {
+  min-width: 0;
+}
+
+.adm-deposit-user {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adm-deposit-details {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin: 2px 0 0 0;
+}
+
+.adm-deposit-amount {
+  min-width: 0;
+}
+
+.adm-deposit-val {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--brand-success);
+  margin: 0;
+}
+
+.adm-deposit-hash {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 2px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.adm-deposit-hash a {
+  color: var(--brand-purple);
+  text-decoration: none;
+  display: flex;
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease-std));
+}
+
+.adm-deposit-row:hover .adm-deposit-hash a {
+  opacity: 1;
+}
+
+.adm-deposit-hash a:hover {
+  opacity: 0.7 !important;
+}
+
+.adm-deposit-time {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.adm-deposit-time p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.adm-deposit-status {
+  display: flex;
+  justify-content: center;
+}
+
+.adm-deposit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.adm-deposit-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-std));
+}
+
+.adm-deposit-btn-approve {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--brand-success);
+}
+
+.adm-deposit-btn-approve:hover {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+.adm-deposit-btn-reject {
+  background: rgba(255, 83, 112, 0.15);
+  color: var(--brand-danger);
+}
+
+.adm-deposit-btn-reject:hover {
+  background: rgba(255, 83, 112, 0.25);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--brand-success);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--brand-warning);
+}
+
+.badge-danger {
+  background: rgba(255, 83, 112, 0.2);
+  color: var(--brand-danger);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .adm-deposit-row {
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+  }
+
+  .adm-deposit-row > :nth-child(3),
+  .adm-deposit-row > :nth-child(4),
+  .adm-deposit-row > :nth-child(5),
+  .adm-deposit-row > :nth-child(6) {
+    display: none;
+  }
+
+  .adm-deposit-info {
+    min-width: 0;
+  }
+
+  .adm-deposit-user::after {
+    content: ' • ';
+    margin: 0 4px;
+  }
+
+  .adm-deposit-details {
+    display: inline;
+    margin-left: 0;
+  }
+}

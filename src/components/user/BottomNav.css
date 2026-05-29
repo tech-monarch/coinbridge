@@ -1,0 +1,75 @@
+/* ================================================================
+   BOTTOM NAV — Mobile only. Phantom-style icon nav.
+   ================================================================ */
+
+.bottom-nav {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    /* Safe area for iPhone home bar */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .bottom-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 56px;
+    padding: 0 4px;
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1;
+    height: 100%;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color var(--t-fast) var(--ease-std);
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+
+  .bottom-nav-item--active {
+    color: var(--brand-purple);
+  }
+
+  /* Active indicator dot above icon */
+  .bottom-nav-item--active::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand-purple);
+  }
+
+  .bottom-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .bottom-nav-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}

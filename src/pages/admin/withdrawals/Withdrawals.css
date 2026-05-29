@@ -1,0 +1,314 @@
+/* ================================================================
+   ADMIN WITHDRAWALS — (similar structure to Deposits)
+   ================================================================ */
+
+.adm-withdrawals { max-width: 1000px; }
+
+/* ── Stats ── */
+.adm-withdrawals-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.adm-withdrawals-stat {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+}
+
+.adm-withdrawals-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.adm-withdrawals-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.adm-withdrawals-stat-success { color: var(--brand-success); }
+.adm-withdrawals-stat-warning { color: var(--brand-warning); }
+.adm-withdrawals-stat-danger { color: var(--brand-danger); }
+
+/* ── Toolbar ── */
+.adm-withdrawals-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.adm-withdrawals-search-wrap {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.adm-withdrawals-search-wrap svg {
+  position: absolute;
+  left: 12px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.adm-withdrawals-search {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all var(--t-fast) var(--ease-std));
+}
+
+.adm-withdrawals-search:focus {
+  outline: none;
+  border-color: var(--brand-purple);
+}
+
+.adm-withdrawals-search::placeholder {
+  color: var(--text-placeholder);
+}
+
+.adm-withdrawals-status-select {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.adm-withdrawals-status-select:focus {
+  outline: none;
+  border-color: var(--brand-purple);
+}
+
+/* ── Card & List ── */
+.adm-withdrawals-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+}
+
+.adm-withdrawals-empty {
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-tertiary);
+}
+
+.adm-withdrawals-empty svg {
+  opacity: 0.5;
+}
+
+.adm-withdrawals-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-withdrawal-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 140px 110px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all var(--t-fast) var(--ease-std));
+  animation: fadeIn 0.3s ease-out;
+  animation-delay: calc(var(--i, 0) * 30ms);
+}
+
+.adm-withdrawal-row:last-child {
+  border-bottom: none;
+}
+
+.adm-withdrawal-row:hover {
+  background: var(--bg-overlay);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.adm-withdrawal-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 83, 112, 0.15);
+  color: var(--brand-danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adm-withdrawal-info {
+  min-width: 0;
+}
+
+.adm-withdrawal-user {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adm-withdrawal-details {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin: 2px 0 0 0;
+}
+
+.adm-withdrawal-amount {
+  min-width: 0;
+}
+
+.adm-withdrawal-val {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--brand-danger);
+  margin: 0;
+}
+
+.adm-withdrawal-address {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 2px 0 0 0;
+}
+
+.adm-withdrawal-time {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.adm-withdrawal-time p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.adm-withdrawal-status {
+  display: flex;
+  justify-content: center;
+}
+
+.adm-withdrawal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.adm-withdrawal-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-std));
+}
+
+.adm-withdrawal-btn-approve {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--brand-success);
+}
+
+.adm-withdrawal-btn-approve:hover {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+.adm-withdrawal-btn-reject {
+  background: rgba(255, 83, 112, 0.15);
+  color: var(--brand-danger);
+}
+
+.adm-withdrawal-btn-reject:hover {
+  background: rgba(255, 83, 112, 0.25);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--brand-success);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--brand-warning);
+}
+
+.badge-danger {
+  background: rgba(255, 83, 112, 0.2);
+  color: var(--brand-danger);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .adm-withdrawal-row {
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+  }
+
+  .adm-withdrawal-row > :nth-child(3),
+  .adm-withdrawal-row > :nth-child(4),
+  .adm-withdrawal-row > :nth-child(5),
+  .adm-withdrawal-row > :nth-child(6) {
+    display: none;
+  }
+
+  .adm-withdrawal-info {
+    min-width: 0;
+  }
+
+  .adm-withdrawal-user::after {
+    content: ' • ';
+    margin: 0 4px;
+  }
+
+  .adm-withdrawal-details {
+    display: inline;
+    margin-left: 0;
+  }
+}
