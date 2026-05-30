@@ -913,10 +913,13 @@
   }
 
   /* ─── Steps Section ─── */
-  .steps-section {
-    padding: 80px 0;
-    background: rgba(255, 255, 255, 0.02);
-  }
+/* AFTER — remove the background, add position:relative as a fallback */
+.steps-section {
+  padding: 80px 0;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
   .steps-section h2 {
     font-family: "Syne", sans-serif;
     font-size: clamp(26px, 3vw, 38px);
@@ -1855,75 +1858,96 @@
         transparent
       ></tv-ticker-tape>
 
-      <!-- HOW IT WORKS — 3 STEPS -->
-      <section class="steps-section" id="how-it-works">
-        <div class="container">
-          <h2>Start in <span class="accent-green">3 Easy Steps</span></h2>
-          <p class="steps-subtitle">
-            Getting started with Altioda is simple, fast, and completely free.
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- HOW IT WORKS — 3 STEPS -->
+<section
+  class="steps-section"
+  id="how-it-works"
+  style="position: relative; overflow: hidden;"
+>
+<!-- Background image layer -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background-image: url('banner1.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+    "
+  ></div>
+
+  <!-- Dark overlay for readability -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 15, 30, 0.65);
+      z-index: 1;
+    "
+  ></div>
+
+  <!-- Content -->
+  <div class="container" style="position: relative; z-index: 2;">
+    <h2 style="font-family: 'Poppins', sans-serif;">
+      Start in <span class="accent-green">3 Easy Steps</span>
+    </h2>
+    <p class="steps-subtitle">
+      Getting started with Altioda is simple, fast, and completely free.
+    </p>
+    <div class="row align-items-center g-3">
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Create Account</h5>
+          <p>
+            Sign up in seconds with a secure process. No experience needed
+            to get started.
           </p>
-          <div class="row align-items-center g-3">
-            <div class="col-lg-3 col-md-6">
-              <div class="step-card">
-                <div class="step-number">1</div>
-                <h5>Create Account</h5>
-                <p>
-                  Sign up in seconds with a secure process. No experience needed
-                  to get started.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-1 d-none d-lg-flex">
-              <div class="step-arrow">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="step-card">
-                <div class="step-number">2</div>
-                <h5>Fund Your Wallet</h5>
-                <p>
-                  Deposit easily using available payment options including
-                  cards, bank transfer and crypto.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-1 d-none d-lg-flex">
-              <div class="step-arrow">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="step-card">
-                <div class="step-number">3</div>
-                <h5>Start Trading &amp; Investing</h5>
-                <p>
-                  Buy, sell, and grow your portfolio anytime. Access real-time
-                  data and market insights 24/7.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex">
+        <div class="step-arrow">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Fund Your Wallet</h5>
+          <p>
+            Deposit easily using available payment options including
+            cards, bank transfer and crypto.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex">
+        <div class="step-arrow">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Start Trading &amp; Investing</h5>
+          <p>
+            Buy, sell, and grow your portfolio anytime. Access real-time
+            data and market insights 24/7.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- LIVE CHART WIDGET -->
       <section class="widget-section" style="padding-top: 0" id="live-chart">
@@ -2072,44 +2096,52 @@
         </div>
       </section>
 
-      <!-- SECURITY SECTION -->
-      <section class="security-section" id="security">
-        <div class="container">
-          <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-              <div class="security-icon-box">
-                <div class="shield-visual">
-                  <i class="fa-light fa-shield-check"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <span class="sec-badge">Your Security Is Our Priority</span>
-              <h2>Built for Security &amp; Transparency</h2>
-              <p>
-                We use industry-standard security measures and advanced
-                encryption to ensure your funds and personal data are always
-                safe. Every transaction is verified, every account is protected.
-              </p>
-              <div class="sec-badge-row">
-                <div class="sec-check">
-                  <i class="fa-light fa-check-circle"></i> Bank-level Security
-                </div>
-                <div class="sec-check">
-                  <i class="fa-light fa-check-circle"></i> Advanced Encryption
-                </div>
-                <div class="sec-check">
-                  <i class="fa-light fa-check-circle"></i> Regular Security
-                  Audits
-                </div>
-                <div class="sec-check">
-                  <i class="fa-light fa-check-circle"></i> 100% Transparency
-                </div>
-              </div>
-            </div>
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- SECURITY SECTION -->
+<section class="security-section" id="security" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:url('banner2.jpg');background-size:cover;background-position:center;opacity:0.4;z-index:0;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:#0a1628;opacity:0.75;z-index:1;pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="security-icon-box">
+          <div class="shield-visual">
+            <i class="fa-light fa-shield-check"></i>
           </div>
         </div>
-      </section>
+      </div>
+      <div class="col-lg-6">
+        <span class="sec-badge" style="font-family: 'Poppins', sans-serif;">Your Security Is Our Priority</span>
+        <h2 style="font-family: 'Poppins', sans-serif;">Built for Security &amp; Transparency</h2>
+        <p>
+          We use industry-standard security measures and advanced
+          encryption to ensure your funds and personal data are always
+          safe. Every transaction is verified, every account is protected.
+        </p>
+        <div class="sec-badge-row">
+          <div class="sec-check">
+            <i class="fa-light fa-check-circle"></i> Bank-level Security
+          </div>
+          <div class="sec-check">
+            <i class="fa-light fa-check-circle"></i> Advanced Encryption
+          </div>
+          <div class="sec-check">
+            <i class="fa-light fa-check-circle"></i> Regular Security Audits
+          </div>
+          <div class="sec-check">
+            <i class="fa-light fa-check-circle"></i> 100% Transparency
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
 
       <!-- WHY Altioda SECTION -->
       <section class="why-section" id="why-altioda">
@@ -3616,46 +3648,38 @@
       </section>
       <!-- Blogs Section End -->
 
-      <!-- FINAL CTA SECTION -->
-      <section
-        style="
-          padding: 80px 0;
-          background: linear-gradient(135deg, #060f1e 0%, #0a1628 100%);
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        "
-      >
-        <div class="container text-center">
-          <!-- <div style="font-size:36px;margin-bottom:16px;">₿</div> -->
-          <h2
-            style="
-              font-family: &quot;Syne&quot;, sans-serif;
-              font-size: clamp(24px, 3vw, 40px);
-              font-weight: 800;
-              color: #fff;
-              margin-bottom: 12px;
-            "
-          >
-            Ready to Start Your Investment Journey?
-          </h2>
-          <p style="color: #8a9ab5; font-size: 15px; margin-bottom: 32px">
-            Join millions of users growing their wealth with Altioda.
-          </p>
-          <a href="/register" class="cb-btn-primary" style="margin: 0 auto">
-            Create Free Account
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </section>
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- FINAL CTA SECTION -->
+<section style="padding:80px 0;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:url('banner1.jpg');background-size:cover;background-position:center;opacity:0.55;z-index:0;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:#060f1e;opacity:0.80;z-index:1;pointer-events:none;"></div>
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <h2
+      style="
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(24px, 3vw, 40px);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 12px;
+      "
+    >
+      Ready to Start Your Investment Journey?
+    </h2>
+    <p style="color: #8a9ab5; font-size: 15px; margin-bottom: 32px">
+      Join millions of users growing their wealth with Altioda.
+    </p>
+    <a href="/register" class="cb-btn-primary" style="margin: 0 auto">
+      Create Free Account
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</section>
 
       <!-- Contact Section Start -->
       <section class="contact-section pt-100" id="contact">
@@ -3719,220 +3743,107 @@
       </section>
       <!-- Contact Section End -->
 
-      <!-- FOOTER START -->
-      <footer class="py-100 bg-black">
-        <div class="container">
-          <div class="row row-gap-4">
-            <div class="col-xl-4 col-lg-4">
-              <div class="footer-block">
-                <a href="index.html" class="d-flex align-items-center">
-                  <!-- Logo -->
-                  <img
-                    src="altioda.jpg"
-                    alt="Altioda Logo"
-                    style="
-                      height: 44px;
-                      width: auto;
-                      object-fit: contain;
-                      display: block;
-                      border-radius: 2rem;
-                    "
-                  /><span style="font-size: 1.5rem"><b>Altioda</b></span>
-                </a>
-                <p class="white mb-24">
-                  Altioda is dedicated to providing a secure, reliable, and
-                  innovative platform for cryptocurrency trading. Join us on the
-                  journey to financial freedom.
-                </p>
-                <div style="display: flex; gap: 12px; margin-top: 16px">
-                  <a
-                    href="#"
-                    style="
-                      width: 36px;
-                      height: 36px;
-                      background: rgba(255, 255, 255, 0.06);
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: #8a9ab5;
-                      font-size: 14px;
-                      text-decoration: none;
-                    "
-                    >𝕏</a
-                  >
-                  <a
-                    href="#"
-                    style="
-                      width: 36px;
-                      height: 36px;
-                      background: rgba(255, 255, 255, 0.06);
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: #8a9ab5;
-                      font-size: 14px;
-                      text-decoration: none;
-                    "
-                    >f</a
-                  >
-                  <a
-                    href="#"
-                    style="
-                      width: 36px;
-                      height: 36px;
-                      background: rgba(255, 255, 255, 0.06);
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: #8a9ab5;
-                      font-size: 14px;
-                      text-decoration: none;
-                    "
-                    >in</a
-                  >
-                  <a
-                    href="#"
-                    style="
-                      width: 36px;
-                      height: 36px;
-                      background: rgba(255, 255, 255, 0.06);
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: #8a9ab5;
-                      font-size: 14px;
-                      text-decoration: none;
-                    "
-                    >t</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-6">
-              <div class="footer-block">
-                <ul class="list-unstyled m-0 p-0">
-                  <li class="mb-24"><h6 class="fw-500 white">Products</h6></li>
-                  <li class="mb-12 white">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Buy Crypto</a
-                    >
-                  </li>
-                  <li class="mb-12 white">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Exchange</a
-                    >
-                  </li>
-                  <li class="mb-12 white">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Wallet</a
-                    >
-                  </li>
-                  <li class="mb-12 white">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Pricing</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-6">
-              <div class="footer-block">
-                <ul class="list-unstyled m-0 p-0">
-                  <li class="mb-24"><h6 class="fw-500 white">Company</h6></li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >About Us</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Careers</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Blog</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Contact Us</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-6">
-              <div class="footer-block">
-                <ul class="list-unstyled m-0 p-0">
-                  <li class="mb-24"><h6 class="fw-500 white">Resources</h6></li>
-                  <!-- <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Academy</a></li> -->
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Help Center</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Guides</a
-                    >
-                  </li>
-                  <!-- <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">API</a></li> -->
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-6">
-              <div class="footer-block">
-                <ul class="list-unstyled m-0 p-0">
-                  <li class="mb-24"><h6 class="fw-500 white">Legal</h6></li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Terms of Use</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Privacy Policy</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >Risk Disclosure</a
-                    >
-                  </li>
-                  <li class="mb-12">
-                    <a href="#" style="color: #8a9ab5; text-decoration: none"
-                      >AML Policy</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            style="
-              border-top: 1px solid rgba(255, 255, 255, 0.06);
-              margin-top: 40px;
-              padding-top: 24px;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              flex-wrap: wrap;
-              gap: 12px;
-            "
-          >
-            <p style="color: #8a9ab5; font-size: 13px; margin: 0">
-              © 2025 Altioda. All rights reserved.
-            </p>
-            <p style="color: #8a9ab5; font-size: 13px; margin: 0">🌐 English</p>
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- FOOTER -->
+<footer class="py-100 bg-black" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:url('banner1.jpg');background-size:cover;background-position:center;opacity:0.3;z-index:0;pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="row row-gap-4">
+      <div class="col-xl-4 col-lg-4">
+        <div class="footer-block">
+          <a href="index.html" class="d-flex align-items-center">
+            <img
+              src="altioda.jpg"
+              alt="Altioda Logo"
+              style="
+                height: 44px;
+                width: auto;
+                object-fit: contain;
+                display: block;
+                border-radius: 2rem;
+              "
+            />
+            <span style="font-size: 1.5rem; font-family: 'Poppins', sans-serif;"><b>Altioda</b></span>
+          </a>
+          <p class="white mb-24">
+            Altioda is dedicated to providing a secure, reliable, and
+            innovative platform for cryptocurrency trading. Join us on the
+            journey to financial freedom.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8a9ab5;font-size:14px;text-decoration:none;">𝕏</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8a9ab5;font-size:14px;text-decoration:none;">f</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8a9ab5;font-size:14px;text-decoration:none;">in</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8a9ab5;font-size:14px;text-decoration:none;">t</a>
           </div>
         </div>
-      </footer>
-      <!-- FOOTER END -->
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-3 col-6">
+        <div class="footer-block">
+          <ul class="list-unstyled m-0 p-0">
+            <li class="mb-24"><h6 class="fw-500 white" style="font-family: 'Poppins', sans-serif;">Products</h6></li>
+            <li class="mb-12 white"><a href="#" style="color:#8a9ab5;text-decoration:none;">Buy Crypto</a></li>
+            <li class="mb-12 white"><a href="#" style="color:#8a9ab5;text-decoration:none;">Exchange</a></li>
+            <li class="mb-12 white"><a href="#" style="color:#8a9ab5;text-decoration:none;">Wallet</a></li>
+            <li class="mb-12 white"><a href="#" style="color:#8a9ab5;text-decoration:none;">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-3 col-6">
+        <div class="footer-block">
+          <ul class="list-unstyled m-0 p-0">
+            <li class="mb-24"><h6 class="fw-500 white" style="font-family: 'Poppins', sans-serif;">Company</h6></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">About Us</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Careers</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Blog</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-3 col-6">
+        <div class="footer-block">
+          <ul class="list-unstyled m-0 p-0">
+            <li class="mb-24"><h6 class="fw-500 white" style="font-family: 'Poppins', sans-serif;">Resources</h6></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Help Center</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Guides</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-3 col-6">
+        <div class="footer-block">
+          <ul class="list-unstyled m-0 p-0">
+            <li class="mb-24"><h6 class="fw-500 white" style="font-family: 'Poppins', sans-serif;">Legal</h6></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Terms of Use</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Privacy Policy</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">Risk Disclosure</a></li>
+            <li class="mb-12"><a href="#" style="color:#8a9ab5;text-decoration:none;">AML Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 40px;
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      "
+    >
+      <p style="color: #8a9ab5; font-size: 13px; margin: 0">
+        © 2025 Altioda. All rights reserved.
+      </p>
+      <p style="color: #8a9ab5; font-size: 13px; margin: 0">🌐 English</p>
+    </div>
+  </div>
+</footer>
     </div>
     <!-- Main Wrapper End -->
 
