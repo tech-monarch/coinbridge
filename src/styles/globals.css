@@ -88,11 +88,14 @@
   --shadow-menu: 0 8px 24px rgba(0, 0, 0, 0.14);
 }
 
-/* ── Reset ── */
+/* ── Reset — FIX FOR OVERFLOW ── */
+* {
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -102,6 +105,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
@@ -110,6 +114,9 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   transition:
     background var(--t-base) var(--ease-std),
     color var(--t-base) var(--ease-std);
@@ -367,12 +374,14 @@ h4 {
   min-width: 0;
   margin-left: var(--sidebar-width);
   transition: margin-left var(--t-base) var(--ease);
+  overflow-x: hidden;
 }
 .app-main {
   flex: 1;
   padding: 32px 28px;
   max-width: 960px;
   width: 100%;
+  overflow-x: hidden;
 }
 
 /* ── Page header ── */

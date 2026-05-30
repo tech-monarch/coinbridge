@@ -156,6 +156,7 @@ function App() {
           <Route path="users"        element={<AdminUsers />} />
         </Route>
 
+        {/* ── Catch-all: redirects unknown routes to home ── */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
