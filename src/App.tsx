@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import Sidebar       from "./components/user/Sidebar";
 import BottomNav     from "./components/user/BottomNav";
 import MarketSidebar from "./components/user/MarketSidebar";
@@ -22,11 +22,16 @@ import "./styles/globals.css";
 import Landing from "./pages/Landing";
 
 
-/* ── Landing redirect ── */
-// const LandingRedirect = () => {
-//   window.location.href = "/landing/index.html";
-//   return null;
-// };
+/* ── Theme Context ── */
+interface ThemeCtx {
+  theme: "dark" | "light";
+  toggle: () => void;
+}
+export const ThemeContext = createContext<ThemeCtx>({
+  theme: "dark",
+  toggle: () => {},
+});
+export const useThemeContext = () => useContext(ThemeContext);
 
 /* ── Theme ── */
 function useTheme() {
@@ -70,7 +75,6 @@ function RequireAdmin({ children }: { children: React.ReactNode }) {
 /* ── User Shell ── */
 function UserLayout() {
   const { theme, toggle } = useTheme();
-  // Read the actual logged-in user's name from storage
   const userName = (() => {
     try {
       return JSON.parse(localStorage.getItem("cb_user") ?? "{}").name ?? "User";
@@ -80,20 +84,22 @@ function UserLayout() {
   })();
 
   return (
-    <div className="app-shell">
-      <Sidebar theme={theme} onThemeToggle={toggle} userName={userName} />
-      <div className="app-content">
-        <main className="app-main">
-          <Outlet />
-        </main>
+    <ThemeContext.Provider value={{ theme, toggle }}>
+      <div className="app-shell">
+        <Sidebar theme={theme} onThemeToggle={toggle} userName={userName} />
+        <div className="app-content">
+          <main className="app-main">
+            <Outlet />
+          </main>
+        </div>
+        <MarketSidebar />
+        <BottomNav />
       </div>
-      <MarketSidebar />
-      <BottomNav />
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
-/* ── Admin Shell (no MarketSidebar, no BottomNav) ── */
+/* ── Admin Shell ── */
 function AdminLayout() {
   const { theme, toggle } = useTheme();
   const userName = (() => {
@@ -105,14 +111,16 @@ function AdminLayout() {
   })();
 
   return (
-    <div className="app-shell">
-      <Sidebar theme={theme} onThemeToggle={toggle} userName={userName} />
-      <div className="app-content">
-        <main className="app-main">
-          <Outlet />
-        </main>
+    <ThemeContext.Provider value={{ theme, toggle }}>
+      <div className="app-shell">
+        <Sidebar theme={theme} onThemeToggle={toggle} userName={userName} />
+        <div className="app-content">
+          <main className="app-main">
+            <Outlet />
+          </main>
+        </div>
       </div>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
@@ -121,7 +129,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/"         element={<LandingRedirect />} /> */}
         <Route path="/" element={<Landing />} />
         <Route path="/login"    element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -141,7 +148,6 @@ function App() {
         <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
           <Route index               element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard"    element={<AdminDashboard />} />
-          {/* Fixed: was "deposit"/"withdraw", must match the Link hrefs used in pages */}
           <Route path="deposits"     element={<AdminDeposit />} />
           <Route path="withdrawals"  element={<AdminWithdraw />} />
           <Route path="transactions" element={<AdminTransactions />} />

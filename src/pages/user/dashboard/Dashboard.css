@@ -4,12 +4,44 @@
 
 .dash { max-width: 680px; }
 
+/* ── Background glow blobs ── */
+.dash::before,
+.dash::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+
+/* Blue glow — top-right area */
+.dash::before {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(49, 121, 193, 0.35) 0%, transparent 70%);
+  top: -80px;
+  right: -100px;
+}
+
+/* Green glow — bottom-left area */
+.dash::after {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(20, 199, 132, 0.22) 0%, transparent 70%);
+  bottom: 80px;
+  left: -80px;
+}
+
 /* ── Top bar ── */
 .dash-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
+  position: relative;
+  z-index: 100;
 }
 .dash-greeting-sub {
   font-size: 0.75rem;
@@ -60,7 +92,12 @@
   border: 1.5px solid var(--bg-base);
 }
 
-/* Avatar — links to settings */
+/* ── Avatar button (no longer a Link) ── */
+.dash-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
 .dash-avatar {
   width: 38px;
   height: 38px;
@@ -72,8 +109,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: #fff;
-  text-decoration: none;
-  flex-shrink: 0;
+  cursor: pointer;
   border: 2px solid transparent;
   transition: border-color var(--t-fast) var(--ease-std),
               opacity var(--t-fast) var(--ease-std);
@@ -81,6 +117,164 @@
 .dash-avatar:hover {
   border-color: var(--brand-purple);
   opacity: 0.9;
+}
+
+/* ── Avatar Dropdown ── */
+.dash-avatar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24), 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  overflow: hidden;
+  animation: ddFadeIn 0.15s ease both;
+}
+
+@keyframes ddFadeIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)  scale(1);    }
+}
+
+/* Header with user info */
+.dash-avatar-dd-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px 12px;
+}
+.dash-avatar-dd-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--brand-purple-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.dash-avatar-dd-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.dash-avatar-dd-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dash-avatar-dd-email {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Divider */
+.dash-avatar-dd-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 0;
+}
+
+/* Menu items */
+.dash-avatar-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: left;
+  transition: background var(--t-fast) var(--ease-std),
+              color var(--t-fast) var(--ease-std);
+}
+.dash-avatar-dd-item:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.dash-avatar-dd-item--danger {
+  color: var(--brand-danger);
+}
+.dash-avatar-dd-item--danger:hover {
+  background: rgba(255, 83, 112, 0.08);
+  color: var(--brand-danger);
+}
+
+.dash-avatar-dd-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+/* Small "Light"/"Dark" badge on the right */
+.dash-avatar-dd-item-badge {
+  margin-left: auto;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--bg-overlay);
+  color: var(--text-tertiary);
+}
+
+/* Theme row — non-clickable container, only the switch fires */
+.dash-avatar-dd-theme-row {
+  cursor: default;
+  pointer-events: none;
+}
+.dash-avatar-dd-theme-row .dash-theme-toggle {
+  pointer-events: all;
+}
+
+/* Toggle switch */
+.dash-theme-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 36px;
+  height: 20px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  background: var(--bg-overlay);
+  position: relative;
+  transition: background 0.2s ease;
+  padding: 0;
+}
+.dash-theme-toggle--on {
+  background: var(--brand-purple-btn, #3179c1);
+}
+.dash-theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  display: block;
+}
+.dash-theme-toggle--on .dash-theme-toggle-thumb {
+  transform: translateX(16px);
 }
 
 /* ── Balance Hero ── */
@@ -248,37 +442,12 @@
   padding: 20px;
   margin-bottom: 4px;
 }
-.dash-pie-canvas {
-  flex-shrink: 0;
-  border-radius: 50%;
-}
-.dash-pie-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex: 1;
-}
-.dash-pie-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.dash-pie-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.dash-pie-legend-label {
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  flex: 1;
-}
-.dash-pie-legend-val {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
+.dash-pie-canvas { flex-shrink: 0; border-radius: 50%; }
+.dash-pie-legend { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.dash-pie-legend-item { display: flex; align-items: center; gap: 10px; }
+.dash-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dash-pie-legend-label { font-size: 0.8125rem; color: var(--text-secondary); flex: 1; }
+.dash-pie-legend-val { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
 
 /* ── TradingView wrapper ── */
 .dash-tv-wrap {

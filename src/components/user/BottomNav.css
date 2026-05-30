@@ -117,3 +117,9 @@
   background: rgba(20, 20, 28, 0.72);
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+@media (min-width: 768px) {
+  .bottom-nav-wrapper {
+    display: none;
+  }
+}
