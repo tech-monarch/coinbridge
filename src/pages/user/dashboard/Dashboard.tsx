@@ -415,24 +415,28 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Balance hero ── */}
-      <div className="dash-hero">
-        <div className="dash-hero-amount">
-          {loadingUser ? (
-            <span className="dash-hero-masked">••••••</span>
-          ) : visible ? (
-            <span>${balance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-          ) : (
-            <span className="dash-hero-masked">••••••</span>
-          )}
-          <button className="dash-vis-btn" onClick={() => setVisible((v) => !v)} aria-label="Toggle visibility">
-            {visible ? <IcoEyeOff /> : <IcoEye />}
-          </button>
-        </div>
-        <div className="dash-hero-meta">
-          <span className="dash-hero-change"><IcoTrendUp /> Total Balance</span>
-        </div>
-      </div>
+{/* ── Balance hero ── */}
+<div className="dash-hero-glass">
+  <div className="dash-hero-glass-glow" />
+  <div className="dash-hero-glass-inner">
+    <span className="dash-hero-glass-label">Total Balance</span>
+    <div className="dash-hero-amount">
+      {loadingUser ? (
+        <span className="dash-hero-masked">••••••</span>
+      ) : visible ? (
+        <span>${balance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+      ) : (
+        <span className="dash-hero-masked">••••••</span>
+      )}
+      <button className="dash-vis-btn" onClick={() => setVisible((v) => !v)} aria-label="Toggle visibility">
+        {visible ? <IcoEyeOff /> : <IcoEye />}
+      </button>
+    </div>
+    <div className="dash-hero-meta">
+      <span className="dash-hero-change"><IcoTrendUp /> Portfolio value</span>
+    </div>
+  </div>
+</div>
 
       {/* ── Action buttons ── */}
       <div className="dash-actions">

@@ -1,13 +1,9 @@
-/* ================================================================
-   MARKET SIDEBAR — desktop only, fixed right panel
-   ================================================================ */
-
 .market-sidebar {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 280px;
+  width: 336px;   /* was 280px, +20% */
   background: var(--bg-surface);
   border-left: 1px solid var(--border-subtle);
   z-index: 90;
@@ -16,39 +12,19 @@
   overflow: hidden;
 }
 
-.market-sidebar-inner {
+.market-sidebar .tradingview-widget-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 24px 0 0;
-  overflow: hidden;
+  width: 100%;
 }
 
-.market-sidebar-label {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--text-tertiary);
-  padding: 0 16px 14px;
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 0;
-}
-
-.market-sidebar-widget {
+.market-sidebar .tradingview-widget-container__widget {
   flex: 1;
-  overflow: hidden;
-  /* Let the TradingView widget fill the full height */
-}
-
-/* The web component itself needs full height */
-.market-sidebar-widget tv-market-summary {
-  display: block;
   width: 100%;
   height: 100%;
 }
 
-/* ── Hide completely on mobile and tablet ── */
 @media (max-width: 1200px) {
   .market-sidebar {
     display: none;

@@ -222,21 +222,15 @@ const Sidebar: React.FC<Props> = ({
   return (
     <aside className="sidebar">
       <div className="sidebar-inner">
-        {/* Logo */}
-        <div className="sidebar-logo">
-          <div className="sidebar-logo-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 12 C6 8 8.5 6 12 6 C15.5 6 18 8 18 10.5 C18 13 16 14.5 14 14.5 L10 14.5 C8 14.5 6 16 6 18"
-                stroke="white"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-          </div>
+{/* Logo */}
+<div className="sidebar-logo">
+  <img
+    src="/landing/altioda.jpg"
+    alt="Altioda"
+    className="sidebar-logo-img"
+  />
           <span className="sidebar-logo-text">Altioda</span>
-        </div>
+</div>
 
         {/* Nav label */}
         <span className="sidebar-nav-label">{isAdmin ? "Admin" : "Menu"}</span>

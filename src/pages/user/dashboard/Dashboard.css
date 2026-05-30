@@ -466,3 +466,157 @@
   .dash-pie-legend-val { font-size: 0.8125rem; }
   .dash-tv-wrap { height: 320px; }
 }
+
+/* ── Desktop two-column layout ── */
+.dash-desktop-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.dash-main-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-widget-col {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+}
+
+.dash-widget-col-inner {
+  height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
+}
+
+.dash-widget-col-inner .tradingview-widget-container,
+.dash-widget-col-inner .tradingview-widget-container__widget {
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Stack on mobile/tablet ── */
+@media (max-width: 1024px) {
+  .dash-desktop-layout {
+    flex-direction: column;
+  }
+  .dash-widget-col {
+    width: 100%;
+    position: static;
+  }
+  .dash-widget-col-inner {
+    height: 420px;
+  }
+}
+
+/* ── Balance Hero Glass Card ── */
+.dash-hero {
+  display: none; /* replaced by glass card */
+}
+
+.dash-hero-glass {
+  position: relative;
+  border-radius: 20px;
+  padding: 2px;
+  margin-bottom: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 199, 132, 0.55) 0%,
+    rgba(20, 199, 132, 0.15) 50%,
+    rgba(20, 199, 132, 0.35) 100%
+  );
+  box-shadow:
+    0 0 40px rgba(20, 199, 132, 0.18),
+    0 8px 32px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+/* animated shimmer glow blob inside the card */
+.dash-hero-glass-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(20, 199, 132, 0.22) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  animation: heroGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+.dash-hero-glass-inner {
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 199, 132, 0.10) 0%,
+      rgba(10, 30, 20, 0.55) 100%
+    );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  border: 1px solid rgba(20, 199, 132, 0.18);
+}
+
+.dash-hero-glass-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 199, 132, 0.75);
+  margin-bottom: 10px;
+}
+
+/* keep existing .dash-hero-amount, .dash-hero-meta, etc. — just override colors */
+.dash-hero-glass .dash-hero-amount {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-hero-glass .dash-hero-masked {
+  font-size: 2.5rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dash-hero-glass .dash-vis-btn {
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 4px;
+}
+.dash-hero-glass .dash-vis-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dash-hero-glass .dash-hero-change {
+  color: rgba(20, 199, 132, 0.9);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 600px) {
+  .dash-hero-glass .dash-hero-amount { font-size: 2.25rem; }
+  .dash-hero-glass-inner { padding: 22px 20px 18px; }
+}
