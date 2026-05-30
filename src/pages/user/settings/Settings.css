@@ -157,6 +157,22 @@
 .st-toggle--on { background: var(--brand-purple-btn); }
 .st-toggle--on::after { transform: translateX(18px); background: #fff; }
 
+/* ── Appearance row ── */
+.st-appearance-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 16px 20px;
+  transition: background var(--t-fast) var(--ease-std);
+}
+.st-appearance-row:hover { background: var(--bg-elevated); }
+.st-appearance-info {
+  display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;
+}
+.st-appearance-icon {
+  width: 34px; height: 34px; border-radius: var(--radius-sm);
+  background: var(--brand-purple-dim); color: var(--brand-purple);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
 @media (max-width: 500px) {
   .st-row-2 { grid-template-columns: 1fr; }
   .st-tabs { flex-direction: column; }
