@@ -526,7 +526,7 @@
     filter: blur(60px);
   }
 
-  /* ─── NEW: background.png image behind crypto woman 
+  /* ─── NEW: background.png image behind crypto woman ─── */
   .hero-bg-image {
     position: absolute;
     top: 0;
@@ -538,7 +538,7 @@
     background: url("background.png") center center / cover no-repeat;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
     mask-image: linear-gradient(to right, transparent 0%, black 40%);
-  }─── */
+  }
 
   /* ─── Live badge ─── */
   .cb-live-badge {
@@ -1602,10 +1602,10 @@
     <div class="row align-items-center g-5">
       <!-- ── LEFT COLUMN ── -->
       <div class="col-lg-6">
-        <!-- <div class="cb-live-badge">
+        <div class="cb-live-badge">
           <span class="dot"></span>
           Connecting You to Global Opportunities
-        </div> -->
+        </div>
 
         <h1>
           Buy, Trade &amp; Grow<br />
@@ -1754,7 +1754,7 @@
 
           <!-- The image -->
           <img
-            src="cryptowomanss.png"
+            src="cryptowoman.png"
             alt="Crypto trader"
             style="
               width: 80%;
@@ -1858,7 +1858,143 @@
         transparent
       ></tv-ticker-tape>
 
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
+<!-- HOW IT WORKS — 3 STEPS -->
+<section
+  class="steps-section"
+  id="how-it-works"
+  style="position: relative; overflow: hidden;"
+>
+<!-- Background image layer -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background-image: url('banner1.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+    "
+  ></div>
+
+  <!-- Dark overlay for readability -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 15, 30, 0.65);
+      z-index: 1;
+    "
+  ></div>
+
+  <!-- Content -->
+  <div class="container" style="position: relative; z-index: 2;">
+    <h2 style="font-family: 'Poppins', sans-serif;">
+      Start in <span class="accent-green">3 Easy Steps</span>
+    </h2>
+    <p class="steps-subtitle">
+      Getting started with Altioda is simple, fast, and completely free.
+    </p>
+    <div class="row align-items-center g-3">
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Create Account</h5>
+          <p>
+            Sign up in seconds with a secure process. No experience needed
+            to get started.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex">
+        <div class="step-arrow">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Fund Your Wallet</h5>
+          <p>
+            Deposit easily using available payment options including
+            cards, bank transfer and crypto.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex">
+        <div class="step-arrow">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h5 style="font-family: 'Poppins', sans-serif;">Start Trading &amp; Investing</h5>
+          <p>
+            Buy, sell, and grow your portfolio anytime. Access real-time
+            data and market insights 24/7.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- LIVE CHART WIDGET -->
+      <section class="widget-section" style="padding-top: 0" id="live-chart">
+        <div class="container">
+          <div class="row align-items-end mb-4">
+            <div class="col">
+              <h2>Live <span style="color: #3b9eff">BTC/USD</span> Chart</h2>
+              <p class="ws-subtitle">
+                Track Bitcoin price movements in real time directly from the
+                market.
+              </p>
+            </div>
+          </div>
+          <div class="widget-box" style="height: 420px">
+            <div
+              class="tradingview-widget-container"
+              style="height: 100%; width: 100%"
+            >
+              <div
+                class="tradingview-widget-container__widget"
+                style="height: calc(100% - 32px); width: 100%"
+              ></div>
+              <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BITSTAMP-BTCUSD/" rel="noopener nofollow" target="_blank"><span class="blue-text">BTC chart</span></a><span class="trademark"> by TradingView</span></div> -->
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                async
+              >
+                {
+                  "autosize": true,
+                  "symbol": "BITSTAMP:BTCUSD",
+                  "interval": "D",
+                  "timezone": "exchange",
+                  "theme": "dark",
+                  "backgroundColor": "rgba(14, 28, 53, 1)",
+                  "style": "3",
+                  "hide_top_toolbar": false,
+                  "save_image": false,
+                  "locale": "en",
+                  "calendar": false,
+                  "support_host": "https://www.tradingview.com"
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- FEATURES SECTION -->
       <section class="features-section" id="features">
@@ -2060,7 +2196,49 @@
         </div>
       </section>
 
-
+      <!-- CRYPTO HEATMAP WIDGET -->
+      <section class="heatmap-section" id="heatmap">
+        <div class="container">
+          <h2>Crypto Market <span style="color: #00c878">Heatmap</span></h2>
+          <p class="hm-subtitle">
+            Birds-eye view of the entire crypto market — see what's hot and
+            what's not right now.
+          </p>
+          <div class="widget-box" style="height: 480px">
+            <div
+              class="tradingview-widget-container"
+              style="height: 100%; width: 100%"
+            >
+              <div
+                class="tradingview-widget-container__widget"
+                style="height: 100%; width: 100%"
+              ></div>
+              <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/heatmap/crypto/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Heatmap</span></a><span class="trademark"> by TradingView</span></div> -->
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js"
+                async
+              >
+                {
+                  "dataSource": "Crypto",
+                  "blockSize": "market_cap_calc",
+                  "blockColor": "24h_close_change|5",
+                  "locale": "en",
+                  "symbolUrl": "",
+                  "colorTheme": "dark",
+                  "hasTopBar": false,
+                  "isDataSetEnabled": false,
+                  "isZoomEnabled": true,
+                  "hasSymbolTooltip": true,
+                  "isMonoSize": false,
+                  "width": "100%",
+                  "height": "100%"
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- ACADEMY SECTION -->
       <!-- <section class="academy-section">

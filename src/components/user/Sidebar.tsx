@@ -148,26 +148,8 @@ const IcoMoon = () => (
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
 );
-const IcoUsers = () => (
-  <svg
-    width="17"
-    height="17"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </svg>
-);
 
-/* ── Nav definitions ── */
-const USER_NAV = [
+const NAV = [
   { to: "/user/dashboard", label: "Overview", icon: <IcoGrid /> },
   { to: "/user/deposit", label: "Deposit", icon: <IcoDown /> },
   { to: "/user/withdraw", label: "Withdraw", icon: <IcoUp /> },
@@ -175,25 +157,6 @@ const USER_NAV = [
   { to: "/user/kyc", label: "KYC", icon: <IcoShield /> },
   { to: "/user/settings", label: "Settings", icon: <IcoSettings /> },
 ];
-
-const ADMIN_NAV = [
-  { to: "/admin/dashboard", label: "Overview", icon: <IcoGrid /> },
-  { to: "/admin/users", label: "Users", icon: <IcoUsers /> },
-  { to: "/admin/deposits", label: "Deposits", icon: <IcoDown /> },
-  { to: "/admin/withdrawals", label: "Withdrawals", icon: <IcoUp /> },
-  { to: "/admin/transactions", label: "Transactions", icon: <IcoList /> },
-  { to: "/admin/kyc", label: "KYC", icon: <IcoShield /> },
-  { to: "/admin/settings", label: "Settings", icon: <IcoSettings /> },
-];
-
-/* ── Read role from storage ── */
-function getRole(): string {
-  try {
-    return JSON.parse(localStorage.getItem("cb_user") ?? "{}").role ?? "user";
-  } catch {
-    return "user";
-  }
-}
 
 interface Props {
   theme: "dark" | "light";
@@ -209,34 +172,30 @@ const Sidebar: React.FC<Props> = ({
   userAvatar,
 }) => {
   const navigate = useNavigate();
-  const isAdmin = getRole() === "admin";
-  const nav = isAdmin ? ADMIN_NAV : USER_NAV;
   const initials = userName.slice(0, 2).toUpperCase();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("cb_user");
-    navigate("/login");
-  };
 
   return (
     <aside className="sidebar">
       <div className="sidebar-inner">
-{/* Logo */}
-<div className="sidebar-logo">
-  <img
-    src="/landing/altioda.jpg"
-    alt="Altioda"
-    className="sidebar-logo-img"
-  />
+        {/* Logo */}
+        <div className="sidebar-logo">
+          {/* <div className="sidebar-logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 12 C6 8 8.5 6 12 6 C15.5 6 18 8 18 10.5 C18 13 16 14.5 14 14.5 L10 14.5 C8 14.5 6 16 6 18"
+                stroke="white"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </div> */}
           <span className="sidebar-logo-text">Altioda</span>
-</div>
+        </div>
 
-        {/* Nav label */}
-        <span className="sidebar-nav-label">{isAdmin ? "Admin" : "Menu"}</span>
-
-        {/* Nav links */}
-        {nav.map((item) => (
+        {/* Nav */}
+        <span className="sidebar-nav-label">Menu</span>
+        {NAV.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
@@ -251,7 +210,7 @@ const Sidebar: React.FC<Props> = ({
 
         <div className="sidebar-spacer" />
 
-        {/* Theme toggle */}
+        {/* Theme */}
         <button className="sidebar-theme-btn" onClick={onThemeToggle}>
           <span className="sidebar-theme-icon">
             {theme === "dark" ? <IcoSun /> : <IcoMoon />}
@@ -259,20 +218,21 @@ const Sidebar: React.FC<Props> = ({
           {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </button>
 
-        {/* User strip */}
+        {/* User */}
         <div className="sidebar-user">
           <div className="sidebar-avatar">
             {userAvatar ? <img src={userAvatar} alt={userName} /> : initials}
           </div>
           <div className="sidebar-user-info">
             <span className="sidebar-user-name">{userName}</span>
-            <span className="sidebar-user-role">
-              {isAdmin ? "Administrator" : "Personal"}
-            </span>
+            <span className="sidebar-user-role">Personal</span>
           </div>
           <button
             className="sidebar-logout"
-            onClick={handleLogout}
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/user/login");
+            }}
             aria-label="Sign out"
           >
             <IcoLogout />
