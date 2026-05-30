@@ -1412,395 +1412,629 @@
   }
 </style>
 
-<!-- HERO BANNER START -->
-<section class="hero-banner">
-  <!-- ── BACKGROUND LAYER ── -->
-  <div class="hero-bg">
-    <div class="hero-bg-glow-1"></div>
-    <div class="hero-bg-glow-2"></div>
-    <div class="hero-bg-glow-3"></div>
-    <!-- NEW: background.png image, right-aligned, fading left -->
-    <div class="hero-bg-image"></div>
-    <canvas
-      id="cb-grid-canvas"
-      style="
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      "
-    ></canvas>
-  </div>
+      <!-- Altioda HERO — paste this CSS into your main stylesheet or a <style> block in <head> -->
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap");
 
-  <script>
-    (function () {
-      var canvas = document.getElementById("cb-grid-canvas");
-      if (!canvas) return;
-      var ctx = canvas.getContext("2d");
-
-      function render() {
-        var parent = canvas.parentElement;
-        var W = (canvas.width = parent.offsetWidth);
-        var H = (canvas.height = parent.offsetHeight);
-        ctx.clearRect(0, 0, W, H);
-
-        var isMobile = W < 480;
-        var isTablet = W >= 480 && W < 900;
-
-        var R, fov, angSpread, cols, rows, vExtent;
-
-        if (isMobile) {
-          R = W * 2.2;
-          fov = 2.8;
-          angSpread = 0.52;
-          cols = 14;
-          rows = 10;
-          vExtent = H * 0.52;
-        } else if (isTablet) {
-          R = W * 1.0;
-          fov = 2.2;
-          angSpread = 0.9;
-          cols = 18;
-          rows = 12;
-          vExtent = H * 0.58;
-        } else {
-          R = W * 0.55;
-          fov = 2.6;
-          angSpread = 1.3;
-          cols = 22;
-          rows = 14;
-          vExtent = H * 0.58;
+        /* ─── Hero wrapper ─── */
+        .hero-banner {
+          background: transparent;
+          font-family: "DM Sans", sans-serif;
+          padding: 64px 0 56px;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero-banner .container,
+        .hero-banner .container-fluid {
+          position: relative;
+          z-index: 1;
         }
 
-        var cx = W * 0.5;
-        var cy = H * 0.5;
-        var angStart = -angSpread / 2;
-        var vTop = -vExtent;
-        var vBottom = vExtent;
-
-        function project(angle, vy) {
-          var px3 = Math.sin(angle) * R;
-          var pz3 = R - Math.cos(angle) * R + R * 0.6;
-          var scale = (R * fov) / (pz3 + R * fov);
-          return { x: cx + px3 * scale, y: cy + vy * scale };
+        /* ─── Live badge ─── */
+        .cb-live-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(0, 200, 120, 0.1);
+          border: 1px solid rgba(0, 200, 120, 0.3);
+          color: #00c878;
+          font-size: 13px;
+          font-weight: 500;
+          padding: 6px 16px;
+          border-radius: 100px;
+          margin-bottom: 28px;
         }
-
-        function edgeAlpha(angle) {
-          var norm = Math.abs(angle) / (angSpread * 0.5);
-          return Math.max(0, 1 - Math.pow(norm, 1.2));
+        .cb-live-badge .dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #00c878;
+          flex-shrink: 0;
+          animation: cb-pulse 2s infinite;
         }
-
-        var samples = 120;
-        for (var r = 0; r <= rows; r++) {
-          var vy = vTop + (r / rows) * (vBottom - vTop);
-          var pts = [];
-          for (var s = 0; s <= samples; s++) {
-            var angle = angStart + (s / samples) * angSpread;
-            var p = project(angle, vy);
-            p.angle = angle;
-            pts.push(p);
+        @keyframes cb-pulse {
+          0%,
+          100% {
+            opacity: 1;
           }
-          for (var s = 0; s < samples; s++) {
-            var alpha =
-              ((edgeAlpha(pts[s].angle) + edgeAlpha(pts[s + 1].angle)) / 2) *
-              0.32;
-            ctx.beginPath();
-            ctx.moveTo(pts[s].x, pts[s].y);
-            ctx.lineTo(pts[s + 1].x, pts[s + 1].y);
-            ctx.strokeStyle = "rgba(59,158,255," + alpha.toFixed(3) + ")";
-            ctx.lineWidth = 0.9;
-            ctx.stroke();
+          50% {
+            opacity: 0.4;
           }
         }
 
-        var vSamples = 80;
-        for (var c = 0; c <= cols; c++) {
-          var angle = angStart + (c / cols) * angSpread;
-          var ea = edgeAlpha(angle);
-          var cPts = [];
-          for (var s = 0; s <= vSamples; s++) {
-            cPts.push(
-              project(angle, vTop + (s / vSamples) * (vBottom - vTop)),
-            );
-          }
-          var baseA = ea * 0.38;
-          var grad = ctx.createLinearGradient(
-            0,
-            cPts[0].y,
-            0,
-            cPts[vSamples].y,
-          );
-          grad.addColorStop(0, "rgba(59,158,255,0)");
-          grad.addColorStop(
-            0.15,
-            "rgba(59,158,255," + (baseA * 0.7).toFixed(3) + ")",
-          );
-          grad.addColorStop(
-            0.5,
-            "rgba(59,158,255," + baseA.toFixed(3) + ")",
-          );
-          grad.addColorStop(
-            0.85,
-            "rgba(59,158,255," + (baseA * 0.7).toFixed(3) + ")",
-          );
-          grad.addColorStop(1, "rgba(59,158,255,0)");
-          ctx.beginPath();
-          ctx.moveTo(cPts[0].x, cPts[0].y);
-          for (var s = 1; s <= vSamples; s++)
-            ctx.lineTo(cPts[s].x, cPts[s].y);
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 0.9;
-          ctx.stroke();
+        /* ─── Heading ─── */
+        .hero-banner h1 {
+          font-family: "Syne", sans-serif;
+          font-size: clamp(34px, 4.5vw, 54px);
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1.08;
+          letter-spacing: -0.5px;
+          margin-bottom: 12px;
+        }
+        .hero-banner h1 .accent-green {
+          color: #00c878;
+        }
+        .hero-banner h1 .accent-blue {
+          color: #3b9eff;
         }
 
-        for (var c = 0; c < 3; c++) {
-          var angle = angStart + (c / cols) * angSpread;
-          var ea = edgeAlpha(angle) * ((3 - c) / 3) * 0.42;
-          var gPts = [];
-          var gSmpl = 60;
-          for (var s = 0; s <= gSmpl; s++) {
-            gPts.push(
-              project(angle, vTop + (s / gSmpl) * (vBottom - vTop)),
-            );
-          }
-          var gGrad = ctx.createLinearGradient(
-            0,
-            gPts[0].y,
-            0,
-            gPts[gSmpl].y,
-          );
-          gGrad.addColorStop(0, "rgba(0,200,120,0)");
-          gGrad.addColorStop(
-            0.4,
-            "rgba(0,200,120," + ea.toFixed(3) + ")",
-          );
-          gGrad.addColorStop(
-            0.6,
-            "rgba(0,200,120," + ea.toFixed(3) + ")",
-          );
-          gGrad.addColorStop(1, "rgba(0,200,120,0)");
-          ctx.beginPath();
-          ctx.moveTo(gPts[0].x, gPts[0].y);
-          for (var s = 1; s <= gSmpl; s++)
-            ctx.lineTo(gPts[s].x, gPts[s].y);
-          ctx.strokeStyle = gGrad;
-          ctx.lineWidth = 1.0;
-          ctx.stroke();
+        /* ─── Sub-heading ─── */
+        .cb-subtitle {
+          font-size: 15px;
+          color: #8a9ab5;
+          line-height: 1.75;
+          border-left: 2px solid rgba(0, 200, 120, 0.4);
+          padding-left: 14px;
+          margin-bottom: 32px;
+          max-width: 480px;
         }
-      }
+        .cb-subtitle strong {
+          color: #c8d8f0;
+        }
 
-      render();
+        /* ─── Feature pills ─── */
+        .cb-pill-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 36px;
+        }
+        .cb-pill {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 8px 14px;
+          border-radius: 10px;
+          color: #c8d8f0;
+          font-size: 13px;
+        }
+        .cb-pill .pi {
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+        }
+        .cb-pill .pi.green {
+          background: rgba(0, 200, 120, 0.15);
+          color: #00c878;
+        }
+        .cb-pill .pi.blue {
+          background: rgba(59, 158, 255, 0.15);
+          color: #3b9eff;
+        }
+        .cb-pill .pi.amber {
+          background: rgba(255, 180, 0, 0.15);
+          color: #ffb400;
+        }
+        .cb-pill .pi.teal {
+          background: rgba(0, 220, 210, 0.15);
+          color: #00dcd2;
+        }
 
-      var target = canvas.closest("section") || canvas.parentElement;
-      new ResizeObserver(render).observe(target);
-      window.addEventListener("resize", render);
-    })();
-  </script>
+        /* ─── CTA buttons ─── */
+        .cb-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #00c878, #00a862);
+          color: #fff;
+          font-size: 15px;
+          font-weight: 600;
+          padding: 14px 28px;
+          border-radius: 50px;
+          text-decoration: none;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 4px 28px rgba(0, 200, 120, 0.28);
+          transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        }
+        .cb-btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 36px rgba(0, 200, 120, 0.38);
+          color: #fff;
+          text-decoration: none;
+        }
+        .cb-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #8a9ab5;
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          border: none;
+          background: none;
+          padding: 0;
+          cursor: pointer;
+        }
+        .cb-btn-secondary:hover {
+          color: #c8d8f0;
+          text-decoration: none;
+        }
+        .cb-btn-secondary svg {
+          color: #3b9eff;
+        }
 
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <!-- ── LEFT COLUMN ── -->
-      <div class="col-lg-6">
-        <!-- <div class="cb-live-badge">
-          <span class="dot"></span>
-          Connecting You to Global Opportunities
-        </div> -->
+        /* ─── Trust row ─── */
+        .cb-trust {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: 32px;
+        }
+        .cb-trust .avatars {
+          display: flex;
+        }
+        .cb-trust .avatars span {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          font-size: 11px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: -9px;
+          color: #fff;
+        }
+        .cb-trust .avatars span:first-child {
+          margin-left: 0;
+        }
+        .cb-trust .avatars .a1 {
+          background: #3b9eff;
+        }
+        .cb-trust .avatars .a2 {
+          background: #00c878;
+        }
+        .cb-trust .avatars .a3 {
+          background: #ff6b6b;
+        }
+        .cb-trust .avatars .a4 {
+          background: #ffb400;
+        }
+        .cb-trust .trust-text {
+          font-size: 13px;
+          color: #8a9ab5;
+        }
+        .cb-trust .trust-text strong {
+          color: #c8d8f0;
+        }
 
-        <h1>
-          Buy, Trade &amp; Grow<br />
-          Your Crypto,<br />
-          Safely and <span class="accent-blue">Effortlessly</span>
-        </h1>
+        /* ─── Right: Portfolio card ─── */
+        .cb-portfolio-card {
+          background: #0e1c35;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 18px;
+          padding: 22px;
+          margin-bottom: 14px;
+        }
+        .cb-portfolio-card .card-label {
+          color: #8a9ab5;
+          font-size: 12px;
+          margin-bottom: 4px;
+        }
+        .cb-portfolio-card .card-balance {
+          font-family: "Syne", sans-serif;
+          font-size: 28px;
+          font-weight: 700;
+          color: #fff;
+          margin-bottom: 2px;
+        }
+        .cb-portfolio-card .card-gain {
+          color: #00c878;
+          font-size: 13px;
+          margin-bottom: 14px;
+        }
+        .cb-time-tabs {
+          display: flex;
+          gap: 6px;
+          margin-bottom: 14px;
+        }
+        .cb-time-tabs span {
+          font-size: 11px;
+          color: #8a9ab5;
+          padding: 3px 10px;
+          border-radius: 100px;
+          cursor: pointer;
+        }
+        .cb-time-tabs span.active {
+          background: rgba(59, 158, 255, 0.15);
+          color: #3b9eff;
+        }
+        .cb-mini-bars {
+          display: flex;
+          align-items: flex-end;
+          gap: 4px;
+          height: 40px;
+          margin-bottom: 16px;
+        }
+        .cb-mini-bars .b {
+          flex: 1;
+          border-radius: 3px 3px 0 0;
+          background: rgba(59, 158, 255, 0.18);
+        }
+        .cb-mini-bars .b.hi {
+          background: #00c878;
+        }
+        .cb-mini-bars .b.md {
+          background: #3b9eff;
+        }
+        .cb-section-label {
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          color: #8a9ab5;
+          margin-bottom: 8px;
+        }
+        .cb-section-label a {
+          color: #00c878;
+          text-decoration: none;
+        }
+        .cb-asset-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 9px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .cb-asset-row:last-child {
+          border-bottom: none;
+        }
+        .cb-asset-row .al {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .cb-asset-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+          font-weight: 700;
+        }
+        .cb-asset-icon.btc {
+          background: rgba(247, 147, 26, 0.15);
+          color: #f7931a;
+        }
+        .cb-asset-icon.eth {
+          background: rgba(98, 126, 234, 0.15);
+          color: #627eea;
+        }
+        .cb-asset-icon.usd {
+          background: rgba(0, 200, 120, 0.15);
+          color: #00c878;
+        }
+        .cb-asset-name {
+          color: #fff;
+          font-size: 13px;
+          font-weight: 500;
+        }
+        .cb-asset-sym {
+          color: #8a9ab5;
+          font-size: 11px;
+        }
+        .cb-asset-price {
+          color: #fff;
+          font-size: 13px;
+          font-weight: 500;
+          text-align: right;
+        }
+        .cb-asset-chg {
+          font-size: 11px;
+          text-align: right;
+        }
+        .cb-asset-chg.pos {
+          color: #00c878;
+        }
+        .cb-asset-chg.neg {
+          color: #ff6b6b;
+        }
 
-        <p class="cb-subtitle">
-          Join thousands of users using Altioda to invest in crypto,
-          forex, and digital assets with speed, security, and confidence.
-          <strong>Fast, secure, and built for you.</strong>
-        </p>
+        /* ─── Right: Feature grid card ─── */
+        .cb-feat-card {
+          background: #0e1c35;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 18px;
+          padding: 16px 20px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .cb-feat-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .cb-feat-icon {
+          width: 34px;
+          height: 34px;
+          border-radius: 9px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          flex-shrink: 0;
+        }
+        .cb-feat-icon.g {
+          background: rgba(0, 200, 120, 0.12);
+          color: #00c878;
+        }
+        .cb-feat-icon.b {
+          background: rgba(59, 158, 255, 0.12);
+          color: #3b9eff;
+        }
+        .cb-feat-label {
+          font-size: 12px;
+          color: #c8d8f0;
+          font-weight: 500;
+          line-height: 1.3;
+        }
 
-        <div class="cb-pill-row">
-          <div class="cb-pill">
-            <span class="pi green"
-              ><i class="fa-light fa-shield-check"></i
-            ></span>
-            Secure &amp; Encrypted
-          </div>
-          <div class="cb-pill">
-            <span class="pi blue"><i class="fa-light fa-bolt"></i></span>
-            Fast Deposits &amp; Withdrawals
-          </div>
-          <div class="cb-pill">
-            <span class="pi amber"
-              ><i class="fa-light fa-user-check"></i
-            ></span>
-            Beginner Friendly
-          </div>
-          <div class="cb-pill">
-            <span class="pi teal"
-              ><i class="fa-light fa-chart-line-up"></i
-            ></span>
-            24/7 Market Access
-          </div>
-        </div>
+        /* ─── Mobile: hide portfolio card ─── */
+        @media (max-width: 991.98px) {
+          .cb-portfolio-card {
+            display: none;
+          }
+          .cb-feat-card {
+            display: none;
+          }
+        }
+      </style>
 
-        <div class="d-flex align-items-center flex-wrap gap-4">
-          <a href="/register" class="cb-btn-primary">
-            Create Free Account
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
+      <!-- HERO BANNER START -->
+      <section class="hero-banner">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <!-- ── LEFT COLUMN ── -->
+            <div class="col-lg-6">
+              <div class="cb-live-badge">
+                <span class="dot"></span>
+                Connecting You to Global Opportunities
+              </div>
+
+              <h1>
+                Trade. Invest.<br />
+                <span class="accent-green">Grow.</span><br />
+                All in One <span class="accent-blue">Bridge.</span>
+              </h1>
+
+              <p class="cb-subtitle">
+                Your trusted platform for crypto trading, forex exchange, and
+                digital investments.
+                <strong>Fast, secure, and built for you.</strong>
+              </p>
+
+              <div class="cb-pill-row">
+                <div class="cb-pill">
+                  <span class="pi green">
+                    <i class="fa-light fa-shield-check"></i>
+                  </span>
+                  Secure Transactions
+                </div>
+                <div class="cb-pill">
+                  <span class="pi blue">
+                    <i class="fa-light fa-bolt"></i>
+                  </span>
+                  Lightning Fast
+                </div>
+                <div class="cb-pill">
+                  <span class="pi amber">
+                    <i class="fa-light fa-chart-line-up"></i>
+                  </span>
+                  Best Rates
+                </div>
+                <div class="cb-pill">
+                  <span class="pi teal">
+                    <i class="fa-light fa-headset"></i>
+                  </span>
+                  24/7 Support
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center flex-wrap gap-4">
+                <a href="/login" class="cb-btn-primary">
+                  Start your journey today
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <button class="cb-btn-secondary">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M10 9l5 3-5 3V9z" fill="currentColor" />
+                  </svg>
+                  Watch Demo
+                </button>
+              </div>
+
+              <div class="cb-trust">
+                <div class="avatars">
+                  <span class="a1">AK</span>
+                  <span class="a2">MR</span>
+                  <span class="a3">JL</span>
+                  <span class="a4">+</span>
+                </div>
+                <p class="trust-text mb-0">
+                  <strong>Trusted.</strong> &nbsp;✓ Reliable. &nbsp;Built for
+                  Everyone.
+                </p>
+              </div>
+            </div>
+
+            <!-- ── RIGHT COLUMN ── -->
+            <div
+              class="col-lg-6 d-flex justify-content-center justify-content-lg-end"
             >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-          <button class="cb-btn-secondary">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M10 9l5 3-5 3V9z" fill="currentColor" />
-            </svg>
-            Explore How It Works
-          </button>
-        </div>
+              <div style="width: 100%; max-width: 360px">
+                <!-- Portfolio card -->
+                <div class="cb-portfolio-card">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <p class="card-label mb-0">Your Portfolio</p>
+                      <p class="card-balance mb-0">$24,560.00</p>
+                      <p class="card-gain mb-0">+$2,450.00 (+11.09%)</p>
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#8a9ab5"
+                      stroke-width="2"
+                    >
+                      <circle cx="11" cy="11" r="8" />
+                      <path d="m21 21-4.35-4.35" />
+                    </svg>
+                  </div>
 
-        <div class="cb-trust">
-          <div class="avatars">
-            <span class="a1">TU</span>
-            <span class="a2">CK</span>
-            <span class="a3">EB</span>
-            <span class="a4">+</span>
-          </div>
-          <p class="trust-text mb-0">
-            <strong>7M+ Users Worldwide.</strong> &nbsp;✓ Trusted. &nbsp;✓
-            Reliable.
-          </p>
-        </div>
-      </div>
+                  <div class="cb-time-tabs mt-3">
+                    <span>1D</span>
+                    <span>1W</span>
+                    <span class="active">1M</span>
+                    <span>3M</span>
+                    <span>1Y</span>
+                  </div>
 
-      <!-- ── RIGHT COLUMN ── -->
-      <div
-        class="col-lg-6 d-flex justify-content-center justify-content-lg-end"
-      >
-        <div style="width: 100%; max-width: 520px; position: relative">
-          <!-- Glow blobs behind the image -->
-          <div
-            style="
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 420px;
-              height: 420px;
-              border-radius: 50%;
-              background: radial-gradient(
-                circle,
-                rgba(59, 158, 255, 0.35) 0%,
-                rgba(59, 158, 255, 0.12) 45%,
-                transparent 70%
-              );
-              pointer-events: none;
-              z-index: 0;
-            "
-          ></div>
-          <div
-            style="
-              position: absolute;
-              top: 40%;
-              left: 30%;
-              transform: translate(-50%, -50%);
-              width: 260px;
-              height: 260px;
-              border-radius: 50%;
-              background: radial-gradient(
-                circle,
-                rgba(0, 200, 120, 0.2) 0%,
-                transparent 70%
-              );
-              pointer-events: none;
-              z-index: 0;
-              filter: blur(18px);
-            "
-          ></div>
-          <div
-            style="
-              position: absolute;
-              top: 55%;
-              left: 70%;
-              transform: translate(-50%, -50%);
-              width: 200px;
-              height: 200px;
-              border-radius: 50%;
-              background: radial-gradient(
-                circle,
-                rgba(100, 80, 255, 0.25) 0%,
-                transparent 70%
-              );
-              pointer-events: none;
-              z-index: 0;
-              filter: blur(22px);
-            "
-          ></div>
+                  <div class="cb-mini-bars">
+                    <div class="b" style="height: 38%"></div>
+                    <div class="b" style="height: 52%"></div>
+                    <div class="b" style="height: 33%"></div>
+                    <div class="b md" style="height: 68%"></div>
+                    <div class="b hi" style="height: 80%"></div>
+                    <div class="b hi" style="height: 72%"></div>
+                    <div class="b hi" style="height: 92%"></div>
+                    <div class="b hi" style="height: 100%"></div>
+                  </div>
 
-          <!-- The image -->
-          <img
-            src="cryptowomanss.png"
-            alt="Crypto trader"
-            style="
-              width: 80%;
-              display: block;
-              position: relative;
-              z-index: 1;
-              filter: drop-shadow(0 0 40px rgba(59, 158, 255, 0.4))
-                drop-shadow(0 0 80px rgba(59, 158, 255, 0.2));
-            "
-          />
+                  <div class="cb-section-label">
+                    <span>Top Assets</span>
+                    <a href="#">See All</a>
+                  </div>
 
-          <div
-            class="cb-feat-card"
-            style="position: relative; z-index: 1"
-          >
-            <div class="cb-feat-item">
-              <div class="cb-feat-icon g">
-                <i class="fa-light fa-globe"></i>
+                  <div class="cb-asset-row">
+                    <div class="al">
+                      <div class="cb-asset-icon btc">₿</div>
+                      <div>
+                        <div class="cb-asset-name">Bitcoin</div>
+                        <div class="cb-asset-sym">BTC</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="cb-asset-price">$12,450.50</div>
+                      <div class="cb-asset-chg pos">+5.28%</div>
+                    </div>
+                  </div>
+
+                  <div class="cb-asset-row">
+                    <div class="al">
+                      <div class="cb-asset-icon eth">Ξ</div>
+                      <div>
+                        <div class="cb-asset-name">Ethereum</div>
+                        <div class="cb-asset-sym">ETH</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="cb-asset-price">$6,250.30</div>
+                      <div class="cb-asset-chg pos">+3.19%</div>
+                    </div>
+                  </div>
+
+                  <div class="cb-asset-row">
+                    <div class="al">
+                      <div class="cb-asset-icon usd">$</div>
+                      <div>
+                        <div class="cb-asset-name">US Dollar</div>
+                        <div class="cb-asset-sym">USD</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="cb-asset-price">$1,250.00</div>
+                      <div class="cb-asset-chg pos">+1.02%</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature grid card -->
+                <div class="cb-feat-card">
+                  <div class="cb-feat-item">
+                    <div class="cb-feat-icon g">
+                      <i class="fa-light fa-globe"></i>
+                    </div>
+                    <div class="cb-feat-label">Global Access</div>
+                  </div>
+                  <div class="cb-feat-item">
+                    <div class="cb-feat-icon b">
+                      <i class="fa-light fa-lock"></i>
+                    </div>
+                    <div class="cb-feat-label">Top-tier Security</div>
+                  </div>
+                  <div class="cb-feat-item">
+                    <div class="cb-feat-icon g">
+                      <i class="fa-light fa-chart-line-up"></i>
+                    </div>
+                    <div class="cb-feat-label">Grow Your Wealth</div>
+                  </div>
+                  <div class="cb-feat-item">
+                    <div class="cb-feat-icon b">
+                      <i class="fa-light fa-bolt"></i>
+                    </div>
+                    <div class="cb-feat-label">Lightning Speed</div>
+                  </div>
+                </div>
               </div>
-              <div class="cb-feat-label">Global Access</div>
-            </div>
-            <div class="cb-feat-item">
-              <div class="cb-feat-icon b">
-                <i class="fa-light fa-lock"></i>
-              </div>
-              <div class="cb-feat-label">Top-tier Security</div>
-            </div>
-            <div class="cb-feat-item">
-              <div class="cb-feat-icon g">
-                <i class="fa-light fa-chart-line-up"></i>
-              </div>
-              <div class="cb-feat-label">Grow Your Wealth</div>
-            </div>
-            <div class="cb-feat-item">
-              <div class="cb-feat-icon b">
-                <i class="fa-light fa-bolt"></i>
-              </div>
-              <div class="cb-feat-label">Lightning Speed</div>
             </div>
           </div>
+          <!-- .row -->
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- HERO BANNER END -->
+        <!-- .container -->
+      </section>
+      <!-- HERO BANNER END -->
 
       <!-- SOCIAL PROOF BAR -->
       <div class="social-proof-bar">
