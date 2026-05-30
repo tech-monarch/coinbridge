@@ -1,21 +1,14 @@
 /* ─── Floating Island Glass Navbar ─────────────────────────────────────── */
 
 .bottom-nav-wrapper {
-  /* Fixed to viewport, floats above browser chrome */
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 9999;
-
-  /* Padding lifts it above the browser's native bottom bar.
-     env(safe-area-inset-bottom) covers the iPhone home indicator.
-     The extra 12px gives breathing room above the browser nav. */
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
   padding-left: 16px;
   padding-right: 16px;
-
-  /* No background — wrapper is transparent */
   pointer-events: none;
   display: flex;
   justify-content: center;
@@ -23,27 +16,34 @@
 
 .bottom-nav {
   pointer-events: all;
-
-  /* Island shape */
   width: 100%;
   max-width: 480px;
   border-radius: 28px;
+  padding: 8px 6px;
 
-  /* Glass effect */
+  /* ── Dark mode (default) ── */
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-  /* Subtle glass border */
   border: 1px solid rgba(255, 255, 255, 0.25);
-
-  /* Depth shadow — floats above everything */
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.28),
     0 2px 8px rgba(0, 0, 0, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    background var(--t-base) var(--ease-std),
+    border-color var(--t-base) var(--ease-std),
+    box-shadow var(--t-base) var(--ease-std);
+}
 
-  padding: 8px 6px;
+/* ── Light mode overrides ── */
+[data-theme="light"] .bottom-nav {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .bottom-nav-inner {
@@ -65,26 +65,42 @@
   padding: 8px 4px;
   border-radius: 20px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.55);
   transition:
     color 0.2s ease,
     background 0.2s ease,
     transform 0.15s ease;
   -webkit-tap-highlight-color: transparent;
   position: relative;
+
+  /* Dark mode inactive */
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Light mode inactive */
+[data-theme="light"] .bottom-nav-item {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .bottom-nav-item:active {
   transform: scale(0.92);
 }
 
-/* Active pill highlight */
+/* Active pill — dark */
 .bottom-nav-item--active {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Active pill — light */
+[data-theme="light"] .bottom-nav-item--active {
+  color: var(--brand-purple-btn);
+  background: rgba(49, 121, 193, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 8px rgba(49, 121, 193, 0.12);
 }
 
 /* ─── Icon & Label ──────────────────────────────────────────────────────── */
@@ -106,13 +122,10 @@
   letter-spacing: 0.3px;
   line-height: 1;
   white-space: nowrap;
-  /* Use system-ui for clean iOS feel */
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
 }
 
-/* ─── Dark background fallback (for light-bg apps) ─────────────────────── */
-/* If your app has a light background, swap to this variant by adding
-   class="bottom-nav bottom-nav--dark" to the <nav> element             */
+/* ─── Dark background fallback ──────────────────────────────────────────── */
 .bottom-nav--dark {
   background: rgba(20, 20, 28, 0.72);
   border-color: rgba(255, 255, 255, 0.1);
