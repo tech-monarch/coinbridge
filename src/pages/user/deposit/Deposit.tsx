@@ -327,7 +327,7 @@ const Deposit: React.FC = () => {
       <div className="dp page-enter">
         <div className="page-hd">
           <h1>Deposit</h1>
-          <p>Fund your Coinbridge account with crypto</p>
+          <p>Fund your Altioda account with crypto</p>
         </div>
 
         <div className="dp-pending-wrap">
@@ -414,7 +414,7 @@ const Deposit: React.FC = () => {
       <div className="dp page-enter">
         <div className="page-hd">
           <h1>Deposit</h1>
-          <p>Fund your Coinbridge account with crypto</p>
+          <p>Fund your Altioda account with crypto</p>
         </div>
 
         <div className="dp-grid">
@@ -576,7 +576,7 @@ const Deposit: React.FC = () => {
     <div className="dp page-enter">
       <div className="page-hd">
         <h1>Deposit</h1>
-        <p>Fund your Coinbridge account with crypto</p>
+        <p>Fund your Altioda account with crypto</p>
       </div>
 
       <div className="dp-grid">

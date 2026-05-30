@@ -1,4 +1,4 @@
-# CoinBridge Frontend Documentation
+# Altioda Frontend Documentation
 
 **Date:** May 2026  
 **Version:** 1.0  

@@ -55,7 +55,7 @@ const BotVerification: React.FC<Props> = ({ onVerified }) => {
       )}
 
       <div className="captcha-footer">
-        <span className="captcha-brand">Protected by CoinBridge</span>
+        <span className="captcha-brand">Protected by Altioda</span>
         <span className="captcha-shield">🛡</span>
       </div>
     </div>

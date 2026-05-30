@@ -120,7 +120,7 @@ const Register: React.FC = () => {
         {/* Brand */}
         <div className="auth-brand">
           {/* <div className="auth-brand-icon">₿</div> */}
-          <span className="auth-brand-name">CoinBridge</span>
+          <span className="auth-brand-name">Altioda</span>
         </div>
 
         <h1 className="auth-title">Create account</h1>
@@ -209,7 +209,11 @@ const Register: React.FC = () => {
 
           <BotVerification onVerified={setVerified} />
 
-          <button type="submit" className="auth-submit-btn" disabled={loading || !verified}>
+          <button
+            type="submit"
+            className="auth-submit-btn"
+            disabled={loading || !verified}
+          >
             {loading ? <span className="wd-spinner" /> : "Create Account"}
           </button>
         </form>

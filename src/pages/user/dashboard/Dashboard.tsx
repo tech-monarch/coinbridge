@@ -487,7 +487,7 @@ const Dashboard: React.FC = () => {
 
       {/* ── TradingView Widget ── */}
       <div className="section-hd" style={{ marginTop: 28 }}>
-        <h2>Analyse Market</h2>
+        <h2>Analyze Market</h2>
       </div>
       <div className="dash-tv-wrap"><TradingViewWidget /></div>
 

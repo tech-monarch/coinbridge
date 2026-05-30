@@ -1,8 +1,8 @@
-# CoinBridge Admin API Documentation
+# Altioda Admin API Documentation
 
 ## Overview
 
-The CoinBridge Admin API provides comprehensive endpoints for administrators to manage users, deposits, withdrawals, KYC submissions, transactions, networks, and system settings. All admin endpoints require **authentication** via a Sanctum token and the user must have the `admin` role.
+The Altioda Admin API provides comprehensive endpoints for administrators to manage users, deposits, withdrawals, KYC submissions, transactions, networks, and system settings. All admin endpoints require **authentication** via a Sanctum token and the user must have the `admin` role.
 
 ### Authentication
 
@@ -35,10 +35,10 @@ All responses are in JSON format with the following structure:
 
 ```json
 {
-    "message": "Error message",
-    "errors": {
-        "field": ["Error details"]
-    }
+  "message": "Error message",
+  "errors": {
+    "field": ["Error details"]
+  }
 }
 ```
 
@@ -70,29 +70,29 @@ Retrieves key metrics and statistics about the platform.
 
 ```json
 {
-    "total_users": 150,
-    "total_volume": 5234567.89,
-    "pending_withdrawals": 5,
-    "pending_kyc": 3,
-    "pending_deposits": 2,
-    "confirmed_deposits": 45,
-    "total_deposits_value": 125000.5,
-    "recent_transactions": [
-        {
-            "id": 1,
-            "user_id": 10,
-            "type": "deposit",
-            "amount": 1000.0,
-            "currency": "BTC",
-            "status": "confirmed",
-            "created_at": "2026-05-28T10:30:00Z",
-            "user": {
-                "id": 10,
-                "name": "John Doe",
-                "email": "john@example.com"
-            }
-        }
-    ]
+  "total_users": 150,
+  "total_volume": 5234567.89,
+  "pending_withdrawals": 5,
+  "pending_kyc": 3,
+  "pending_deposits": 2,
+  "confirmed_deposits": 45,
+  "total_deposits_value": 125000.5,
+  "recent_transactions": [
+    {
+      "id": 1,
+      "user_id": 10,
+      "type": "deposit",
+      "amount": 1000.0,
+      "currency": "BTC",
+      "status": "confirmed",
+      "created_at": "2026-05-28T10:30:00Z",
+      "user": {
+        "id": 10,
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+    }
+  ]
 }
 ```
 
@@ -135,23 +135,23 @@ Retrieve all users with filtering, searching, and pagination.
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "email": "john@example.com",
-            "role": "user",
-            "balance": 500.5,
-            "wallet_address": "0x123...",
-            "kyc_status": "approved",
-            "account_status": "active",
-            "created_at": "2026-05-20T14:30:00Z"
-        }
-    ],
-    "current_page": 1,
-    "per_page": 25,
-    "total": 150,
-    "last_page": 6
+  "data": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "user",
+      "balance": 500.5,
+      "wallet_address": "0x123...",
+      "kyc_status": "approved",
+      "account_status": "active",
+      "created_at": "2026-05-20T14:30:00Z"
+    }
+  ],
+  "current_page": 1,
+  "per_page": 25,
+  "total": 150,
+  "last_page": 6
 }
 ```
 
@@ -198,41 +198,41 @@ Retrieve detailed information about a specific user including KYC, deposits, and
 
 ```json
 {
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "role": "user",
+  "balance": 500.5,
+  "wallet_address": "0x123...",
+  "kyc_status": "approved",
+  "account_status": "active",
+  "created_at": "2026-05-20T14:30:00Z",
+  "kyc": {
     "id": 1,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "user",
-    "balance": 500.5,
-    "wallet_address": "0x123...",
-    "kyc_status": "approved",
-    "account_status": "active",
-    "created_at": "2026-05-20T14:30:00Z",
-    "kyc": {
-        "id": 1,
-        "user_id": 1,
-        "status": "approved",
-        "document_type": "passport",
-        "document_number": "ABC123",
-        "verified_at": "2026-05-22T10:00:00Z"
-    },
-    "deposits": [
-        {
-            "id": 1,
-            "amount": 100.0,
-            "currency": "BTC",
-            "status": "confirmed",
-            "created_at": "2026-05-21T12:00:00Z"
-        }
-    ],
-    "withdrawals": [
-        {
-            "id": 1,
-            "amount": 50.0,
-            "currency": "BTC",
-            "status": "approved",
-            "created_at": "2026-05-23T15:30:00Z"
-        }
-    ]
+    "user_id": 1,
+    "status": "approved",
+    "document_type": "passport",
+    "document_number": "ABC123",
+    "verified_at": "2026-05-22T10:00:00Z"
+  },
+  "deposits": [
+    {
+      "id": 1,
+      "amount": 100.0,
+      "currency": "BTC",
+      "status": "confirmed",
+      "created_at": "2026-05-21T12:00:00Z"
+    }
+  ],
+  "withdrawals": [
+    {
+      "id": 1,
+      "amount": 50.0,
+      "currency": "BTC",
+      "status": "approved",
+      "created_at": "2026-05-23T15:30:00Z"
+    }
+  ]
 }
 ```
 
@@ -273,7 +273,7 @@ Suspend a user account and revoke all active tokens.
 
 ```json
 {
-    "message": "User suspended."
+  "message": "User suspended."
 }
 ```
 
@@ -315,7 +315,7 @@ Reactivate a suspended user account.
 
 ```json
 {
-    "message": "User activated."
+  "message": "User activated."
 }
 ```
 
@@ -355,8 +355,8 @@ Manually adjust a user's balance (add or subtract funds).
 
 ```json
 {
-    "amount": 100.5,
-    "note": "Compensation for transaction fee"
+  "amount": 100.5,
+  "note": "Compensation for transaction fee"
 }
 ```
 
@@ -370,8 +370,8 @@ Manually adjust a user's balance (add or subtract funds).
 
 ```json
 {
-    "message": "Balance adjusted.",
-    "new_balance": 600.5
+  "message": "Balance adjusted.",
+  "new_balance": 600.5
 }
 ```
 
@@ -430,34 +430,34 @@ Retrieve all deposits with filtering, searching, and pagination.
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "user_id": 10,
-            "network_id": 1,
-            "amount": 1000.5,
-            "currency": "BTC",
-            "transaction_hash": "0xabc123def456...",
-            "status": "pending",
-            "confirmations": 3,
-            "confirmed_at": null,
-            "credited_at": null,
-            "created_at": "2026-05-28T10:30:00Z",
-            "user": {
-                "id": 10,
-                "name": "John Doe",
-                "email": "john@example.com"
-            },
-            "network": {
-                "id": 1,
-                "name": "Bitcoin",
-                "symbol": "BTC"
-            }
-        }
-    ],
-    "current_page": 1,
-    "per_page": 25,
-    "total": 50
+  "data": [
+    {
+      "id": 1,
+      "user_id": 10,
+      "network_id": 1,
+      "amount": 1000.5,
+      "currency": "BTC",
+      "transaction_hash": "0xabc123def456...",
+      "status": "pending",
+      "confirmations": 3,
+      "confirmed_at": null,
+      "credited_at": null,
+      "created_at": "2026-05-28T10:30:00Z",
+      "user": {
+        "id": 10,
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "network": {
+        "id": 1,
+        "name": "Bitcoin",
+        "symbol": "BTC"
+      }
+    }
+  ],
+  "current_page": 1,
+  "per_page": 25,
+  "total": 50
 }
 ```
 
@@ -500,29 +500,29 @@ Retrieve detailed information about a specific deposit.
 
 ```json
 {
+  "id": 1,
+  "user_id": 10,
+  "network_id": 1,
+  "amount": 1000.5,
+  "currency": "BTC",
+  "transaction_hash": "0xabc123def456...",
+  "status": "pending",
+  "confirmations": 3,
+  "confirmed_at": null,
+  "credited_at": null,
+  "created_at": "2026-05-28T10:30:00Z",
+  "user": {
+    "id": 10,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "wallet_address": "0x123..."
+  },
+  "network": {
     "id": 1,
-    "user_id": 10,
-    "network_id": 1,
-    "amount": 1000.5,
-    "currency": "BTC",
-    "transaction_hash": "0xabc123def456...",
-    "status": "pending",
-    "confirmations": 3,
-    "confirmed_at": null,
-    "credited_at": null,
-    "created_at": "2026-05-28T10:30:00Z",
-    "user": {
-        "id": 10,
-        "name": "John Doe",
-        "email": "john@example.com",
-        "wallet_address": "0x123..."
-    },
-    "network": {
-        "id": 1,
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "confirmations": 6
-    }
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "confirmations": 6
+  }
 }
 ```
 
@@ -563,7 +563,7 @@ Approve a pending deposit and credit the user's balance.
 
 ```json
 {
-    "message": "Deposit approved and balance credited."
+  "message": "Deposit approved and balance credited."
 }
 ```
 
@@ -610,7 +610,7 @@ Reject a pending deposit.
 
 ```json
 {
-    "reason": "Transaction hash not found on blockchain"
+  "reason": "Transaction hash not found on blockchain"
 }
 ```
 
@@ -623,7 +623,7 @@ Reject a pending deposit.
 
 ```json
 {
-    "message": "Deposit rejected."
+  "message": "Deposit rejected."
 }
 ```
 
@@ -677,33 +677,33 @@ Retrieve all withdrawals with filtering, searching, and pagination.
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "user_id": 10,
-            "network_id": 1,
-            "amount": 500.0,
-            "currency": "BTC",
-            "recipient_address": "0xdef789...",
-            "status": "pending",
-            "approved_by": null,
-            "approved_at": null,
-            "created_at": "2026-05-28T12:00:00Z",
-            "user": {
-                "id": 10,
-                "name": "John Doe",
-                "email": "john@example.com"
-            },
-            "network": {
-                "id": 1,
-                "name": "Bitcoin",
-                "symbol": "BTC"
-            }
-        }
-    ],
-    "current_page": 1,
-    "per_page": 25,
-    "total": 15
+  "data": [
+    {
+      "id": 1,
+      "user_id": 10,
+      "network_id": 1,
+      "amount": 500.0,
+      "currency": "BTC",
+      "recipient_address": "0xdef789...",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "created_at": "2026-05-28T12:00:00Z",
+      "user": {
+        "id": 10,
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "network": {
+        "id": 1,
+        "name": "Bitcoin",
+        "symbol": "BTC"
+      }
+    }
+  ],
+  "current_page": 1,
+  "per_page": 25,
+  "total": 15
 }
 ```
 
@@ -746,27 +746,27 @@ Retrieve detailed information about a specific withdrawal.
 
 ```json
 {
+  "id": 1,
+  "user_id": 10,
+  "network_id": 1,
+  "amount": 500.0,
+  "currency": "BTC",
+  "recipient_address": "0xdef789...",
+  "status": "pending",
+  "approved_by": null,
+  "approved_at": null,
+  "created_at": "2026-05-28T12:00:00Z",
+  "user": {
+    "id": 10,
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "network": {
     "id": 1,
-    "user_id": 10,
-    "network_id": 1,
-    "amount": 500.0,
-    "currency": "BTC",
-    "recipient_address": "0xdef789...",
-    "status": "pending",
-    "approved_by": null,
-    "approved_at": null,
-    "created_at": "2026-05-28T12:00:00Z",
-    "user": {
-        "id": 10,
-        "name": "John Doe",
-        "email": "john@example.com"
-    },
-    "network": {
-        "id": 1,
-        "name": "Bitcoin",
-        "symbol": "BTC"
-    },
-    "approver": null
+    "name": "Bitcoin",
+    "symbol": "BTC"
+  },
+  "approver": null
 }
 ```
 
@@ -807,7 +807,7 @@ Approve a pending withdrawal request.
 
 ```json
 {
-    "message": "Withdrawal approved."
+  "message": "Withdrawal approved."
 }
 ```
 
@@ -854,7 +854,7 @@ Reject a pending withdrawal and refund the user's balance.
 
 ```json
 {
-    "reason": "Invalid recipient address"
+  "reason": "Invalid recipient address"
 }
 ```
 
@@ -867,7 +867,7 @@ Reject a pending withdrawal and refund the user's balance.
 
 ```json
 {
-    "message": "Withdrawal rejected. Balance refunded."
+  "message": "Withdrawal rejected. Balance refunded."
 }
 ```
 
@@ -925,29 +925,29 @@ Retrieve all transactions with filtering and pagination.
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "user_id": 10,
-            "type": "deposit",
-            "amount": 1000.5,
-            "currency": "BTC",
-            "hash": "0xabc123...",
-            "status": "confirmed",
-            "reference_type": "deposit",
-            "reference_id": 1,
-            "note": null,
-            "created_at": "2026-05-28T10:30:00Z",
-            "user": {
-                "id": 10,
-                "name": "John Doe",
-                "email": "john@example.com"
-            }
-        }
-    ],
-    "current_page": 1,
-    "per_page": 25,
-    "total": 200
+  "data": [
+    {
+      "id": 1,
+      "user_id": 10,
+      "type": "deposit",
+      "amount": 1000.5,
+      "currency": "BTC",
+      "hash": "0xabc123...",
+      "status": "confirmed",
+      "reference_type": "deposit",
+      "reference_id": 1,
+      "note": null,
+      "created_at": "2026-05-28T10:30:00Z",
+      "user": {
+        "id": 10,
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+    }
+  ],
+  "current_page": 1,
+  "per_page": 25,
+  "total": 200
 }
 ```
 
@@ -994,22 +994,22 @@ Retrieve detailed information about a specific transaction.
 
 ```json
 {
-    "id": 1,
-    "user_id": 10,
-    "type": "deposit",
-    "amount": 1000.5,
-    "currency": "BTC",
-    "hash": "0xabc123...",
-    "status": "confirmed",
-    "reference_type": "deposit",
-    "reference_id": 1,
-    "note": null,
-    "created_at": "2026-05-28T10:30:00Z",
-    "user": {
-        "id": 10,
-        "name": "John Doe",
-        "email": "john@example.com"
-    }
+  "id": 1,
+  "user_id": 10,
+  "type": "deposit",
+  "amount": 1000.5,
+  "currency": "BTC",
+  "hash": "0xabc123...",
+  "status": "confirmed",
+  "reference_type": "deposit",
+  "reference_id": 1,
+  "note": null,
+  "created_at": "2026-05-28T10:30:00Z",
+  "user": {
+    "id": 10,
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
 }
 ```
 
@@ -1052,33 +1052,33 @@ Retrieve all KYC submissions with filtering and pagination.
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "user_id": 10,
-            "status": "pending",
-            "document_type": "passport",
-            "document_number": "ABC123456",
-            "first_name": "John",
-            "last_name": "Doe",
-            "date_of_birth": "1990-01-15",
-            "country": "US",
-            "document_image_url": "https://...",
-            "selfie_url": "https://...",
-            "reviewed_at": null,
-            "reviewed_by": null,
-            "rejection_reason": null,
-            "created_at": "2026-05-28T08:00:00Z",
-            "user": {
-                "id": 10,
-                "name": "John Doe",
-                "email": "john@example.com"
-            }
-        }
-    ],
-    "current_page": 1,
-    "per_page": 25,
-    "total": 50
+  "data": [
+    {
+      "id": 1,
+      "user_id": 10,
+      "status": "pending",
+      "document_type": "passport",
+      "document_number": "ABC123456",
+      "first_name": "John",
+      "last_name": "Doe",
+      "date_of_birth": "1990-01-15",
+      "country": "US",
+      "document_image_url": "https://...",
+      "selfie_url": "https://...",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "rejection_reason": null,
+      "created_at": "2026-05-28T08:00:00Z",
+      "user": {
+        "id": 10,
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+    }
+  ],
+  "current_page": 1,
+  "per_page": 25,
+  "total": 50
 }
 ```
 
@@ -1121,27 +1121,27 @@ Retrieve detailed information about a specific KYC submission.
 
 ```json
 {
-    "id": 1,
-    "user_id": 10,
-    "status": "pending",
-    "document_type": "passport",
-    "document_number": "ABC123456",
-    "first_name": "John",
-    "last_name": "Doe",
-    "date_of_birth": "1990-01-15",
-    "country": "US",
-    "document_image_url": "https://...",
-    "selfie_url": "https://...",
-    "reviewed_at": null,
-    "reviewed_by": null,
-    "rejection_reason": null,
-    "created_at": "2026-05-28T08:00:00Z",
-    "user": {
-        "id": 10,
-        "name": "John Doe",
-        "email": "john@example.com",
-        "kyc_status": "pending"
-    }
+  "id": 1,
+  "user_id": 10,
+  "status": "pending",
+  "document_type": "passport",
+  "document_number": "ABC123456",
+  "first_name": "John",
+  "last_name": "Doe",
+  "date_of_birth": "1990-01-15",
+  "country": "US",
+  "document_image_url": "https://...",
+  "selfie_url": "https://...",
+  "reviewed_at": null,
+  "reviewed_by": null,
+  "rejection_reason": null,
+  "created_at": "2026-05-28T08:00:00Z",
+  "user": {
+    "id": 10,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "kyc_status": "pending"
+  }
 }
 ```
 
@@ -1182,7 +1182,7 @@ Approve a pending KYC submission.
 
 ```json
 {
-    "message": "KYC approved."
+  "message": "KYC approved."
 }
 ```
 
@@ -1229,7 +1229,7 @@ Reject a pending KYC submission.
 
 ```json
 {
-    "reason": "Document is not clear enough"
+  "reason": "Document is not clear enough"
 }
 ```
 
@@ -1242,7 +1242,7 @@ Reject a pending KYC submission.
 
 ```json
 {
-    "message": "KYC rejected."
+  "message": "KYC rejected."
 }
 ```
 
@@ -1293,13 +1293,13 @@ Retrieve all admin settings.
 
 ```json
 {
-    "email_notifications": true,
-    "push_notifications": true,
-    "maintenance_mode": false,
-    "api_rate_limit": 100,
-    "webhook_url": "https://example.com/webhook",
-    "deposit_wallet_eth": "0x123...",
-    "deposit_wallet_btc": "1A1z7agoat..."
+  "email_notifications": true,
+  "push_notifications": true,
+  "maintenance_mode": false,
+  "api_rate_limit": 100,
+  "webhook_url": "https://example.com/webhook",
+  "deposit_wallet_eth": "0x123...",
+  "deposit_wallet_btc": "1A1z7agoat..."
 }
 ```
 
@@ -1332,13 +1332,13 @@ Update admin settings.
 
 ```json
 {
-    "email_notifications": true,
-    "push_notifications": false,
-    "maintenance_mode": false,
-    "api_rate_limit": 150,
-    "webhook_url": "https://example.com/webhook",
-    "deposit_wallet_eth": "0x456...",
-    "deposit_wallet_btc": "1A1z7agoat..."
+  "email_notifications": true,
+  "push_notifications": false,
+  "maintenance_mode": false,
+  "api_rate_limit": 150,
+  "webhook_url": "https://example.com/webhook",
+  "deposit_wallet_eth": "0x456...",
+  "deposit_wallet_btc": "1A1z7agoat..."
 }
 ```
 
@@ -1357,16 +1357,16 @@ Update admin settings.
 
 ```json
 {
-    "message": "Settings saved.",
-    "settings": {
-        "email_notifications": true,
-        "push_notifications": false,
-        "maintenance_mode": false,
-        "api_rate_limit": 150,
-        "webhook_url": "https://example.com/webhook",
-        "deposit_wallet_eth": "0x456...",
-        "deposit_wallet_btc": "1A1z7agoat..."
-    }
+  "message": "Settings saved.",
+  "settings": {
+    "email_notifications": true,
+    "push_notifications": false,
+    "maintenance_mode": false,
+    "api_rate_limit": 150,
+    "webhook_url": "https://example.com/webhook",
+    "deposit_wallet_eth": "0x456...",
+    "deposit_wallet_btc": "1A1z7agoat..."
+  }
 }
 ```
 
@@ -1410,32 +1410,32 @@ Retrieve all available networks.
 
 ```json
 [
-    {
-        "id": 1,
-        "name": "Bitcoin",
-        "slug": "bitcoin",
-        "symbol": "BTC",
-        "color": "#F7931A",
-        "confirmations": 6,
-        "min_deposit": 0.001,
-        "fee": 0.0001,
-        "deposit_address": "1A1z7agoat...",
-        "is_active": true,
-        "created_at": "2026-05-20T00:00:00Z"
-    },
-    {
-        "id": 2,
-        "name": "Ethereum",
-        "slug": "ethereum",
-        "symbol": "ETH",
-        "color": "#627EEA",
-        "confirmations": 12,
-        "min_deposit": 0.01,
-        "fee": 0.001,
-        "deposit_address": "0x123...",
-        "is_active": true,
-        "created_at": "2026-05-20T00:00:00Z"
-    }
+  {
+    "id": 1,
+    "name": "Bitcoin",
+    "slug": "bitcoin",
+    "symbol": "BTC",
+    "color": "#F7931A",
+    "confirmations": 6,
+    "min_deposit": 0.001,
+    "fee": 0.0001,
+    "deposit_address": "1A1z7agoat...",
+    "is_active": true,
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Ethereum",
+    "slug": "ethereum",
+    "symbol": "ETH",
+    "color": "#627EEA",
+    "confirmations": 12,
+    "min_deposit": 0.01,
+    "fee": 0.001,
+    "deposit_address": "0x123...",
+    "is_active": true,
+    "created_at": "2026-05-20T00:00:00Z"
+  }
 ]
 ```
 
@@ -1468,15 +1468,15 @@ Create a new blockchain network.
 
 ```json
 {
-    "name": "Litecoin",
-    "slug": "litecoin",
-    "symbol": "LTC",
-    "color": "#345D9D",
-    "confirmations": 4,
-    "min_deposit": 0.01,
-    "fee": 0.00001,
-    "deposit_address": "LjrXiTXb5...",
-    "is_active": true
+  "name": "Litecoin",
+  "slug": "litecoin",
+  "symbol": "LTC",
+  "color": "#345D9D",
+  "confirmations": 4,
+  "min_deposit": 0.01,
+  "fee": 0.00001,
+  "deposit_address": "LjrXiTXb5...",
+  "is_active": true
 }
 ```
 
@@ -1497,17 +1497,17 @@ Create a new blockchain network.
 
 ```json
 {
-    "id": 3,
-    "name": "Litecoin",
-    "slug": "litecoin",
-    "symbol": "LTC",
-    "color": "#345D9D",
-    "confirmations": 4,
-    "min_deposit": 0.01,
-    "fee": 0.00001,
-    "deposit_address": "LjrXiTXb5...",
-    "is_active": true,
-    "created_at": "2026-05-28T14:30:00Z"
+  "id": 3,
+  "name": "Litecoin",
+  "slug": "litecoin",
+  "symbol": "LTC",
+  "color": "#345D9D",
+  "confirmations": 4,
+  "min_deposit": 0.01,
+  "fee": 0.00001,
+  "deposit_address": "LjrXiTXb5...",
+  "is_active": true,
+  "created_at": "2026-05-28T14:30:00Z"
 }
 ```
 
@@ -1558,12 +1558,12 @@ Update an existing network.
 
 ```json
 {
-    "name": "Litecoin",
-    "deposit_address": "LjrXiTXb5...",
-    "fee": 0.00002,
-    "min_deposit": 0.02,
-    "confirmations": 5,
-    "is_active": true
+  "name": "Litecoin",
+  "deposit_address": "LjrXiTXb5...",
+  "fee": 0.00002,
+  "min_deposit": 0.02,
+  "confirmations": 5,
+  "is_active": true
 }
 ```
 
@@ -1581,20 +1581,20 @@ Update an existing network.
 
 ```json
 {
-    "message": "Network updated.",
-    "network": {
-        "id": 3,
-        "name": "Litecoin",
-        "slug": "litecoin",
-        "symbol": "LTC",
-        "color": "#345D9D",
-        "confirmations": 5,
-        "min_deposit": 0.02,
-        "fee": 0.00002,
-        "deposit_address": "LjrXiTXb5...",
-        "is_active": true,
-        "created_at": "2026-05-28T14:30:00Z"
-    }
+  "message": "Network updated.",
+  "network": {
+    "id": 3,
+    "name": "Litecoin",
+    "slug": "litecoin",
+    "symbol": "LTC",
+    "color": "#345D9D",
+    "confirmations": 5,
+    "min_deposit": 0.02,
+    "fee": 0.00002,
+    "deposit_address": "LjrXiTXb5...",
+    "is_active": true,
+    "created_at": "2026-05-28T14:30:00Z"
+  }
 }
 ```
 
@@ -1631,7 +1631,7 @@ curl -X PUT http://localhost:8000/api/admin/networks/3 \
 
 ```json
 {
-    "message": "Unauthorized"
+  "message": "Unauthorized"
 }
 ```
 
@@ -1639,7 +1639,7 @@ curl -X PUT http://localhost:8000/api/admin/networks/3 \
 
 ```json
 {
-    "message": "This action is unauthorized."
+  "message": "This action is unauthorized."
 }
 ```
 
@@ -1647,7 +1647,7 @@ curl -X PUT http://localhost:8000/api/admin/networks/3 \
 
 ```json
 {
-    "message": "Not Found"
+  "message": "Not Found"
 }
 ```
 
@@ -1655,11 +1655,11 @@ curl -X PUT http://localhost:8000/api/admin/networks/3 \
 
 ```json
 {
-    "message": "The given data was invalid.",
-    "errors": {
-        "email": ["The email has already been taken."],
-        "amount": ["The amount must be a number."]
-    }
+  "message": "The given data was invalid.",
+  "errors": {
+    "email": ["The email has already been taken."],
+    "amount": ["The amount must be a number."]
+  }
 }
 ```
 
@@ -1678,7 +1678,7 @@ curl -X PUT http://localhost:8000/api/admin/networks/3 \
 curl -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "admin@coinbridge.com",
+    "email": "admin@Altioda.com",
     "password": "secure_password"
   }'
 
@@ -1688,7 +1688,7 @@ curl -X POST http://localhost:8000/api/auth/login \
   "user": {
     "id": 1,
     "name": "Admin",
-    "email": "admin@coinbridge.com",
+    "email": "admin@Altioda.com",
     "role": "admin",
     "balance": 0
   }
