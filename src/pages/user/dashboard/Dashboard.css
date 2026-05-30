@@ -519,55 +519,28 @@
   display: none; /* replaced by glass card */
 }
 
+/* ── Balance Hero Glass Card — theme-aware neutral ── */
 .dash-hero-glass {
   position: relative;
   border-radius: 20px;
   padding: 2px;
   margin-bottom: 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(20, 199, 132, 0.55) 0%,
-    rgba(20, 199, 132, 0.15) 50%,
-    rgba(20, 199, 132, 0.35) 100%
-  );
-  box-shadow:
-    0 0 40px rgba(20, 199, 132, 0.18),
-    0 8px 32px rgba(0, 0, 0, 0.28);
+  background: var(--border-default);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   overflow: hidden;
 }
 
-/* animated shimmer glow blob inside the card */
 .dash-hero-glass-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 30% 50%,
-    rgba(20, 199, 132, 0.22) 0%,
-    transparent 65%
-  );
-  pointer-events: none;
-  animation: heroGlowPulse 4s ease-in-out infinite;
-}
-
-@keyframes heroGlowPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.08); }
+  display: none;
 }
 
 .dash-hero-glass-inner {
   position: relative;
   z-index: 1;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(20, 199, 132, 0.10) 0%,
-      rgba(10, 30, 20, 0.55) 100%
-    );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: var(--bg-surface);
   border-radius: 18px;
   padding: 28px 28px 24px;
-  border: 1px solid rgba(20, 199, 132, 0.18);
+  border: none;
 }
 
 .dash-hero-glass-label {
@@ -576,16 +549,15 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(20, 199, 132, 0.75);
+  color: var(--text-tertiary);
   margin-bottom: 10px;
 }
 
-/* keep existing .dash-hero-amount, .dash-hero-meta, etc. — just override colors */
 .dash-hero-glass .dash-hero-amount {
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1;
   margin-bottom: 12px;
   display: flex;
@@ -596,19 +568,19 @@
 .dash-hero-glass .dash-hero-masked {
   font-size: 2.5rem;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-tertiary);
 }
 
 .dash-hero-glass .dash-vis-btn {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-tertiary);
   margin-top: 4px;
 }
 .dash-hero-glass .dash-vis-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
 }
 
 .dash-hero-glass .dash-hero-change {
-  color: rgba(20, 199, 132, 0.9);
+  color: var(--brand-success);
   font-size: 0.8125rem;
   font-weight: 600;
   display: inline-flex;
