@@ -333,12 +333,14 @@
   .coinSub  { font-size: 10px; }
 
   .content  { padding-right: 0; }
-  .headline { font-size: 36px; }
+  .headline { font-size: 42px; }
+  .sub      { line-height: 1.58; }
 }
 
 @media (max-width: 768px) {
   .hero     { padding: 48px 0; }
-  .headline { font-size: 30px; }
+  .headline { font-size: 34px; }
+  .sub      { line-height: 1.55; }
   .features { gap: 10px; }
   .ctas     { flex-direction: column; align-items: flex-start; }
 
@@ -361,7 +363,8 @@
 }
 
 @media (max-width: 480px) {
-  .headline { font-size: 26px; }
+  .headline { font-size: 30px; }
+  .sub      { line-height: 1.52; }
   .primaryBtn,
   .secondaryBtn { width: 100%; justify-content: center; }
 
