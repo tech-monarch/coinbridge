@@ -1,0 +1,170 @@
+/* ── Portal: fixed bottom-left stack ── */
+.portal {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  width: 320px;
+}
+
+/* ── Individual toast ── */
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10, 14, 26, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 13px 36px 13px 0;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  pointer-events: all;
+  overflow: hidden;
+  will-change: transform, opacity;
+  min-width: 0;
+}
+
+/* ── Slide-in / slide-out ── */
+.show {
+  animation: slideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hide {
+  animation: slideDown 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+}
+
+/* ── Left accent bar ── */
+.accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 14px 0 0 14px;
+}
+
+/* ── Icon bubble ── */
+.iconBubble {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-left: 14px;
+}
+
+/* ── Text body ── */
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.main {
+  font-size: 13px;
+  color: #e0e6ed;
+  line-height: 1.45;
+  margin: 0 0 3px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.nameBold {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.actionWord {
+  font-weight: 600;
+}
+
+.amount {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.meta {
+  font-size: 11.5px;
+  color: #546e7a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flag {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Close button ── */
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #546e7a;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.close:hover {
+  color: #cfd8dc;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Mobile: shift to bottom-center and shrink slightly ── */
+@media (max-width: 480px) {
+  .portal {
+    bottom: 16px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+  }
+
+  .toast {
+    border-radius: 12px;
+  }
+}

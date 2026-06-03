@@ -12,6 +12,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
+import ActivityToast from './components/ActivityToast';
 
 export default function LandingPage() {
   useAOS();
@@ -31,6 +32,8 @@ export default function LandingPage() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      {/* Activity toasts — rendered outside the scroll flow, fixed position */}
+      <ActivityToast />
     </div>
   );
 }
