@@ -2,7 +2,7 @@ import styles from "./Academy.module.css";
 
 export default function Academy() {
   return (
-    <section className={styles.section}>
+    <section id="academy" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.content} data-aos="fade-right">
           <p className={styles.label}>Learn. Grow. Succeed.</p>

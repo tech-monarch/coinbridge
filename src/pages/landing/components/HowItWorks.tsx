@@ -52,7 +52,7 @@ const Arrow = () => (
 
 export default function HowItWorks() {
   return (
-    <section className={styles.section}>
+    <section id="exchange" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading} data-aos="fade-up">
           Start in <span className={styles.accent}>3 Easy Steps</span>

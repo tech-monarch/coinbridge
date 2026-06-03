@@ -117,7 +117,7 @@ const reasons: Reason[] = [
 
 export default function WhyUs() {
   return (
-    <section className={styles.section}>
+    <section id="about-us" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading} data-aos="fade-up">
           Why Altioda Stands Out

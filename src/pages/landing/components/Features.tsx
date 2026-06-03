@@ -99,7 +99,7 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section className={styles.section}>
+    <section id="buy-crypto" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.left} data-aos="fade-right">
           <p className={styles.label}>Powerful Features</p>
