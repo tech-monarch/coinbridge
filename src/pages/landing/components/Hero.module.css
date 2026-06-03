@@ -15,6 +15,8 @@
   background: radial-gradient(circle, rgba(30, 136, 229, 0.09) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
+  /* prevent this from causing horizontal scroll */
+  max-width: 100vw;
 }
 
 .hero::after {
@@ -169,6 +171,8 @@
   position: relative;
   width: 380px;
   height: 380px;
+  /* Prevent badges from causing overflow */
+  overflow: visible;
 }
 
 .imagePlaceholder {
@@ -287,8 +291,47 @@
   .container {
     grid-template-columns: 1fr;
     min-height: auto;
+    gap: 40px;
   }
-  .visual   { display: none; }
+
+  /* Show the visual below content on tablet/mobile */
+  .visual {
+    display: flex;
+    height: auto;
+    padding-bottom: 24px;
+  }
+
+  .heroImageWrap {
+    /* Scale down slightly and center, clamp badges inside viewport */
+    width: 300px;
+    height: 300px;
+  }
+
+  .imagePlaceholder {
+    width: 240px;
+    height: 240px;
+    margin: 30px auto;
+  }
+
+  /* Scale badges to fit smaller wrap */
+  .floatBadge1 { top: 5px;    right: 0; }
+  .floatBadge2 { bottom: 50px; left: -10px; }
+  .floatBadge3 { bottom: 10px; right: 0; }
+
+  .coinBadge {
+    min-width: 120px;
+    padding: 8px 12px 8px 8px;
+    gap: 7px;
+  }
+
+  .coinImg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .coinName { font-size: 12px; }
+  .coinSub  { font-size: 10px; }
+
   .content  { padding-right: 0; }
   .headline { font-size: 36px; }
 }
@@ -298,10 +341,53 @@
   .headline { font-size: 30px; }
   .features { gap: 10px; }
   .ctas     { flex-direction: column; align-items: flex-start; }
+
+  .heroImageWrap {
+    width: 260px;
+    height: 260px;
+  }
+
+  .imagePlaceholder {
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+  }
+
+  .floatBadge1 { top: 0;      right: 0; }
+  .floatBadge2 { bottom: 30px; left: 0; }
+  .floatBadge3 { bottom: 0;   right: 0; }
+
+  .coinBadge { min-width: 110px; }
 }
 
 @media (max-width: 480px) {
   .headline { font-size: 26px; }
   .primaryBtn,
   .secondaryBtn { width: 100%; justify-content: center; }
+
+  .sub br { display: none; }
+
+  .heroImageWrap {
+    width: 220px;
+    height: 220px;
+  }
+
+  .imagePlaceholder {
+    width: 170px;
+    height: 170px;
+    margin: 25px auto;
+  }
+
+  .coinBadge {
+    min-width: 100px;
+    padding: 6px 10px 6px 6px;
+  }
+
+  .coinImg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .coinName { font-size: 11px; }
+  .coinSub  { font-size: 9px; }
 }

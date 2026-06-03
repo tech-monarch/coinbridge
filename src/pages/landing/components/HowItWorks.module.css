@@ -40,7 +40,8 @@
   border: 1px solid #e8edf5;
   border-radius: 16px;
   padding: 36px 28px 32px;
-  width: 270px;
+  width: 100%;
+  max-width: 270px;
   position: relative;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.25s, transform 0.25s;

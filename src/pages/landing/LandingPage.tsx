@@ -17,7 +17,7 @@ export default function LandingPage() {
   useAOS();
 
   return (
-    <>
+    <div style={{ overflowX: 'hidden', width: '100%' }}>
       <Navbar />
       <Hero />
       <SocialProof />
@@ -31,6 +31,6 @@ export default function LandingPage() {
       <FAQ />
       <FinalCTA />
       <Footer />
-    </>
+    </div>
   );
 }
