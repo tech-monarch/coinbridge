@@ -1,0 +1,200 @@
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #e8ecf2;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.2px;
+}
+
+.viewAll {
+  background: transparent;
+  border: none;
+  color: #1565C0;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Individual transaction row */
+.txRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f6f8;
+}
+
+.txRow:last-child {
+  border-bottom: none;
+}
+
+.txIconWrap {
+  flex-shrink: 0;
+}
+
+.txTypeIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.txMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.txTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.txMeta {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.txRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.txAmount {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.txStatus {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* legacy classes kept for compatibility */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconWrap[data-type="deposit"] { background: #dcfce7; color: #00c853; }
+.iconWrap[data-type="withdraw"] { background: #fee2e2; color: #ef4444; }
+.iconWrap[data-type="trade"] { background: #dbeafe; color: #1565C0; }
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.txType {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.txSub {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.txDate {
+  font-size: 10.5px;
+  color: #9ca3af;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.amount {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pos { color: #00c853; }
+.neg { color: #ef4444; }
+
+.status {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.completed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pending {
+  background: #fef9c3;
+  color: #a16207;
+}

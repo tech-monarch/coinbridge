@@ -1,0 +1,35 @@
+.page {
+  max-width: 1400px;
+}
+
+.midGrid {
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 320px) minmax(280px, 340px);
+  gap: 16px;
+  align-items: start;
+}
+
+.marketCol,
+.portfolioCol,
+.txCol {
+  min-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .midGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .txCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .midGrid {
+    grid-template-columns: 1fr;
+  }
+  .txCol {
+    grid-column: 1;
+  }
+}

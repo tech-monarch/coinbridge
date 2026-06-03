@@ -1,0 +1,234 @@
+.card {
+  background: linear-gradient(135deg, #0d2052 0%, #0a1840 50%, #071230 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: stretch;
+  margin-bottom: 20px;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(21, 101, 192, 0.18);
+  pointer-events: none;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 200px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(0, 200, 83, 0.06);
+  pointer-events: none;
+}
+
+/* ── Left ── */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.balanceLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.eyeBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.eyeBtn:hover {
+  color: rgba(255,255,255,0.8);
+}
+
+.balanceValue {
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.balanceSubrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usd {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+
+.badge {
+  background: #00c853;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.btnDeposit {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #00c853;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btnDeposit:hover {
+  background: #00a844;
+  transform: translateY(-1px);
+}
+
+.btnWithdraw {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btnWithdraw:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.45);
+  transform: translateY(-1px);
+}
+
+/* ── Right (chart) ── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.timeFilters {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.filterBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.38);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+
+.filterBtn:hover {
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+}
+
+.filterBtnActive {
+  background: rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+}
+
+.chartWrap {
+  flex: 1;
+  min-height: 120px;
+  max-height: 140px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1200px) {
+  .card {
+    grid-template-columns: 280px 1fr;
+  }
+  .balanceValue {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .right {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 16px;
+  }
+  .chartWrap {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+  .balanceValue {
+    font-size: 26px;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btnDeposit, .btnWithdraw {
+    justify-content: center;
+  }
+}
