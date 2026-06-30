@@ -25,14 +25,42 @@ export default function FinalCTA() {
 
         <div className={styles.content} data-aos="zoom-in">
           <h2 className={styles.heading}>
-            Ready to Start Your Investment Journey?
+            Start Building Your Digital Portfolio Today
           </h2>
           <p className={styles.sub}>
-            Join millions of users growing their wealth with Altioda.
+            Join Altioda — the platform that lets you trade 200+ cryptocurrencies
+            and invest retirement funds, all in one secure, easy-to-use place.
           </p>
           <Link to="/register" className={styles.btn}>
             Create Free Account &nbsp;→
           </Link>
+
+          <div className={styles.trustRow}>
+            <span className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4a6278" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              No minimum to start
+            </span>
+            <span className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4a6278" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              IRA-compatible
+            </span>
+            <span className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4a6278" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              FDIC-insured funds
+            </span>
+            <span className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4a6278" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              1% flat trading fee
+            </span>
+          </div>
         </div>
 
         <div className={styles.floatRight} aria-hidden="true">

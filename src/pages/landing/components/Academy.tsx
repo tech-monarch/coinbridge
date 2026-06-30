@@ -8,11 +8,12 @@ export default function Academy() {
           <p className={styles.label}>Learn. Grow. Succeed.</p>
           <h2 className={styles.heading}>Expand Your Knowledge</h2>
           <p className={styles.desc}>
-            Our Academy helps you understand crypto, trading, and investing so
-            you can make smarter decisions.
+            Our Academy covers crypto fundamentals, IRA investing strategies,
+            and market analysis — so you can make decisions you actually
+            understand.
           </p>
           <a
-            href="https://t.me/Altioda_official"
+            href="https://t.me/Altioda"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.btn}

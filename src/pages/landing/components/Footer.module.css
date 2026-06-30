@@ -1,7 +1,7 @@
 .footer {
   background: #070b16;
   border-top: 1px solid #1a2840;
-  padding: 60px 0 0;
+  padding: 64px 0 0;
 }
 
 .container {
@@ -71,8 +71,8 @@
 }
 
 .social {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid #1a2840;
   border-radius: 8px;
@@ -83,14 +83,17 @@
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.18s var(--ease-out-quart, ease);
 }
 
 .social:hover {
-  color: #1e88e5;
-  border-color: rgba(30, 136, 229, 0.4);
-  background: rgba(30, 136, 229, 0.08);
+  transform: translateY(-2px);
 }
+
+.socialWa:hover { color: #25d366; border-color: rgba(37, 211, 102, 0.4); background: rgba(37, 211, 102, 0.08); }
+.socialTg:hover { color: #229ed9; border-color: rgba(34, 158, 217, 0.4); background: rgba(34, 158, 217, 0.08); }
+.socialTw:hover { color: #1da1f2; border-color: rgba(29, 161, 242, 0.4); background: rgba(29, 161, 242, 0.08); }
+.socialLi:hover { color: #0a66c2; border-color: rgba(10, 102, 194, 0.4); background: rgba(10, 102, 194, 0.08); }
 
 .links {
   display: grid;
@@ -131,14 +134,24 @@
 
 .bottom {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 22px 0;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .copy {
   font-size: 12.5px;
   color: #3d4f63;
+  flex-shrink: 0;
+}
+
+.disclosure {
+  font-size: 11px;
+  color: #283a4e;
+  line-height: 1.7;
+  max-width: 620px;
 }
 
 .lang {
@@ -168,7 +181,6 @@
   .links { grid-template-columns: 1fr 1fr; }
   .bottom {
     flex-direction: column;
-    gap: 12px;
-    text-align: center;
+    gap: 14px;
   }
 }

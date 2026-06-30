@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Feature } from "@/types";
 import styles from "./Features.module.css";
 
@@ -33,7 +34,7 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Secure Wallet",
+    title: "Coinbase-Backed Wallet",
     icon: (
       <svg
         width="22"
@@ -80,7 +81,7 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "24/7 Customer Support",
+    title: "24/7 Live Support",
     icon: (
       <svg
         width="22"
@@ -109,12 +110,13 @@ export default function Features() {
             Grow Your Money
           </h2>
           <p className={styles.desc}>
-            Altioda provides the tools, data and support you need to trade
-            smarter and invest better.
+            Altioda brings together the tools, data, and support you need to
+            trade smarter and invest with confidence — whether you're new to
+            crypto or a seasoned market participant.
           </p>
-          <button className={styles.exploreBtn}>
+          <Link to="/register" className={styles.exploreBtn} style={{ textDecoration: "none", display: "inline-block" }}>
             Explore Features &nbsp;→
-          </button>
+          </Link>
         </div>
 
         <div className={styles.right} data-aos="fade-left" data-aos-delay="100">

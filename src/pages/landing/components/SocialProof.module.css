@@ -14,6 +14,36 @@
   gap: 0;
 }
 
+.trustBadges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 32px;
+  margin-left: 24px;
+  border-left: 1px solid #1e2d45;
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #78909c;
+  background: rgba(0, 200, 83, 0.07);
+  border: 1px solid rgba(0, 200, 83, 0.18);
+  border-radius: 50px;
+  padding: 5px 12px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.trustBadge svg { color: #00c853; flex-shrink: 0; }
+
+@media (max-width: 1100px) {
+  .trustBadges { display: none; }
+}
+
 .item {
   display: flex;
   align-items: center;

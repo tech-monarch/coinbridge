@@ -4,7 +4,7 @@ import styles from "./WhyUs.module.css";
 const reasons: Reason[] = [
   {
     title: "For Everyone",
-    desc: "Designed for both beginners and professional traders.",
+    desc: "Built for beginners and experienced investors alike, including those diversifying retirement funds.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <circle
@@ -41,7 +41,7 @@ const reasons: Reason[] = [
   },
   {
     title: "Fast & Reliable",
-    desc: "Experience fast, seamless deposits and withdrawals.",
+    desc: "Seamless deposits and withdrawals, with a transparent 1% trading fee and no hidden charges.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <path
@@ -94,7 +94,7 @@ const reasons: Reason[] = [
   },
   {
     title: "Support You Can Count On",
-    desc: "Get help anytime from our dedicated support team.",
+    desc: "Real people, available around the clock on WhatsApp or Telegram.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <path
@@ -133,6 +133,16 @@ export default function WhyUs() {
               <div className={styles.iconWrap}>{r.icon}</div>
               <h3 className={styles.cardTitle}>{r.title}</h3>
               <p className={styles.cardDesc}>{r.desc}</p>
+              {r.title === "Support You Can Count On" && (
+                <p className={styles.contactLinks}>
+                  <a href="https://wa.me/12022000794" target="_blank" rel="noopener noreferrer" style={{ marginRight: 10 }}>
+                    WhatsApp ↗
+                  </a>
+                  <a href="https://t.me/Altioda" target="_blank" rel="noopener noreferrer">
+                    Telegram ↗
+                  </a>
+                </p>
+              )}
             </div>
           ))}
         </div>

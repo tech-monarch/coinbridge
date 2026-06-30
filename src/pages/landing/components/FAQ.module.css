@@ -1,6 +1,6 @@
 .section {
   background: #ffffff;
-  padding: 80px 0;
+  padding: 104px 0;
 }
 
 .container {
@@ -11,11 +11,11 @@
 
 .heading {
   text-align: center;
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: #111827;
-  margin-bottom: 56px;
-  letter-spacing: -0.5px;
+  margin-bottom: 60px;
+  letter-spacing: -0.7px;
 }
 
 .accent {
@@ -36,10 +36,10 @@
 }
 
 .item {
-  padding: 20px 0;
+  padding: 22px 0;
   border-bottom: 1px solid #f0f2f5;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.15s;
 }
 
 .item:first-child {
@@ -91,7 +91,7 @@
   background: #f8faff;
   border: 1px solid #e8edf5;
   border-radius: 20px;
-  padding: 40px 32px;
+  padding: 44px 34px;
   text-align: center;
   position: sticky;
   top: 90px;
@@ -113,24 +113,47 @@
 .supportDesc {
   font-size: 13.5px;
   color: #6b7280;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   line-height: 1.6;
 }
 
-.supportLink {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1e88e5;
-  text-decoration: none;
-  padding: 10px 24px;
-  border: 1.5px solid #1e88e5;
-  border-radius: 8px;
-  display: inline-block;
-  transition: background 0.2s, color 0.2s;
+.contactBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.supportLink:hover {
-  background: #1e88e5;
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.18s var(--ease-out-quart, ease);
+}
+
+.waBtn {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+}
+
+.waBtn:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+}
+
+.tgBtn {
+  color: #229ed9;
+  border: 1.5px solid #229ed9;
+}
+
+.tgBtn:hover {
+  background: #229ed9;
   color: #ffffff;
 }
 

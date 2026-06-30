@@ -1,10 +1,10 @@
 import styles from "./Security.module.css";
 
 const badges = [
-  "Bank-level Security",
-  "Advanced Encryption",
-  "Regular Security Audits",
-  "100% Transparency",
+  "FDIC-Insured Cash Balances",
+  "Coinbase Digital Asset Custody",
+  "Cyber Liability Insurance",
+  "Crime Insurance for Assets",
 ];
 
 export default function Security() {
@@ -30,8 +30,11 @@ export default function Security() {
             Built for Security &amp; Transparency
           </h2>
           <p className={styles.desc}>
-            We use industry-standard security measures and advanced encryption
-            to ensure your funds and personal data are always safe.
+            Your funds are protected by multiple independent layers of security.
+            Cash balances are FDIC-insured up to $250,000 through our banking
+            partners, digital assets are custodied through Coinbase, and we
+            carry both cyber liability and crime insurance — so you can invest
+            with genuine peace of mind.
           </p>
           <div className={styles.badges}>
             {badges.map((b) => (

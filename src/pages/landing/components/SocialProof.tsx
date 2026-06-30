@@ -34,7 +34,7 @@ export default function SocialProof() {
             </svg>
           </span>
           <div>
-            <div className={styles.num}>10+</div>
+            <div className={styles.num}>200+</div>
             <div className={styles.label}>Digital Assets</div>
           </div>
         </div>
@@ -53,6 +53,21 @@ export default function SocialProof() {
             <div className={styles.num}>24/7</div>
             <div className={styles.label}>Active Trading</div>
           </div>
+        </div>
+
+        <div className={styles.trustBadges}>
+          <span className={styles.trustBadge}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            FDIC Insured
+          </span>
+          <span className={styles.trustBadge}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            IRA Custodian
+          </span>
         </div>
       </div>
     </div>

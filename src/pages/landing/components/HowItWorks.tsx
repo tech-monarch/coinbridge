@@ -4,8 +4,8 @@ import styles from './HowItWorks.module.css';
 const steps: Step[] = [
   {
     num: 1,
-    title: 'Create Account',
-    desc: 'Sign up in seconds with a secure process',
+    title: 'Create Your Account',
+    desc: 'Sign up and verify your identity in minutes — no experience required',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="12" r="5" stroke="#1e88e5" strokeWidth="2" fill="none"/>
@@ -18,7 +18,7 @@ const steps: Step[] = [
   {
     num: 2,
     title: 'Fund Your Wallet',
-    desc: 'Deposit easily using available payment options',
+    desc: 'Deposit from your bank account or retirement funds using supported payment options',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <rect x="4" y="8" width="24" height="16" rx="3" stroke="#1e88e5" strokeWidth="2" fill="none"/>
@@ -30,8 +30,8 @@ const steps: Step[] = [
   },
   {
     num: 3,
-    title: 'Start Trading & Investing',
-    desc: 'Buy, sell, and grow your portfolio anytime',
+    title: 'Trade & Invest',
+    desc: 'Buy, sell, and manage your portfolio — including IRA investments — anytime',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path d="M6 24l6-6 4 4 10-12" stroke="#1e88e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

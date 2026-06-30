@@ -19,6 +19,7 @@ export interface Testimonial {
   stars: number;
   text: string;
   color: string;
+  avatar?: string;
 }
 
 export interface Step {

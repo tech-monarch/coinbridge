@@ -1,6 +1,6 @@
 .section {
   background: #0a0e1a;
-  padding: 80px 0;
+  padding: 104px 0;
   position: relative;
   overflow: hidden;
 }
@@ -10,8 +10,8 @@
   position: absolute;
   top: -80px;
   right: -80px;
-  width: 400px;
-  height: 400px;
+  width: 440px;
+  height: 440px;
   background: radial-gradient(circle, rgba(0, 200, 83, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
@@ -64,43 +64,44 @@
 }
 
 .heading {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.25;
-  margin-bottom: 18px;
-  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+  letter-spacing: -0.7px;
 }
 
 .desc {
-  font-size: 14px;
-  color: #90a4ae;
-  line-height: 1.75;
+  font-size: 14.5px;
+  color: #7fa0b8;
+  line-height: 1.8;
   margin-bottom: 32px;
 }
 
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 11px;
 }
 
 .badge {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12.5px;
   font-weight: 500;
   color: #b0bec5;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  padding: 7px 16px;
-  transition: border-color 0.2s;
+  padding: 8px 16px;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .badge:hover {
   border-color: rgba(0, 200, 83, 0.4);
+  background: rgba(0, 200, 83, 0.05);
 }
 
 @media (max-width: 900px) {

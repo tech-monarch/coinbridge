@@ -1,6 +1,6 @@
 .section {
   background: #f0f7ff;
-  padding: 80px 0;
+  padding: 104px 0;
 }
 
 .container {
@@ -23,17 +23,17 @@
 }
 
 .heading {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: #111827;
   margin-bottom: 18px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
 }
 
 .desc {
-  font-size: 14px;
+  font-size: 14.5px;
   color: #6b7280;
-  line-height: 1.75;
+  line-height: 1.78;
   margin-bottom: 32px;
 }
 
@@ -47,14 +47,15 @@
   border: none;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s var(--ease-out-quart, ease), transform 0.18s var(--ease-out-quart, ease), box-shadow 0.2s;
   display: inline-block;
   box-shadow: 0 4px 14px rgba(30, 136, 229, 0.3);
 }
 
 .btn:hover {
   background: #1565c0;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(30, 136, 229, 0.32);
 }
 
 .visual {
@@ -66,12 +67,12 @@
 .imagePlaceholder {
   width: 100%;
   max-width: 400px;
-  height: 260px;
+  height: 268px;
   background: rgba(30, 136, 229, 0.06);
   border-radius: 20px;
-  border: 1px solid rgba(30, 136, 229, 0.15);
+  border: 1px solid rgba(30, 136, 229, 0.14);
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(30, 136, 229, 0.1);
+  box-shadow: 0 10px 36px rgba(30, 136, 229, 0.1);
 }
 
 .img {

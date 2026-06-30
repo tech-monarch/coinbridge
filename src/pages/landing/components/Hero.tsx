@@ -10,6 +10,11 @@ export default function Hero() {
           data-aos="fade-right"
           data-aos-delay="100"
         >
+          <div className={styles.eyebrow}>
+            <span className={styles.eyebrowDot} />
+            <span className={styles.eyebrowText}>IRA-compatible crypto platform</span>
+          </div>
+
           <h1 className={styles.headline}>
             Buy, Trade &amp; Grow
             <br />
@@ -18,11 +23,11 @@ export default function Hero() {
             <span className={styles.highlight}>Effortlessly</span>
           </h1>
           <p className={styles.sub}>
-            Join thousands of users using Altioda to invest in
+            Invest in 200+ cryptocurrencies — including through Traditional,
             <br />
-            crypto, forex, and digital assets with speed, security,
+            Roth, and SEP IRAs — with the speed, security, and simplicity
             <br />
-            and confidence.
+            you deserve.
           </p>
 
           <div
@@ -73,7 +78,7 @@ export default function Hero() {
               Create Free Account &nbsp;→
             </Link>
             
-            <a  href="https://t.me/Altioda_official"
+            <a  href="https://t.me/Altioda"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.secondaryBtn}
@@ -82,6 +87,29 @@ export default function Hero() {
               <span className={styles.playIcon}>▶</span>
               Explore How It Works
             </a>
+          </div>
+
+          <div className={styles.trustRow} data-aos="fade-up" data-aos-delay="460">
+            <div className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00c853" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              IRA custodian
+            </div>
+            <div className={styles.trustDivider} />
+            <div className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00c853" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              FDIC-insured cash balances
+            </div>
+            <div className={styles.trustDivider} />
+            <div className={styles.trustItem}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00c853" strokeWidth="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Coinbase custody
+            </div>
           </div>
         </div>
 

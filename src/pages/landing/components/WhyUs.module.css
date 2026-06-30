@@ -1,6 +1,6 @@
 .section {
   background: #ffffff;
-  padding: 80px 0;
+  padding: 104px 0;
 }
 
 .container {
@@ -11,11 +11,11 @@
 
 .heading {
   text-align: center;
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: #111827;
-  margin-bottom: 52px;
-  letter-spacing: -0.5px;
+  margin-bottom: 56px;
+  letter-spacing: -0.7px;
 }
 
 .grid {
@@ -28,15 +28,30 @@
   background: #f8faff;
   border: 1px solid #e8edf5;
   border-radius: 16px;
-  padding: 32px 24px;
+  padding: 34px 24px;
   text-align: center;
-  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  transition: box-shadow 0.28s var(--ease-out-quart, ease), transform 0.28s var(--ease-out-quart, ease), border-color 0.28s;
 }
 
 .card:hover {
-  box-shadow: 0 8px 28px rgba(30, 136, 229, 0.1);
-  transform: translateY(-3px);
+  box-shadow: var(--sh-lg, 0 8px 28px rgba(30, 136, 229, 0.1));
+  transform: translateY(-4px);
   border-color: #c5d8f8;
+}
+
+.contactLinks {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.contactLinks a {
+  color: #1e88e5;
+  transition: color 0.2s;
+}
+
+.contactLinks a:hover {
+  color: #1565c0;
 }
 
 .iconWrap {

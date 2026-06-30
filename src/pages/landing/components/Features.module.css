@@ -1,6 +1,6 @@
 .section {
   background: #f8faff;
-  padding: 80px 0;
+  padding: 104px 0;
 }
 
 .container {
@@ -23,18 +23,18 @@
 }
 
 .heading {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: #111827;
-  line-height: 1.25;
+  line-height: 1.22;
   margin-bottom: 18px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
 }
 
 .desc {
-  font-size: 14px;
+  font-size: 14.5px;
   color: #6b7280;
-  line-height: 1.75;
+  line-height: 1.78;
   margin-bottom: 32px;
   max-width: 400px;
 }
@@ -49,37 +49,38 @@
   border: none;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s var(--ease-out-quart, ease), transform 0.18s var(--ease-out-quart, ease), box-shadow 0.2s;
   box-shadow: 0 4px 14px rgba(30, 136, 229, 0.3);
 }
 
 .exploreBtn:hover {
   background: #1565c0;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(30, 136, 229, 0.32);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 13px;
 }
 
 .featureCard {
   background: #ffffff;
   border: 1px solid #e8edf5;
   border-radius: 12px;
-  padding: 18px 14px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  gap: 11px;
+  transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s var(--ease-out-quart, ease);
   cursor: default;
 }
 
 .featureCard:hover {
-  border-color: #1e88e5;
-  box-shadow: 0 4px 16px rgba(30, 136, 229, 0.1);
+  border-color: rgba(30, 136, 229, 0.35);
+  box-shadow: 0 6px 20px rgba(30, 136, 229, 0.1);
   transform: translateY(-2px);
 }
 
