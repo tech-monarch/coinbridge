@@ -34,7 +34,6 @@ export default function VideoExplainer() {
           <video
             ref={videoRef}
             className={styles.video}
-            src="/explanation.mov"
             loop
             muted
             playsInline
@@ -42,6 +41,8 @@ export default function VideoExplainer() {
             onPause={() => setIsPlaying(false)}
             preload="metadata"
           >
+            <source src="/explanation.mp4" type="video/mp4" />
+            <source src="/explanation.mov" type="video/quicktime" />
             Your browser does not support the video tag.
           </video>
 
