@@ -48,49 +48,49 @@ export default function AdminKyc() {
 
   const kycColors: Record<string, string> = { approved: '#22c55e', pending: '#f59e0b', rejected: '#ef4444' };
 
-  const cardStyle = { background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', overflow: 'hidden' };
+  const cardStyle = { background: '#ffffff', border: '1px solid #f0f2f5', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' };
   const inputStyle = { width: '100%', padding: '10px 12px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff', fontSize: '13px', boxSizing: 'border-box' as const };
 
   return (
     <div style={{ padding: '0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#fff' }}>KYC Submissions</h1>
-          <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '4px' }}>{total} total submissions</p>
+          <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#111827' }}>KYC Submissions</h1>
+          <p style={{ color: '#6b7280', fontSize: '13px', marginTop: '4px' }}>{total} total submissions</p>
         </div>
       </div>
 
-      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#22c55e', fontSize: '13px' }}>{msg}</div>}
+      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#15803d', fontSize: '13px' }}>{msg}</div>}
 
       <div style={cardStyle}>
-        <div style={{ display: 'flex', gap: '4px', padding: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ display: 'flex', gap: '4px', padding: '16px', borderBottom: '1px solid #f0f2f5' }}>
           {['all', 'pending', 'approved', 'rejected'].map(s => (
             <button key={s} onClick={() => { setStatusFilter(s); setPage(1); }}
               style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontSize: '12px',
-                background: statusFilter === s ? '#1565C0' : 'rgba(255,255,255,0.04)',
-                color: statusFilter === s ? '#fff' : '#9ca3af' }}>
+                background: statusFilter === s ? '#1565C0' : '#f5f6fa',
+                color: statusFilter === s ? '#fff' : '#6b7280' }}>
               {s.charAt(0).toUpperCase() + s.slice(1)}
             </button>
           ))}
         </div>
 
-        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>Loading…</div> : (
+        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>Loading…</div> : (
           <>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 140px 120px 100px 80px', gap: '12px', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', fontSize: '11px', color: '#6b7280', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 140px 120px 100px 80px', gap: '12px', padding: '10px 16px', borderBottom: '1px solid #f0f2f5', fontSize: '11px', color: '#9ca3af', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               <span>User</span><span>Document Type</span><span>Country</span><span>Status</span><span>Actions</span>
             </div>
             {submissions.length === 0 ? (
-              <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>No {statusFilter} submissions.</div>
+              <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>No {statusFilter} submissions.</div>
             ) : submissions.map(sub => {
               const sc = kycColors[sub.status] || '#9ca3af';
               return (
-                <div key={sub.id} style={{ display: 'grid', gridTemplateColumns: '1fr 140px 120px 100px 80px', gap: '12px', padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', alignItems: 'center' }}>
+                <div key={sub.id} style={{ display: 'grid', gridTemplateColumns: '1fr 140px 120px 100px 80px', gap: '12px', padding: '12px 16px', borderBottom: '1px solid #f0f2f5', alignItems: 'center' }}>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#e5e7eb', fontSize: '13px' }}>{sub.first_name} {sub.last_name}</div>
+                    <div style={{ fontWeight: 600, color: '#111827', fontSize: '13px' }}>{sub.first_name} {sub.last_name}</div>
                     <div style={{ fontSize: '11px', color: '#6b7280' }}>{sub.user?.email}</div>
                   </div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af', textTransform: 'capitalize' }}>{sub.document_type?.replace(/_/g, ' ')}</div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>{sub.country || '—'}</div>
+                  <div style={{ fontSize: '12px', color: '#374151', textTransform: 'capitalize' }}>{sub.document_type?.replace(/_/g, ' ')}</div>
+                  <div style={{ fontSize: '12px', color: '#374151' }}>{sub.country || '—'}</div>
                   <div>
                     <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: sc, background: `${sc}18`, textTransform: 'capitalize' }}>● {sub.status}</span>
                   </div>
@@ -107,10 +107,10 @@ export default function AdminKyc() {
         {lastPage > 1 && (
           <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', padding: '16px' }}>
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
-            <span style={{ padding: '6px 12px', color: '#9ca3af', fontSize: '13px' }}>Page {page} of {lastPage}</span>
+              style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
+            <span style={{ padding: '6px 12px', color: '#6b7280', fontSize: '13px' }}>Page {page} of {lastPage}</span>
             <button onClick={() => setPage(p => Math.min(lastPage, p + 1))} disabled={page === lastPage}
-              style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
+              style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
           </div>
         )}
       </div>

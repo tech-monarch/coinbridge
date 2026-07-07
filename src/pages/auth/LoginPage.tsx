@@ -9,7 +9,7 @@ export default function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as any)?.from?.pathname || '/dashboard';
+  const from = (location.state as { from?: { pathname?: string } })?.from?.pathname;
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
@@ -22,11 +22,11 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
-      // Redirect admin to /admin, users to /dashboard
-      const { user } = await import('@/context/AuthContext').then(m => ({ user: null }));
-      // Navigate based on what we stored
-      navigate(from, { replace: true });
+      const user = await login(email, password);
+      // If they were redirected here from a specific protected route, send
+      // them back there; otherwise land on the right home for their role.
+      const target = from ?? (user.role === 'admin' ? '/admin' : '/dashboard');
+      navigate(target, { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
     } finally {

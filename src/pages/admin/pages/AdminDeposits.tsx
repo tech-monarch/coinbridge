@@ -76,7 +76,7 @@ export default function AdminDeposits() {
         ))}
       </div>
 
-      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#22c55e', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
+      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#15803d', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
 
       <div className={styles.card}>
         <div className={styles.filtersRow}>
@@ -88,7 +88,7 @@ export default function AdminDeposits() {
           </div>
         </div>
 
-        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>Loading…</div> : (
+        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>Loading…</div> : (
           <div className={styles.tableWrap}>
             <div className={styles.tableHead}>
               <span>User</span><span>Amount</span><span>Network</span><span>TX Hash</span><span>Status</span><span>Date</span><span>Actions</span>
@@ -98,17 +98,17 @@ export default function AdminDeposits() {
               return (
                 <div key={dep.id} className={styles.tableRow}>
                   <div>
-                    <div style={{ fontSize: '13px', color: '#e5e7eb', fontWeight: 500 }}>{dep.user?.name || '—'}</div>
+                    <div style={{ fontSize: '13px', color: '#111827', fontWeight: 500 }}>{dep.user?.name || '—'}</div>
                     <div style={{ fontSize: '11px', color: '#6b7280' }}>{dep.user?.email}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '13px', color: '#e5e7eb' }}>{dep.usd_amount ? formatUSD(Number(dep.usd_amount)) : `${Number(dep.amount).toFixed(6)} ${dep.currency}`}</div>
+                    <div style={{ fontSize: '13px', color: '#111827' }}>{dep.usd_amount ? formatUSD(Number(dep.usd_amount)) : `${Number(dep.amount).toFixed(6)} ${dep.currency}`}</div>
                     {dep.usd_amount && <div style={{ fontSize: '11px', color: '#6b7280' }}>{Number(dep.amount).toFixed(6)} {dep.currency}</div>}
                   </div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>{dep.network?.name || '—'}</div>
+                  <div style={{ fontSize: '12px', color: '#374151' }}>{dep.network?.name || '—'}</div>
                   <div style={{ fontSize: '11px', color: '#6b7280', fontFamily: 'monospace' }}>{dep.transaction_hash ? `${dep.transaction_hash.slice(0, 12)}…` : '—'}</div>
                   <div><span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: statusColor, background: `${statusColor}18`, textTransform: 'capitalize' }}>● {dep.status}</span></div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>{new Date(dep.created_at).toLocaleDateString()}</div>
+                  <div style={{ fontSize: '12px', color: '#6b7280' }}>{new Date(dep.created_at).toLocaleDateString()}</div>
                   <div style={{ display: 'flex', gap: '6px' }}>
                     {dep.status === 'pending' && (
                       <>
@@ -126,9 +126,9 @@ export default function AdminDeposits() {
         )}
         {lastPage > 1 && (
           <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', padding: '16px' }}>
-            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
-            <span style={{ padding: '6px 12px', color: '#9ca3af', fontSize: '13px' }}>Page {page} of {lastPage}</span>
-            <button onClick={() => setPage(p => Math.min(lastPage, p + 1))} disabled={page === lastPage} style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
+            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
+            <span style={{ padding: '6px 12px', color: '#6b7280', fontSize: '13px' }}>Page {page} of {lastPage}</span>
+            <button onClick={() => setPage(p => Math.min(lastPage, p + 1))} disabled={page === lastPage} style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
           </div>
         )}
       </div>

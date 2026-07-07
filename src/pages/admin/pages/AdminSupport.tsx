@@ -92,10 +92,10 @@ export default function AdminSupport() {
         }}
       >
         <div>
-          <h1 style={{ fontSize: "22px", fontWeight: 700, color: "#fff" }}>
+          <h1 style={{ fontSize: "22px", fontWeight: 700, color: "#111827" }}>
             Support Tickets
           </h1>
-          <p style={{ color: "#9ca3af", fontSize: "13px", marginTop: "4px" }}>
+          <p style={{ color: "#6b7280", fontSize: "13px", marginTop: "4px" }}>
             {tickets.length} tickets
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function AdminSupport() {
             padding: "10px 14px",
             borderRadius: "8px",
             background: "rgba(34,200,83,0.1)",
-            color: "#22c55e",
+            color: "#15803d",
             fontSize: "13px",
           }}
         >
@@ -143,8 +143,8 @@ export default function AdminSupport() {
               cursor: "pointer",
               fontSize: "12px",
               background:
-                statusFilter === s ? "#1565C0" : "rgba(255,255,255,0.04)",
-              color: statusFilter === s ? "#fff" : "#9ca3af",
+                statusFilter === s ? "#1565C0" : "#f5f6fa",
+              color: statusFilter === s ? "#fff" : "#6b7280",
             }}
           >
             {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -153,7 +153,7 @@ export default function AdminSupport() {
       </div>
 
       {loading ? (
-        <div style={{ padding: "40px", textAlign: "center", color: "#9ca3af" }}>
+        <div style={{ padding: "40px", textAlign: "center", color: "#6b7280" }}>
           Loading…
         </div>
       ) : (
@@ -163,10 +163,10 @@ export default function AdminSupport() {
               style={{
                 padding: "40px",
                 textAlign: "center",
-                color: "#9ca3af",
-                background: "rgba(255,255,255,0.02)",
+                color: "#6b7280",
+                background: "#ffffff",
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.06)",
+                border: "1px solid #f0f2f5",
               }}
             >
               No {statusFilter} tickets.
@@ -178,10 +178,11 @@ export default function AdminSupport() {
                 <div
                   key={ticket.id}
                   style={{
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "#ffffff",
+                    border: "1px solid #f0f2f5",
                     borderRadius: "10px",
                     padding: "16px",
+                    boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -200,7 +201,7 @@ export default function AdminSupport() {
                       <span
                         style={{
                           fontWeight: 600,
-                          color: "#e5e7eb",
+                          color: "#111827",
                           fontSize: "14px",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -224,7 +225,7 @@ export default function AdminSupport() {
                         ● {ticket.status}
                       </span>
                     </div>
-                    <div style={{ fontSize: "12px", color: "#9ca3af" }}>
+                    <div style={{ fontSize: "12px", color: "#6b7280" }}>
                       {ticket.user?.name || "—"} · {ticket.user?.email}
                     </div>
                     <div
@@ -273,9 +274,9 @@ export default function AdminSupport() {
                         style={{
                           padding: "6px 12px",
                           borderRadius: "6px",
-                          background: "rgba(255,255,255,0.04)",
-                          color: "#9ca3af",
-                          border: "1px solid rgba(255,255,255,0.08)",
+                          background: "#f5f6fa",
+                          color: "#6b7280",
+                          border: "1px solid #e8ecf0",
                           fontSize: "12px",
                           cursor: "pointer",
                         }}

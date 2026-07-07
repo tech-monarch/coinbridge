@@ -49,27 +49,27 @@ export default function AdminWallets() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div>
-        <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#fff' }}>Network Wallets</h1>
-        <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '4px' }}>Manage deposit addresses, fees, and network settings</p>
+        <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#111827' }}>Network Wallets</h1>
+        <p style={{ color: '#6b7280', fontSize: '13px', marginTop: '4px' }}>Manage deposit addresses, fees, and network settings</p>
       </div>
 
-      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#22c55e', fontSize: '13px' }}>{msg}</div>}
+      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#15803d', fontSize: '13px' }}>{msg}</div>}
 
-      {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>Loading…</div> : (
+      {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>Loading…</div> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
           {networks.map(net => (
-            <div key={net.id} style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid ${net.is_active ? net.color + '30' : 'rgba(255,255,255,0.06)'}`, borderRadius: '12px', padding: '20px', position: 'relative' }}>
+            <div key={net.id} style={{ background: '#ffffff', border: `1px solid ${net.is_active ? net.color + '30' : '#f0f2f5'}`, borderRadius: '12px', padding: '20px', position: 'relative', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: `${net.color}18`, color: net.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: 700 }}>
                     {net.symbol.slice(0, 1)}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#e5e7eb', fontSize: '15px' }}>{net.name}</div>
+                    <div style={{ fontWeight: 600, color: '#111827', fontSize: '15px' }}>{net.name}</div>
                     <div style={{ fontSize: '12px', color: '#6b7280' }}>{net.symbol}</div>
                   </div>
                 </div>
-                <div onClick={() => toggleActive(net)} style={{ width: '36px', height: '20px', borderRadius: '10px', background: net.is_active ? '#22c55e' : 'rgba(255,255,255,0.1)', position: 'relative', cursor: 'pointer', transition: 'background 0.2s', flexShrink: 0 }}>
+                <div onClick={() => toggleActive(net)} style={{ width: '36px', height: '20px', borderRadius: '10px', background: net.is_active ? '#22c55e' : '#e2e8f0', position: 'relative', cursor: 'pointer', transition: 'background 0.2s', flexShrink: 0 }}>
                   <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: '#fff', position: 'absolute', top: '3px', left: net.is_active ? '19px' : '3px', transition: 'left 0.2s' }} />
                 </div>
               </div>
@@ -84,7 +84,7 @@ export default function AdminWallets() {
                 ].map(row => (
                   <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
                     <span style={{ color: '#6b7280' }}>{row.label}</span>
-                    <span style={{ color: '#e5e7eb', fontFamily: row.mono ? 'monospace' : 'inherit' }}>{row.value}</span>
+                    <span style={{ color: '#111827', fontFamily: row.mono ? 'monospace' : 'inherit' }}>{row.value}</span>
                   </div>
                 ))}
               </div>

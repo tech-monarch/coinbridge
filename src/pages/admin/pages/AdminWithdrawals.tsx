@@ -64,55 +64,55 @@ export default function AdminWithdrawals() {
           { label: 'Pending Value', value: formatUSD(totalPendingUsd), clr: '#ef4444' },
           { label: 'Approved', value: withdrawals.filter(w => w.status === 'approved' || w.status === 'completed').length, clr: '#22c55e' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '16px' }}>
-            <div style={{ fontSize: '12px', color: '#9ca3af', marginBottom: '6px' }}>{s.label}</div>
+          <div key={s.label} style={{ background: '#ffffff', border: '1px solid #f0f2f5', borderRadius: '10px', padding: '16px', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '6px' }}>{s.label}</div>
             <div style={{ fontSize: '20px', fontWeight: 700, color: s.clr }}>{s.value}</div>
           </div>
         ))}
       </div>
 
-      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#22c55e', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
+      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#15803d', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
 
-      <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', gap: '12px', padding: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '8px 12px', flex: 1, minWidth: '200px' }}>
+      <div style={{ background: '#ffffff', border: '1px solid #f0f2f5', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+        <div style={{ display: 'flex', gap: '12px', padding: '16px', borderBottom: '1px solid #f0f2f5', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#f5f6fa', border: '1px solid #e8ecf0', borderRadius: '8px', padding: '8px 12px', flex: 1, minWidth: '200px' }}>
             <SearchIcon />
             <input placeholder="Search user, address…" value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-              style={{ background: 'none', border: 'none', color: '#e5e7eb', fontSize: '13px', outline: 'none', flex: 1 }} />
+              style={{ background: 'none', border: 'none', color: '#111827', fontSize: '13px', outline: 'none', flex: 1 }} />
           </div>
           <div style={{ display: 'flex', gap: '4px' }}>
             {['all', 'pending', 'approved', 'rejected', 'completed'].map(s => (
               <button key={s} onClick={() => { setStatusFilter(s); setPage(1); }}
                 style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontSize: '12px',
-                  background: statusFilter === s ? '#1565C0' : 'rgba(255,255,255,0.04)',
-                  color: statusFilter === s ? '#fff' : '#9ca3af' }}>
+                  background: statusFilter === s ? '#1565C0' : '#f5f6fa',
+                  color: statusFilter === s ? '#fff' : '#6b7280' }}>
                 {s.charAt(0).toUpperCase() + s.slice(1)}
               </button>
             ))}
           </div>
         </div>
 
-        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>Loading…</div> : (
+        {loading ? <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>Loading…</div> : (
           <div style={{ overflowX: 'auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px 180px 80px 100px 160px', gap: '12px', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', fontSize: '11px', color: '#6b7280', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '900px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px 180px 80px 100px 160px', gap: '12px', padding: '10px 16px', borderBottom: '1px solid #f0f2f5', fontSize: '11px', color: '#9ca3af', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '900px' }}>
               <span>User</span><span>USD Amount</span><span>Crypto</span><span>Address</span><span>Network</span><span>Status</span><span>Actions</span>
             </div>
             {withdrawals.map(w => {
               const statusColor = { pending: '#f59e0b', approved: '#22c55e', rejected: '#ef4444', completed: '#22c55e', processing: '#3b82f6' }[w.status] || '#9ca3af';
               return (
-                <div key={w.id} style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px 180px 80px 100px 160px', gap: '12px', padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', alignItems: 'center', minWidth: '900px' }}>
+                <div key={w.id} style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px 180px 80px 100px 160px', gap: '12px', padding: '12px 16px', borderBottom: '1px solid #f0f2f5', alignItems: 'center', minWidth: '900px' }}>
                   <div>
-                    <div style={{ fontSize: '13px', color: '#e5e7eb', fontWeight: 500 }}>{w.user?.name || '—'}</div>
+                    <div style={{ fontSize: '13px', color: '#111827', fontWeight: 500 }}>{w.user?.name || '—'}</div>
                     <div style={{ fontSize: '11px', color: '#6b7280' }}>{w.user?.email}</div>
                   </div>
-                  <div style={{ fontSize: '13px', color: '#e5e7eb' }}>{w.usd_amount ? formatUSD(Number(w.usd_amount)) : '—'}</div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>
+                  <div style={{ fontSize: '13px', color: '#111827' }}>{w.usd_amount ? formatUSD(Number(w.usd_amount)) : '—'}</div>
+                  <div style={{ fontSize: '12px', color: '#374151' }}>
                     {w.crypto_amount ? `${Number(w.crypto_amount).toFixed(6)} ${w.symbol || w.currency || ''}` : '—'}
                   </div>
                   <div style={{ fontSize: '11px', color: '#6b7280', fontFamily: 'monospace' }}>
                     {w.recipient_address ? `${w.recipient_address.slice(0, 14)}…${w.recipient_address.slice(-6)}` : '—'}
                   </div>
-                  <div style={{ fontSize: '12px', color: '#9ca3af' }}>{w.network?.name || '—'}</div>
+                  <div style={{ fontSize: '12px', color: '#374151' }}>{w.network?.name || '—'}</div>
                   <div>
                     <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: statusColor, background: `${statusColor}18`, textTransform: 'capitalize' }}>
                       ● {w.status}
@@ -144,10 +144,10 @@ export default function AdminWithdrawals() {
         {lastPage > 1 && (
           <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', padding: '16px' }}>
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
-            <span style={{ padding: '6px 12px', color: '#9ca3af', fontSize: '13px' }}>Page {page} of {lastPage}</span>
+              style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
+            <span style={{ padding: '6px 12px', color: '#6b7280', fontSize: '13px' }}>Page {page} of {lastPage}</span>
             <button onClick={() => setPage(p => Math.min(lastPage, p + 1))} disabled={page === lastPage}
-              style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
+              style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
           </div>
         )}
       </div>

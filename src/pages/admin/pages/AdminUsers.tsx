@@ -78,7 +78,7 @@ export default function AdminUsers() {
         </div>
       </div>
 
-      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#22c55e', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
+      {msg && <div style={{ padding: '10px 14px', borderRadius: '8px', background: 'rgba(34,200,83,0.1)', color: '#15803d', fontSize: '13px', marginBottom: '12px' }}>{msg}</div>}
 
       <div className={styles.card}>
         <div className={styles.filtersRow}>
@@ -103,7 +103,7 @@ export default function AdminUsers() {
         </div>
 
         {loading ? (
-          <div style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>Loading users…</div>
+          <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>Loading users…</div>
         ) : (
           <div className={styles.tableWrap}>
             <div className={styles.tableHead}>
@@ -112,21 +112,21 @@ export default function AdminUsers() {
             {users.map((user) => (
               <div key={user.id} className={styles.tableRow}>
                 <div>
-                  <div style={{ fontWeight: 600, color: '#e5e7eb', fontSize: '13px' }}>{user.name}</div>
+                  <div style={{ fontWeight: 600, color: '#111827', fontSize: '13px' }}>{user.name}</div>
                   <div style={{ fontSize: '11px', color: '#6b7280' }}>{user.email}</div>
                 </div>
-                <div style={{ color: '#e5e7eb', fontSize: '13px' }}>{formatUSD(Number(user.balance))}</div>
+                <div style={{ color: '#111827', fontSize: '13px' }}>{formatUSD(Number(user.balance))}</div>
                 <div>
                   <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: kycColors[user.kyc_status], background: `${kycColors[user.kyc_status]}18`, textTransform: 'capitalize' }}>
                     {user.kyc_status}
                   </span>
                 </div>
                 <div>
-                  <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: statusColors[user.account_status as keyof typeof statusColors] || '#9ca3af', background: `${statusColors[user.account_status as keyof typeof statusColors] || '#9ca3af'}18`, textTransform: 'capitalize' }}>
+                  <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 600, color: statusColors[user.account_status as keyof typeof statusColors] || '#6b7280', background: `${statusColors[user.account_status as keyof typeof statusColors] || '#6b7280'}18`, textTransform: 'capitalize' }}>
                     {user.account_status}
                   </span>
                 </div>
-                <div style={{ fontSize: '12px', color: '#9ca3af' }}>{new Date(user.created_at).toLocaleDateString()}</div>
+                <div style={{ fontSize: '12px', color: '#6b7280' }}>{new Date(user.created_at).toLocaleDateString()}</div>
                 <div style={{ display: 'flex', gap: '6px' }}>
                   <button onClick={() => setSelected(user)} style={{ padding: '4px 8px', borderRadius: '6px', background: 'rgba(21,101,192,0.15)', color: '#1565C0', border: '1px solid rgba(21,101,192,0.3)', fontSize: '11px', cursor: 'pointer' }}>View</button>
                   {user.account_status === 'active' ? (
@@ -143,9 +143,9 @@ export default function AdminUsers() {
 
         {lastPage > 1 && (
           <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', padding: '16px' }}>
-            <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
-            <span style={{ padding: '6px 12px', color: '#9ca3af', fontSize: '13px' }}>Page {page} of {lastPage}</span>
-            <button onClick={() => setPage((p) => Math.min(lastPage, p + 1))} disabled={page === lastPage} style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', color: '#9ca3af', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
+            <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>← Prev</button>
+            <span style={{ padding: '6px 12px', color: '#6b7280', fontSize: '13px' }}>Page {page} of {lastPage}</span>
+            <button onClick={() => setPage((p) => Math.min(lastPage, p + 1))} disabled={page === lastPage} style={{ padding: '6px 12px', borderRadius: '6px', background: '#f1f5f9', color: '#6b7280', border: 'none', cursor: 'pointer', opacity: page === lastPage ? 0.4 : 1 }}>Next →</button>
           </div>
         )}
       </div>

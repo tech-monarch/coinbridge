@@ -78,7 +78,7 @@ export default function AdminOverview() {
             { label: 'Withdrawals to approve', value: metrics.pending_withdrawals, color: '#ef4444', link: '/admin/withdrawals' },
             { label: 'KYC submissions', value: metrics.pending_kyc, color: '#f59e0b', link: '/admin/kyc' },
           ].map((item) => (
-            <a key={item.label} href={item.link} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)', textDecoration: 'none' }}>
+            <a key={item.label} href={item.link} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid #f0f2f5', textDecoration: 'none' }}>
               <span style={{ fontSize: '13px', color: '#9ca3af' }}>{item.label}</span>
               <span style={{ fontSize: '15px', fontWeight: 700, color: item.value > 0 ? item.color : '#6b7280' }}>
                 {item.value}
@@ -91,7 +91,7 @@ export default function AdminOverview() {
         <div className={styles.card} style={{ background: 'rgba(21,101,192,0.06)', border: '1px solid rgba(21,101,192,0.15)', borderRadius: '12px', padding: '20px' }}>
           <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#e5e7eb', marginBottom: '16px' }}>Recent Transactions</h3>
           {metrics.recent_transactions.slice(0, 5).map((tx: Transaction) => (
-            <div key={tx.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <div key={tx.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid #f0f2f5' }}>
               <div>
                 <div style={{ fontSize: '13px', color: '#e5e7eb' }}>{tx.type?.charAt(0).toUpperCase() + (tx.type?.slice(1) || '')}</div>
                 <div style={{ fontSize: '11px', color: '#6b7280' }}>{tx.currency} · {new Date(tx.created_at).toLocaleDateString()}</div>

@@ -4,10 +4,10 @@ export default function AdminAcademy() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
       <div>
-        <h1 style={{ fontSize: "22px", fontWeight: 700, color: "#fff" }}>
+        <h1 style={{ fontSize: "22px", fontWeight: 700, color: "#111827" }}>
           Academy Management
         </h1>
-        <p style={{ color: "#9ca3af", fontSize: "13px", marginTop: "4px" }}>
+        <p style={{ color: "#6b7280", fontSize: "13px", marginTop: "4px" }}>
           Learning content is hosted on Telegram
         </p>
       </div>
@@ -26,7 +26,7 @@ export default function AdminAcademy() {
           style={{
             fontSize: "20px",
             fontWeight: 700,
-            color: "#fff",
+            color: "#111827",
             marginBottom: "8px",
           }}
         >
@@ -34,7 +34,7 @@ export default function AdminAcademy() {
         </h2>
         <p
           style={{
-            color: "#9ca3af",
+            color: "#6b7280",
             fontSize: "14px",
             maxWidth: "400px",
             margin: "0 auto 24px",
@@ -99,12 +99,13 @@ export default function AdminAcademy() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#ffffff",
+              border: "1px solid #f0f2f5",
               borderRadius: "12px",
               padding: "16px",
               textDecoration: "none",
               display: "block",
+              boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
             }}
           >
             <div style={{ fontSize: "28px", marginBottom: "8px" }}>
@@ -113,7 +114,7 @@ export default function AdminAcademy() {
             <div
               style={{
                 fontWeight: 600,
-                color: "#e5e7eb",
+                color: "#111827",
                 fontSize: "14px",
                 marginBottom: "4px",
               }}
