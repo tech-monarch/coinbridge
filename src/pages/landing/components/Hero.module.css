@@ -30,6 +30,19 @@
   z-index: 1;
 }
 
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    460px circle at var(--spot-x, 50%) var(--spot-y, 20%),
+    rgba(30, 136, 229, 0.09),
+    transparent 65%
+  );
+  transition: background 0.05s linear;
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -102,34 +115,6 @@
   line-height: 1.8;
   margin-bottom: 28px;
   max-width: 460px;
-}
-
-.features {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 36px;
-  flex-wrap: wrap;
-}
-
-.featureItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 12px;
-  color: #a8bcc8;
-  line-height: 1.45;
-}
-
-.featureIcon {
-  background: rgba(30, 136, 229, 0.15);
-  border: 1px solid rgba(30, 136, 229, 0.2);
-  border-radius: 8px;
-  padding: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
 }
 
 .ctas {
@@ -306,12 +291,29 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
               inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   min-width: 148px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .coinBadge:hover {
   transform: scale(1.04);
 }
+
+/* Brand-tinted glow per coin, subtle shadow "under" each badge */
+.floatBadge1 .coinBadge {
+  box-shadow: 0 8px 28px rgba(247, 147, 26, 0.22),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.floatBadge2 .coinBadge {
+  box-shadow: 0 8px 28px rgba(98, 126, 234, 0.24),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.floatBadge3 .coinBadge {
+  box-shadow: 0 8px 28px rgba(243, 186, 47, 0.2),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
 
 .coinImg {
   width: 40px;
@@ -399,7 +401,6 @@
   .hero     { padding: 48px 0; }
   .headline { font-size: 34px; }
   .sub      { line-height: 1.55; }
-  .features { gap: 10px; }
   .ctas     { flex-direction: column; align-items: flex-start; }
 
   .heroImageWrap {

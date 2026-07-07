@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Feature } from "@/types";
+import { useTilt } from "@/hooks/useTilt";
 import styles from "./Features.module.css";
 
 const features: Feature[] = [
@@ -98,6 +99,24 @@ const features: Feature[] = [
   },
 ];
 
+function FeatureCard({ feature, delay }: { feature: Feature; delay: number }) {
+  const { ref, onPointerMove, onPointerLeave } = useTilt<HTMLDivElement>(6);
+  return (
+    <div
+      ref={ref}
+      className={styles.featureCard}
+      data-aos="zoom-in"
+      data-aos-delay={delay}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    >
+      <span className={styles.cardGlow} />
+      <div className={styles.iconWrap}>{feature.icon}</div>
+      <span className={styles.featureTitle}>{feature.title}</span>
+    </div>
+  );
+}
+
 export default function Features() {
   return (
     <section id="buy-crypto" className={styles.section}>
@@ -122,15 +141,7 @@ export default function Features() {
         <div className={styles.right} data-aos="fade-left" data-aos-delay="100">
           <div className={styles.grid}>
             {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={styles.featureCard}
-                data-aos="zoom-in"
-                data-aos-delay={i * 60}
-              >
-                <div className={styles.iconWrap}>{f.icon}</div>
-                <span className={styles.featureTitle}>{f.title}</span>
-              </div>
+              <FeatureCard key={f.title} feature={f} delay={i * 60} />
             ))}
           </div>
         </div>

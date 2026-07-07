@@ -1,9 +1,31 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMagnetic } from "@/hooks/useMagnetic";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const magnetic = useMagnetic<HTMLAnchorElement>(0.3, 2);
+  const heroRef = useRef<HTMLElement>(null);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const node = heroRef.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    node.style.setProperty("--spot-x", `${x}%`);
+    node.style.setProperty("--spot-y", `${y}%`);
+  };
+
   return (
-    <section id="home" className={styles.hero}>
+    <section
+      id="home"
+      className={styles.hero}
+      ref={heroRef}
+      onPointerMove={handlePointerMove}
+    >
+      <div className={styles.spotlight} />
       <div className={styles.container}>
         <div
           className={styles.content}
@@ -30,51 +52,15 @@ export default function Hero() {
             you deserve.
           </p>
 
-          <div
-            className={styles.features}
-            data-aos="fade-right"
-            data-aos-delay="250"
-          >
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e88e5" strokeWidth="2">
-                  <rect x="3" y="11" width="18" height="11" rx="2" />
-                  <path d="M7 11V7a5 5 0 0110 0v4" />
-                </svg>
-              </span>
-              <span>Secure &amp;<br />Encrypted</span>
-            </div>
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e88e5" strokeWidth="2">
-                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
-                  <polyline points="13 2 13 9 20 9" />
-                </svg>
-              </span>
-              <span>Fast Deposits<br />&amp; Withdrawals</span>
-            </div>
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e88e5" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                </svg>
-              </span>
-              <span>Beginner<br />Friendly</span>
-            </div>
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e88e5" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </span>
-              <span>24/7 Market<br />Access</span>
-            </div>
-          </div>
-
-          <div className={styles.ctas} data-aos="fade-up" data-aos-delay="400">
-            <Link to="/register" className={styles.primaryBtn}>
+          <div className={styles.ctas} data-aos="fade-up" data-aos-delay="250">
+            <Link
+              to="/register"
+              className={styles.primaryBtn}
+              ref={magnetic.ref}
+              onPointerMove={magnetic.onPointerMove}
+              onPointerEnter={magnetic.onPointerEnter}
+              onPointerLeave={magnetic.onPointerLeave}
+            >
               Create Free Account &nbsp;→
             </Link>
             
@@ -89,7 +75,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className={styles.trustRow} data-aos="fade-up" data-aos-delay="460">
+          <div className={styles.trustRow} data-aos="fade-up" data-aos-delay="360">
             <div className={styles.trustItem}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00c853" strokeWidth="2.5">
                 <polyline points="20 6 9 17 4 12" />

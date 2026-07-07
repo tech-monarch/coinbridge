@@ -74,14 +74,35 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 11px;
-  transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s var(--ease-out-quart, ease);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.22s, box-shadow 0.22s, transform 0.15s var(--ease-out-quart, ease);
   cursor: default;
+  transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .featureCard:hover {
   border-color: rgba(30, 136, 229, 0.35);
-  box-shadow: 0 6px 20px rgba(30, 136, 229, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(30, 136, 229, 0.14);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(
+    160px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(30, 136, 229, 0.12),
+    transparent 70%
+  );
+}
+
+.featureCard:hover .cardGlow {
+  opacity: 1;
 }
 
 .iconWrap {
@@ -91,6 +112,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .featureTitle {
@@ -98,6 +121,8 @@
   font-weight: 600;
   color: #374151;
   line-height: 1.4;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {

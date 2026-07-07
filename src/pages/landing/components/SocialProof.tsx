@@ -1,4 +1,14 @@
+import { useCountUp } from '@/hooks/useCountUp';
 import styles from './SocialProof.module.css';
+
+function Stat({ value, label }: { value: string; label: string }) {
+  const { ref, display } = useCountUp(value);
+  return (
+    <div ref={ref} className={styles.num}>
+      {display}
+    </div>
+  );
+}
 
 export default function SocialProof() {
   return (
@@ -16,7 +26,7 @@ export default function SocialProof() {
             </svg>
           </span>
           <div>
-            <div className={styles.num}>7M+</div>
+            <Stat value="7M+" label="Users Worldwide" />
             <div className={styles.label}>Users Worldwide</div>
           </div>
         </div>
@@ -34,7 +44,7 @@ export default function SocialProof() {
             </svg>
           </span>
           <div>
-            <div className={styles.num}>200+</div>
+            <Stat value="200+" label="Digital Assets" />
             <div className={styles.label}>Digital Assets</div>
           </div>
         </div>
@@ -50,7 +60,7 @@ export default function SocialProof() {
             </svg>
           </span>
           <div>
-            <div className={styles.num}>24/7</div>
+            <Stat value="24/7" label="Active Trading" />
             <div className={styles.label}>Active Trading</div>
           </div>
         </div>
